@@ -9,6 +9,10 @@ const Home = () => {
           A simple bookmark manager to keep track of important links
         </h2>
       </header>
+      {/*
+        Video of app
+        CTA
+      */}
     </div>
   );
 };
