@@ -1,6 +1,6 @@
 const Home = () => {
   return (
-    <div className="flex min-h-screen justify-start items-center p-14 flex-col gap-14">
+    <div className="flex justify-start items-center p-14 flex-col gap-14">
       <header className="flex flex-col items-center text-center gap-6">
         <h1 className="text-7xl font-semibold">
           <span className="text-sky-400">Bookmark</span> Manager
