@@ -1,5 +1,11 @@
-export default function Home() {
+const Home = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-neutral-50"></div>
+    <main className="flex min-h-screen justify-center p-14">
+      <h1 className="text-6xl font-semibold">
+        <span className="text-blue-400">Bookmark</span> Manager
+      </h1>
+    </main>
   );
-}
+};
+
+export default Home;
