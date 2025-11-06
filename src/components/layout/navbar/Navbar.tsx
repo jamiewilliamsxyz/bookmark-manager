@@ -14,7 +14,7 @@ const Navbar = () => {
         </NavLink>
         <NavLink
           href="/signup"
-          className="cursor-pointer inline-flex items-center justify-center h-8 px-4 font-medium text-lg rounded-lg shadow-lg bg-neutral-100 text-neutral-800 hover:opacity-75 duration-200 transition-opacity"
+          className="cursor-pointer inline-flex items-center justify-center h-8 px-3.5 font-medium text-lg rounded-lg shadow-lg bg-neutral-100 text-neutral-800 hover:opacity-75 duration-200 transition-opacity"
         >
           Sign Up
         </NavLink>
