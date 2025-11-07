@@ -7,7 +7,7 @@ interface Props {
 const AuthForm = ({ type }: Props) => {
   return (
     <Form
-      action={}
+      action={null}
       className="flex flex-col gap-5 w-full max-w-sm px-5 py-8 bg-neutral-100 shadow-lg rounded-lg text-neutral-700"
     >
       <h1 className="text-neutral-800 text-4xl font-semibold text-center leading-none">
