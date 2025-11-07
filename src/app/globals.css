@@ -3,7 +3,3 @@
 body {
   @apply bg-neutral-900 text-neutral-200;
 }
-
-h1 {
-  @apply text-neutral-100;
-}
