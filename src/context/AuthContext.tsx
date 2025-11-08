@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useState, useEffect, use } from "react";
+import { createContext, useState, useEffect } from "react";
 import { supabase } from "@/api/supabaseClient";
 import type {
   SessionType,
@@ -9,7 +9,9 @@ import type {
   AuthProviderProps,
 } from "@/types";
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
+export const AuthContext = createContext<AuthContextType | undefined>(
+  undefined
+);
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [session, setSession] = useState<SessionType | null>(null);
@@ -55,12 +57,4 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   }, []);
 
   return <AuthContext value={{ session, loading }}>{children}</AuthContext>;
-};
-
-export const useAuth = () => {
-  const context = use(AuthContext);
-  if (!context) {
-    throw new Error("useAuth needs to be used in AuthProvider");
-  }
-  return context;
 };
