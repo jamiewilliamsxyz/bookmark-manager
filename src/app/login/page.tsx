@@ -1,4 +1,4 @@
-import AuthForm from "@/components/features/AuthForm";
+import AuthForm from "@/components/features/auth/AuthForm";
 
 const LogInPage = () => {
   return (

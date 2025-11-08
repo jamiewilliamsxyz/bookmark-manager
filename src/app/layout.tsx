@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/navbar/Navbar";
 import Footer from "@/components/layout/Footer";
+import { AuthProvider } from "@/context/AuthContext";
+import RouteGuard from "@/components/features/auth/RouteGuard";
 
 export const metadata: Metadata = {
   title: "Bookmark Manager",
@@ -26,9 +28,13 @@ export default function RootLayout({
       <body
         className={`${inter.className} antialiased min-h-screen flex flex-col`}
       >
-        <Navbar />
-        <main className="flex-1 flex flex-col">{children}</main>
-        <Footer />
+        <AuthProvider>
+          <Navbar />
+          <main className="flex-1 flex flex-col">
+            <RouteGuard>{children}</RouteGuard>
+          </main>
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
