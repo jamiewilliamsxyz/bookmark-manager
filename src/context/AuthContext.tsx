@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, use } from "react";
 import { supabase } from "@/api/supabaseClient";
 import type {
   SessionType,
@@ -12,9 +12,7 @@ import type {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [session, setSession] = useState<SessionType | null | undefined>(
-    undefined
-  );
+  const [session, setSession] = useState<SessionType | null>(null);
   const [loading, setLoading] = useState<LoadingType>(true);
 
   useEffect(() => {
@@ -42,7 +40,27 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     };
 
     getInitialSession();
+
+    // Listen to auth changes
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+
+    // Cleanup to stop listening to auth events
+    return () => {
+      subscription.unsubscribe();
+    };
   }, []);
 
   return <AuthContext value={{ session, loading }}>{children}</AuthContext>;
+};
+
+export const useAuth = () => {
+  const context = use(AuthContext);
+  if (!context) {
+    throw new Error("useAuth needs to be used in AuthProvider");
+  }
+  return context;
 };

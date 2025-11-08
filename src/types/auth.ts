@@ -5,7 +5,7 @@ export type SessionType = Session;
 export type LoadingType = boolean;
 
 export interface AuthContextType {
-  session: SessionType | null | undefined;
+  session: SessionType | null;
   loading: LoadingType;
 }
 
