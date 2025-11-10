@@ -1,12 +1,10 @@
-import Form from "next/form";
-
 interface Props {
   type: "login" | "signup";
 }
 
 const AuthForm = ({ type }: Props) => {
   return (
-    <Form
+    <form
       action={null}
       className="flex flex-col gap-5 w-full max-w-sm px-5 py-8 bg-neutral-100 shadow-lg rounded-lg text-neutral-700"
     >
@@ -23,6 +21,7 @@ const AuthForm = ({ type }: Props) => {
           placeholder="Enter your email"
           className="border p-2 rounded-lg w-full mt-2"
           required
+          aria-required="true"
         />
       </div>
 
@@ -34,6 +33,7 @@ const AuthForm = ({ type }: Props) => {
           type="password"
           placeholder="Enter your password"
           className="border p-2 rounded-lg w-full mt-2"
+          aria-required="true"
           required
         />
       </div>
@@ -44,7 +44,7 @@ const AuthForm = ({ type }: Props) => {
       >
         {type === "login" ? "Log In" : "Sign Up"}
       </button>
-    </Form>
+    </form>
   );
 };
 
