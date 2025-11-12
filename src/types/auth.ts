@@ -4,6 +4,8 @@ export type SessionType = Session | null;
 
 export type LoadingType = boolean;
 
+export type UserType = User;
+
 export interface ConfirmationType {
   isConfirming: boolean;
   message: string | null;
@@ -12,7 +14,7 @@ export interface ConfirmationType {
 export interface AuthSuccess {
   success: true;
   data: {
-    user: User | null;
+    user: UserType | null;
     session: SessionType;
   };
 }

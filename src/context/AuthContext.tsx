@@ -75,7 +75,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     setLoading(true);
     try {
       const { data, error } = await supabase.auth.signUp({
-        email: email.toLocaleLowerCase().trim(),
+        email: email,
         password: password,
       });
 
