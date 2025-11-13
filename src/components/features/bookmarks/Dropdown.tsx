@@ -1,14 +1,37 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
-
-// Add click outside to close
 
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selected, setSelected] = useState<"title" | "tag">("title");
 
+  const selectRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        isOpen &&
+        selectRef.current &&
+        !selectRef.current.contains(e.target as Node)
+      )
+        setIsOpen(false);
+    };
+
+    const handleEsc = (e: KeyboardEvent) => {
+      if (isOpen && e.key === "Escape") setIsOpen(false);
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleEsc);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleEsc);
+    };
+  }, [isOpen]);
+
   return (
-    <div className="h-10">
+    <div ref={selectRef} className="h-10">
       <div
         onClick={() => setIsOpen((prev) => !prev)}
         className="w-[150px] justify-between cursor-pointer bg-neutral-200 rounded-lg shadow-lg py-2 px-2.5 flex items-center text-neutral-700"
