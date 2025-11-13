@@ -11,7 +11,7 @@ const ExternalLink = ({ text, url }: Props) => {
       rel="noopener noreferrer"
       title={url}
       aria-label={text}
-      className="cursor-pointer hover:opacity-75 duration-200 transition-opacity text-neutral-400"
+      className="cursor-pointer hover:opacity-75 duration-200 transition-opacity text-neutral-400 leading-0"
     >
       {text}
     </a>
