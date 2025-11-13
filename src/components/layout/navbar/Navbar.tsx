@@ -26,14 +26,14 @@ const Navbar = () => {
               href="/bookmarks"
               className="cursor-pointer hover:opacity-75 duration-200 transition-opacity flex items-center gap-2 font-medium text-lg"
             >
-              <Bookmark size={28} color="#f5f5f5" strokeWidth={1.5} />
+              <Bookmark size={28} color="#7dd3fc" strokeWidth={1.5} />
               Bookmarks
             </NavLink>
             <NavLink
               href="/account"
               className="cursor-pointer hover:opacity-75 duration-200 transition-opacity flex items-center gap-2 font-medium text-lg"
             >
-              <User size={28} color="#f5f5f5" strokeWidth={1.5} />
+              <User size={28} color="#7dd3fc" strokeWidth={1.5} />
               Account
             </NavLink>
           </>
