@@ -38,7 +38,7 @@ const Dropdown = () => {
       >
         <div className="flex items-center">
           <p className="mr-1 leading-0">Search by</p>
-          <p>{selected}</p>
+          <p className="underline">{selected}</p>
         </div>
 
         <ChevronDown
@@ -58,7 +58,7 @@ const Dropdown = () => {
           onClick={() => setSelected("title")}
           className={`${
             selected === "title"
-              ? "bg-sky-200 text-sky-900 hover:bg-[#b0dcf3]"
+              ? "bg-sky-200 text-sky-800 hover:bg-[#b0dcf3]"
               : "hover:bg-neutral-300"
           }  duration-200 transition-colors rounded-md cursor-pointer bg-neutral-200 px-1.5 py-1 w-full`}
         >
@@ -69,7 +69,7 @@ const Dropdown = () => {
           onClick={() => setSelected("tag")}
           className={`${
             selected === "tag"
-              ? "bg-sky-200 text-sky-900 hover:bg-[#b0dcf3]"
+              ? "bg-sky-200 text-sky-800 hover:bg-[#b0dcf3]"
               : "hover:bg-neutral-300"
           }  duration-200 transition-colors rounded-md cursor-pointer bg-neutral-200 px-1.5 py-1 w-full`}
         >
