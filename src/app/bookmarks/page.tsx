@@ -1,6 +1,7 @@
 import { Bookmark } from "lucide-react";
 import SearchArea from "@/components/features/bookmarks/SearchArea";
 import Card from "@/components/features/bookmarks/Card";
+import AddBookmarkButton from "@/components/features/bookmarks/AddBookmarkButton";
 
 const BookmarksPage = () => {
   return (
@@ -10,9 +11,13 @@ const BookmarksPage = () => {
         <h1 className="font-semibold text-6xl text-neutral-100">Bookmarks</h1>
       </div>
 
-      <SearchArea />
+      <div className="flex flex-col w-full items-center gap-6">
+        <SearchArea />
 
-      <div className="flex flex-wrap gap-5 w-1/2 items-center justify-center">
+        <AddBookmarkButton />
+      </div>
+
+      <div className="flex flex-wrap gap-5 w-1/2 items-center justify-center mb-14">
         <Card />
       </div>
     </div>
