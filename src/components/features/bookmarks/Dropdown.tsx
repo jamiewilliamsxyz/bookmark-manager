@@ -34,7 +34,7 @@ const Dropdown = () => {
     <div ref={selectRef} className="h-10">
       <div
         onClick={() => setIsOpen((prev) => !prev)}
-        className="w-[150px] justify-between cursor-pointer bg-neutral-200 rounded-lg shadow-lg py-2 px-2.5 flex items-center text-neutral-700"
+        className="w-[153px] justify-between cursor-pointer bg-neutral-200 rounded-lg shadow-lg py-2 px-2.5 flex items-center text-neutral-700"
       >
         <div className="flex items-center">
           <p className="mr-1 leading-0">Search by</p>

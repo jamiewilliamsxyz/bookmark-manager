@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Clipboard, SquareArrowOutUpRight, SquarePen } from "lucide-react";
+import { Clipboard, SquarePen } from "lucide-react";
 import ExternalLink from "@/components/ui/ExternalLink";
 
 const Card = () => {
@@ -16,7 +16,7 @@ const Card = () => {
 
     timeoutRef.current = setTimeout(() => {
       setIsCooldown(false);
-    }, 3000);
+    }, 2400);
   };
 
   useEffect(() => {
@@ -26,11 +26,9 @@ const Card = () => {
   }, []);
 
   return (
-    <div className="bg-neutral-800 px-5 py-5 w-120 rounded-lg shadow-lg flex flex-col gap-6">
-      <div className="flex w-full gap-3 items-center justify-between">
-        <p className="text-sky-200 font-medium text-lg leading-0">
-          GitHub profile
-        </p>
+    <div className="bg-neutral-800 p-5 w-120 rounded-lg shadow-lg flex flex-col gap-6.5">
+      <div className="flex w-full gap-4 items-center justify-between">
+        <p className="text-sky-200 font-medium text-lg">GitHub profile</p>
         <div className="flex gap-4">
           <button
             onClick={copyLink}
@@ -47,20 +45,7 @@ const Card = () => {
               <Clipboard color="#f5f5f5" strokeWidth={1.5} size={20} />
             )}
           </button>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href={tempLink}
-            title={tempLink}
-            aria-label={tempLink}
-            className="cursor-pointer hover:opacity-75 duration-200 transition-opacity"
-          >
-            <SquareArrowOutUpRight
-              color="#f5f5f5"
-              strokeWidth={1.5}
-              size={20}
-            />
-          </a>
+
           <button className="cursor-pointer hover:opacity-75 duration-200 transition-opacity">
             <SquarePen color="#f5f5f5" strokeWidth={1.5} size={20} />
           </button>

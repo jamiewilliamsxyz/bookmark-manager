@@ -19,7 +19,7 @@ const SearchArea = () => {
     <div className="flex gap-3 items-center">
       <div
         onClick={() => focusInput()}
-        className="cursor-text bg-neutral-800 w-[238px] rounded-lg shadow-lg py-2 px-2.5 gap-2 flex items-center h-10"
+        className="cursor-text bg-neutral-800 w-[315px] rounded-lg shadow-lg py-2 px-2.5 gap-2 flex items-center h-10"
       >
         <Search color="#f5f5f5" strokeWidth={1.5} size={20} />
         <input

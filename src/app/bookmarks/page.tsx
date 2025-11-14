@@ -17,7 +17,7 @@ const BookmarksPage = () => {
         <AddBookmarkButton />
       </div>
 
-      <div className="flex flex-wrap gap-5 w-1/2 items-center justify-center mb-14">
+      <div className="flex flex-wrap gap-5 w-2/3 items-center justify-center mb-14">
         <Card />
       </div>
     </div>
