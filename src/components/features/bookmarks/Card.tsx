@@ -51,10 +51,10 @@ const Card = () => {
       <ExternalLink text={tempLink} url={tempLink} />
 
       <ul className="flex gap-3 mt-1 mb-0.5">
-        <li className="bg-sky-200 rounded-lg shadow-lg text-sky-800 px-2 py-px">
+        <li className="bg-sky-200 rounded-lg shadow-lg text-sky-800 px-2 py-px select-none">
           Development
         </li>
-        <li className="bg-sky-200 rounded-lg shadow-lg text-sky-800 px-2 py-px">
+        <li className="bg-sky-200 rounded-lg shadow-lg text-sky-800 px-2 py-px select-none">
           GitHub
         </li>
       </ul>
