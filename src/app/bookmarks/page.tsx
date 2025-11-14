@@ -1,10 +1,14 @@
+import { Bookmark } from "lucide-react";
 import SearchArea from "@/components/features/bookmarks/SearchArea";
 import Card from "@/components/features/bookmarks/Card";
 
 const BookmarksPage = () => {
   return (
     <div className="flex flex-1 flex-col justify-start pt-14 items-center px-8 w-full gap-14">
-      <h1 className="font-semibold text-6xl text-sky-300">Bookmarks</h1>
+      <div className="flex items-center gap-3">
+        <Bookmark size={56} color="#7dd3fc" strokeWidth={2.5} />
+        <h1 className="font-semibold text-6xl text-neutral-100">Bookmarks</h1>
+      </div>
 
       <SearchArea />
 
