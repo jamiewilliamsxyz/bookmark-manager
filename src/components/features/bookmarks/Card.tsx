@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Clipboard } from "lucide-react";
 import ExternalLink from "@/components/ui/ExternalLink";
 
 const Card = () => {
   const [isCooldown, setIsCooldown] = useState<boolean>(false);
-
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const tempLink = "https://github.com/jamiewilliamsxyz";
 
   const copyLink = () => {
@@ -14,10 +14,16 @@ const Card = () => {
     setIsCooldown(true);
     navigator.clipboard.writeText(tempLink);
 
-    setTimeout(() => {
+    timeoutRef.current = setTimeout(() => {
       setIsCooldown(false);
     }, 3000);
   };
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
 
   return (
     <div className="bg-neutral-800 p-6 w-100 rounded-lg shadow-lg flex flex-col gap-6">
