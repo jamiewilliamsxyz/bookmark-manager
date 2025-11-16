@@ -63,7 +63,7 @@ const Card = () => {
         rel="noopener noreferrer"
         title={tempLink}
         aria-label={tempLink}
-        className="text-neutral-400"
+        className="text-neutral-400 w-fit"
       >
         {tempLink}
       </a>
