@@ -1,12 +1,14 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Clipboard, SquarePen } from "lucide-react";
+import { Clipboard, SquarePen, Trash } from "lucide-react";
+import Badge from "./Badge";
 
 const Card = () => {
   const [isCooldown, setIsCooldown] = useState<boolean>(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const tempLink = "https://github.com/jamiewilliamsxyz";
+  const tempBadges = ["Development", "GitHub"];
 
   const copyLink = () => {
     if (isCooldown) return;
@@ -25,9 +27,9 @@ const Card = () => {
   }, []);
 
   return (
-    <div className="bg-neutral-800 p-5 w-120 rounded-lg shadow-lg flex flex-col gap-6.5">
-      <div className="flex w-full gap-4 items-center justify-between">
-        <p className="text-sky-200 font-medium text-lg">GitHub profile</p>
+    <div className="bg-[#1a1a1a] border border-neutral-800 shadow rounded-xl p-5 w-100 max-w-100 flex flex-col gap-5">
+      <div className="flex items-center justify-between">
+        <p className="text-lg leading-0">GitHub profile</p>
         <div className="flex gap-4">
           <button
             onClick={copyLink}
@@ -41,12 +43,16 @@ const Card = () => {
             {isCooldown ? (
               <p className="text-sm">Copied!</p>
             ) : (
-              <Clipboard color="#f5f5f5" strokeWidth={1.5} size={20} />
+              <Clipboard color="#e5e5e5" strokeWidth={1} size={20} />
             )}
           </button>
 
           <button className="cursor-pointer hover:opacity-75 duration-200 transition-opacity">
-            <SquarePen color="#f5f5f5" strokeWidth={1.5} size={20} />
+            <SquarePen color="#e5e5e5" strokeWidth={1} size={20} />
+          </button>
+
+          <button className="cursor-pointer hover:opacity-75 duration-200 transition-opacity">
+            <Trash color="#fb2c36" strokeWidth={1} size={20} />
           </button>
         </div>
       </div>
@@ -57,17 +63,15 @@ const Card = () => {
         rel="noopener noreferrer"
         title={tempLink}
         aria-label={tempLink}
+        className="text-neutral-400"
       >
         {tempLink}
       </a>
 
-      <ul className="flex gap-3 mt-1 mb-0.5">
-        <li className="bg-sky-200 rounded-lg shadow-lg text-sky-800 px-2 py-px select-none">
-          Development
-        </li>
-        <li className="bg-sky-200 rounded-lg shadow-lg text-sky-800 px-2 py-px select-none">
-          GitHub
-        </li>
+      <ul className="flex gap-3">
+        {tempBadges.map((i) => (
+          <Badge key={i}>{i}</Badge>
+        ))}
       </ul>
     </div>
   );

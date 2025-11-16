@@ -12,7 +12,7 @@ const AccountActions = () => {
   ];
 
   return (
-    <div className="bg-[#1a1a1a] rounded-xl p-4 flex flex-col gap-5 border border-neutral-800 items-center justify-center">
+    <div className="bg-[#1a1a1a] rounded-xl shadow p-5 flex flex-col gap-5 border border-neutral-800 items-center justify-center">
       {accountActions.map((i) => (
         <button
           key={i.name}
