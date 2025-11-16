@@ -1,9 +1,9 @@
-interface Props {
+interface FooterLinkProps {
   text: string;
   url: string;
 }
 
-const ExternalLink = ({ text, url }: Props) => {
+const ExternalLink = ({ text, url }: FooterLinkProps) => {
   return (
     <a
       href={url}
@@ -11,7 +11,7 @@ const ExternalLink = ({ text, url }: Props) => {
       rel="noopener noreferrer"
       title={url}
       aria-label={text}
-      className="cursor-pointer hover:opacity-75 duration-200 transition-opacity text-neutral-400 leading-0"
+      className="cursor-pointer hover:opacity-75 duration-200 transition-opacity"
     >
       {text}
     </a>

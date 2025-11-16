@@ -1,17 +1,19 @@
-import ExternalLink from "../ui/ExternalLink";
+import FooterLink from "./FooterLink";
 
 const Footer = () => {
   return (
-    <footer className="border-t border-t-neutral-800 px-6 py-8 flex items-center justify-center gap-14">
-      <ExternalLink
-        text="Project Source Code"
-        url="https://github.com/jamiewilliamsxyz/bookmark-manager"
-      />
+    <footer className="border-t border-t-neutral-800">
+      <div className="w-[800px] mx-auto flex justify-between py-6">
+        <FooterLink
+          text="Project source code"
+          url="https://github.com/jamiewilliamsxyz/bookmark-manager"
+        />
 
-      <ExternalLink
-        text="My GitHub Profile"
-        url="https://github.com/jamiewilliamsxyz"
-      />
+        <FooterLink
+          text="My GitHub profile"
+          url="https://github.com/jamiewilliamsxyz"
+        />
+      </div>
     </footer>
   );
 };
