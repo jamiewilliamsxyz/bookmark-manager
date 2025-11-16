@@ -50,7 +50,7 @@ const DeleteAccountButton = () => {
     <button
       onClick={handleDelete}
       disabled={loading}
-      className="text-red-400 underline cursor-pointer hover:opacity-75 duration-200 transition-opacity w-fit h-fit"
+      className="text-red-500 underline cursor-pointer hover:opacity-75 duration-200 transition-opacity w-fit h-fit"
     >
       {loading ? "Deleting..." : "Delete Account"}
     </button>

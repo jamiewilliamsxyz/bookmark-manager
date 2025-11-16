@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/navbar/Navbar";
 import Footer from "@/components/layout/Footer";
 import { AuthProvider } from "@/context/AuthContext";
-import RouteGuard from "@/components/features/auth/RouteGuard";
+import RouteGuard from "@/app/RouteGuard";
 
 export const metadata: Metadata = {
   title: "Bookmark Manager",
