@@ -10,7 +10,7 @@ const NavLink = ({ href, children }: NavLinkProps) => {
     <li className="flex items-center">
       <Link
         href={href}
-        className="cursor-pointer hover:opacity-75 duration-200 transition-opacity text-lg text-neutral-100"
+        className="cursor-pointer hover:opacity-75 duration-200 transition-opacity text-neutral-100"
       >
         {children}
       </Link>

@@ -12,9 +12,9 @@ const NavIcon = () => {
         src={logoIcon}
         draggable={false}
         alt="Bookmark Manager logo"
-        className="w-7 h-7"
+        className="w-6 h-6"
       />
-      <p className="text-xl">Bookmark Manager</p>
+      <p className="text-lg">Bookmark Manager</p>
     </div>
   );
 };
