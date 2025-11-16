@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Clipboard, SquarePen } from "lucide-react";
-import ExternalLink from "@/components/ui/ExternalLink";
 
 const Card = () => {
   const [isCooldown, setIsCooldown] = useState<boolean>(false);
@@ -52,7 +51,15 @@ const Card = () => {
         </div>
       </div>
 
-      <ExternalLink text={tempLink} url={tempLink} />
+      <a
+        href={tempLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        title={tempLink}
+        aria-label={tempLink}
+      >
+        {tempLink}
+      </a>
 
       <ul className="flex gap-3 mt-1 mb-0.5">
         <li className="bg-sky-200 rounded-lg shadow-lg text-sky-800 px-2 py-px select-none">
