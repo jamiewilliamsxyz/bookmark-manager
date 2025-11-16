@@ -27,7 +27,7 @@ const Card = () => {
   }, []);
 
   return (
-    <div className="bg-[#1a1a1a] border border-neutral-800 shadow rounded-xl p-5 w-100 max-w-100 flex flex-col gap-5">
+    <div className="bg-[#1a1a1a] border border-neutral-800 shadow rounded-xl p-5 w-96 max-w-96 flex flex-col gap-5">
       <div className="flex items-center justify-between">
         <p className="text-lg leading-0">GitHub profile</p>
         <div className="flex gap-4">
