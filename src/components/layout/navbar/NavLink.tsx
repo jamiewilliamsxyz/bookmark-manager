@@ -1,15 +1,17 @@
 import Link from "next/link";
 
-interface Props {
+interface NavLinkProps {
   href: string;
-  className: string;
   children: React.ReactNode;
 }
 
-const NavLink = ({ href, className, children }: Props) => {
+const NavLink = ({ href, children }: NavLinkProps) => {
   return (
     <li className="flex items-center">
-      <Link href={href} className={className}>
+      <Link
+        href={href}
+        className="cursor-pointer hover:opacity-75 duration-200 transition-opacity text-lg text-neutral-100"
+      >
         {children}
       </Link>
     </li>
