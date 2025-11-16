@@ -3,8 +3,8 @@ import NavItems from "./NavItems";
 
 const Navbar = () => {
   return (
-    <nav className="border-t border-t-neutral-800">
-      <div className="w-[800px] mx-auto flex justify-between py-6">
+    <nav className="border-b border-b-neutral-800">
+      <div className="w-[800px] mx-auto flex justify-between py-6 items-center">
         <NavLogo />
         <ul className="flex gap-11">
           <NavItems />
