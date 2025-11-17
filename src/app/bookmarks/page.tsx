@@ -7,7 +7,7 @@ const BookmarksPage = () => {
     <div className="flex flex-1 flex-col justify-center items-center px-8 gap-12">
       <h1 className="text-6xl">Bookmarks</h1>
 
-      <div className="flex flex-col w-full items-center gap-6">
+      <div className="flex flex-col gap-5 items-center">
         <SearchArea />
         <AddBookmarkButton />
       </div>
