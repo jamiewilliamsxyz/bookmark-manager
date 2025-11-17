@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Clipboard, SquarePen, Trash } from "lucide-react";
-import Badge from "./Badge";
+import Tag from "./Tag";
 
 const Card = () => {
   const [isCooldown, setIsCooldown] = useState<boolean>(false);
@@ -70,7 +70,7 @@ const Card = () => {
 
       <ul className="flex gap-3">
         {tempBadges.map((i) => (
-          <Badge key={i}>{i}</Badge>
+          <Tag key={i}>{i}</Tag>
         ))}
       </ul>
     </div>
