@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useModal } from "@/hooks/useModal";
 import BookmarkForm from "@/components/features/bookmarks/BookmarkForm";
+import DeleteAccountConfirmation from "../features/auth/DeleteAccountConfirmation";
 import type { ModalProps } from "@/types";
 
 const ModalHandler = ({ children }: ModalProps) => {
@@ -30,6 +31,7 @@ const ModalHandler = ({ children }: ModalProps) => {
         <div onClick={(e) => e.stopPropagation()} className="z-50 fixed">
           {/* Modals */}
           {currentModal === "bookmarkForm" && <BookmarkForm />}
+          {currentModal === "deleteAccount" && <DeleteAccountConfirmation />}
         </div>
 
         {/* Overlay */}
