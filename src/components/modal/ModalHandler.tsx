@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useModal } from "@/hooks/useModal";
-import BookmarkForm from "@/components/features/bookmarks/BookmarkForm";
+import BookmarkForm from "@/components/features/bookmarks/form/BookmarkForm";
 import DeleteAccountConfirmation from "../features/auth/DeleteAccountConfirmation";
 import type { ModalProps } from "@/types";
 
