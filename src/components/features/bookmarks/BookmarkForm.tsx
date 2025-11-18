@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+import ReturnButton from "@/components/modal/ReturnButton";
 import Tag from "./Tag";
 
 interface TagsErrorState {
@@ -147,12 +147,7 @@ const BookmarkForm = () => {
         Create
       </button>
 
-      <Link
-        href="/bookmarks"
-        className="underline cursor-pointer hover:opacity-75 duration-200 transition-opacity w-fit h-fit"
-      >
-        Return
-      </Link>
+      <ReturnButton />
     </form>
   );
 };

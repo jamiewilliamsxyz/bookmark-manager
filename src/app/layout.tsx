@@ -5,7 +5,7 @@ import Navbar from "@/components/layout/navbar/Navbar";
 import Footer from "@/components/layout/Footer";
 import { AuthProvider } from "@/context/AuthContext";
 import { ModalProvider } from "@/context/ModalContext";
-import OverlayHandler from "./OverlayHandler";
+import ModalHandler from "@/components/modal/ModalHandler";
 import RouteGuard from "@/app/RouteGuard";
 
 export const metadata: Metadata = {
@@ -32,13 +32,13 @@ export default function RootLayout({
       >
         <AuthProvider>
           <ModalProvider>
-            <OverlayHandler>
+            <ModalHandler>
               <Navbar />
               <main className="flex-1 flex flex-col">
                 <RouteGuard>{children}</RouteGuard>
               </main>
               <Footer />
-            </OverlayHandler>
+            </ModalHandler>
           </ModalProvider>
         </AuthProvider>
       </body>
