@@ -1,5 +1,3 @@
-"use client";
-
 import { useModal } from "@/hooks/useModal";
 
 const ReturnButton = () => {
