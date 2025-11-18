@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { X } from "lucide-react";
 import Tag from "./Tag";
 
 interface TagsErrorState {
@@ -19,7 +18,6 @@ const BookmarkForm = () => {
     status: false,
     message: "",
   });
-  const [tagHover, setTagHover] = useState<boolean>(false);
 
   const removeTag = (tag: string) => {
     setTags((prev) => prev.filter((t) => t !== tag));
