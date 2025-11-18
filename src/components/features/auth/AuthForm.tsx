@@ -106,7 +106,7 @@ const AuthForm = ({ type }: AuthFormProps) => {
                 <p>Don&apos;t have an account?</p>
                 <Link
                   href="/signup"
-                  className="underline text-neutral-800 hover:opacity-75 cursor-pointer duration-200 transition-opacity"
+                  className="underline shadow text-neutral-800 hover:opacity-75 cursor-pointer duration-200 transition-opacity"
                 >
                   Sign up
                 </Link>
@@ -116,7 +116,7 @@ const AuthForm = ({ type }: AuthFormProps) => {
                 <p>Already have an account?</p>
                 <Link
                   href="/login"
-                  className="underline text-neutral-800 hover:opacity-75 cursor-pointer duration-200 transition-opacity"
+                  className="underline shadow text-neutral-800 hover:opacity-75 cursor-pointer duration-200 transition-opacity"
                 >
                   Log in
                 </Link>

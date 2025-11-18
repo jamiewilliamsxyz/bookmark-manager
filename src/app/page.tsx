@@ -19,7 +19,7 @@ const Home = () => {
             placeholder video
           </div>
           <Link href="/signup">
-            <button className="bg-neutral-100 px-5.5 py-2 text-lg rounded-md text-neutral-800 cursor-pointer hover:opacity-75 duration-200 transition-opacity">
+            <button className="bg-neutral-100 shadow px-5.5 py-2 text-lg rounded-md text-neutral-800 cursor-pointer hover:opacity-75 duration-200 transition-opacity">
               Start organising
             </button>
           </Link>
