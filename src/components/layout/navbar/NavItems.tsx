@@ -21,7 +21,7 @@ const NavItems = () => {
         <li className="flex items-center">
           <Link
             href="/signup"
-            className="bg-neutral-100 px-5 py-1 rounded-xl text-neutral-800 cursor-pointer hover:opacity-75 duration-200 transition-opacity"
+            className="bg-neutral-100 px-4 py-1 rounded-md text-neutral-800 cursor-pointer hover:opacity-75 duration-200 transition-opacity"
           >
             Sign up
           </Link>
