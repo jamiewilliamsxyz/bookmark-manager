@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "@/components/layout/navbar/Navbar";
 import Footer from "@/components/layout/Footer";
 import { AuthProvider } from "@/context/AuthContext";
+import { ModalProvider } from "@/context/ModalContext";
+import OverlayHandler from "./OverlayHandler";
 import RouteGuard from "@/app/RouteGuard";
 
 export const metadata: Metadata = {
@@ -29,11 +31,15 @@ export default function RootLayout({
         className={`${inter.className} antialiased min-h-screen flex flex-col`}
       >
         <AuthProvider>
-          <Navbar />
-          <main className="flex-1 flex flex-col">
-            <RouteGuard>{children}</RouteGuard>
-          </main>
-          <Footer />
+          <ModalProvider>
+            <OverlayHandler>
+              <Navbar />
+              <main className="flex-1 flex flex-col">
+                <RouteGuard>{children}</RouteGuard>
+              </main>
+              <Footer />
+            </OverlayHandler>
+          </ModalProvider>
         </AuthProvider>
       </body>
     </html>

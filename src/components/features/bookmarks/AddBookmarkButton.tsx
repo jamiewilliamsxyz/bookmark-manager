@@ -1,6 +1,15 @@
+"use client";
+
+import { useModal } from "@/hooks/useModal";
+
 const AddBookmarkButton = () => {
+  const { openModal } = useModal();
+
   return (
-    <button className="bg-neutral-100 py-2 px-5.5 w-fit rounded-md shadow text-neutral-800 cursor-pointer hover:opacity-75 duration-200 transition-opacity">
+    <button
+      onClick={() => openModal("bookmarkForm")}
+      className="bg-neutral-100 py-2 px-5.5 w-fit rounded-md shadow text-neutral-800 cursor-pointer hover:opacity-75 duration-200 transition-opacity"
+    >
       Add bookmark
     </button>
   );
