@@ -189,7 +189,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const logOutUser = async () => {
     setLoading(true);
     try {
-      const { error } = await supabase.auth.signOut();
+      const { error } = await supabase.auth.signOut({ scope: "local" });
 
       if (error) console.error("Supabase logout error:", error.message);
 
