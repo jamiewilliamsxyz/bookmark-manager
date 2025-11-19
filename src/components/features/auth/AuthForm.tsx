@@ -44,88 +44,94 @@ const AuthForm = ({ type }: AuthFormProps) => {
   );
 
   return (
-    <form
-      action={authFormAction}
-      className="flex flex-col gap-6 w-full max-w-sm px-5 py-6 bg-neutral-100 shadow-lg rounded-2xl text-neutral-700"
-    >
-      <h1 className="text-neutral-800 text-4xl font-semibold text-center">
+    <>
+      <h1 className="text-5xl text-center mb-12">
         {type === "login" ? "Log In" : "Sign Up"}
       </h1>
 
-      {confirmation.isConfirming && type === "signup" ? (
-        <>
-          <p className="text-center text-[1.05rem] text-neutral-600">
-            {confirmation.message}
-          </p>
-          <button
-            onClick={checkConfirmation}
-            className="mt-1.5 cursor-pointer p-2 font-medium text-lg w-full rounded-lg shadow-lg bg-neutral-800 text-neutral-100 hover:opacity-75 duration-200 transition-opacity"
-          >
-            I&apos;ve confirmed my email
-          </button>
-        </>
-      ) : (
-        <>
-          <div>
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Enter your email"
-              className="border p-2 rounded-lg w-full mt-1.5"
-              required
-              aria-required="true"
-            />
-          </div>
+      <form
+        action={authFormAction}
+        className="border border-neutral-800 bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-5 min-w-96 max-w-96"
+      >
+        {confirmation.isConfirming && type === "signup" ? (
+          <>
+            <p className="text-center">{confirmation.message}</p>
+            <button
+              onClick={checkConfirmation}
+              className="shadow mt-0.75 bg-neutral-100 py-1.25 w-full rounded-md text-neutral-800 cursor-pointer hover:opacity-75 duration-200 transition-opacity"
+            >
+              I&apos;ve confirmed my email
+            </button>
+          </>
+        ) : (
+          <>
+            <div>
+              <label htmlFor="email" className="text-lg">
+                Email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Enter your email"
+                className="mt-1 py-2 px-3 bg-neutral-900 rounded-md border border-neutral-800 w-full focus:outline-none"
+                required
+                aria-required="true"
+              />
+            </div>
 
-          <div>
-            <label htmlFor="password">Password</label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              placeholder="Enter your password"
-              className="border p-2 rounded-lg w-full mt-1.5"
-              aria-required="true"
-              required
-            />
-          </div>
+            <div>
+              <label htmlFor="password" className="text-lg">
+                Password
+              </label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                placeholder="Enter your password"
+                className="mt-1 py-2 px-3 bg-neutral-900 rounded-md border border-neutral-800 w-full focus:outline-none"
+                aria-required="true"
+                required
+              />
+            </div>
 
-          <button
-            type="submit"
-            disabled={pending}
-            className="mt-2.5 cursor-pointer p-2 font-medium text-lg w-full rounded-lg shadow-lg bg-neutral-800 text-neutral-100 hover:opacity-75 duration-200 transition-opacity"
-          >
-            {pending ? "Loading..." : type === "login" ? "Log In" : "Sign Up"}
-          </button>
+            {error && <p className="text-red-500">{error.message}</p>}
 
-          <div className="flex gap-1.5 text-[0.95rem] text-neutral-600">
-            {type === "login" ? (
-              <>
-                <p>Don&apos;t have an account?</p>
-                <Link
-                  href="/signup"
-                  className="underline shadow text-neutral-800 hover:opacity-75 cursor-pointer duration-200 transition-opacity"
-                >
-                  Sign up
-                </Link>
-              </>
-            ) : (
-              <>
-                <p>Already have an account?</p>
-                <Link
-                  href="/login"
-                  className="underline shadow text-neutral-800 hover:opacity-75 cursor-pointer duration-200 transition-opacity"
-                >
-                  Log in
-                </Link>
-              </>
-            )}
-          </div>
-        </>
-      )}
-    </form>
+            <button
+              type="submit"
+              disabled={pending}
+              className="shadow mt-0.75 bg-neutral-100 py-1.25 w-full rounded-md text-lg text-neutral-800 cursor-pointer hover:opacity-75 duration-200 transition-opacity"
+            >
+              {pending ? "Loading..." : type === "login" ? "Log In" : "Sign Up"}
+            </button>
+
+            <div className="flex items-center gap-1.5 text-[0.95rem] text-neutral-400">
+              {type === "login" ? (
+                <>
+                  <p className="mt-0.5">Don&apos;t have an account?</p>
+                  <Link
+                    href="/signup"
+                    className="underline text-neutral-300 hover:opacity-75 cursor-pointer duration-200 transition-opacity"
+                  >
+                    Sign up
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <p className="mt-0.5">Already have an account?</p>
+                  <Link
+                    href="/login"
+                    className="underline text-neutral-300 hover:opacity-75 cursor-pointer duration-200 transition-opacity"
+                  >
+                    Log in
+                  </Link>
+                </>
+              )}
+            </div>
+          </>
+        )}
+      </form>
+    </>
   );
 };
 
