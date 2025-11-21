@@ -3,13 +3,9 @@
 import { useState, useEffect, useRef } from "react";
 import { Clipboard, SquarePen, Trash } from "lucide-react";
 import Tag from "./Tag";
+import type { Bookmark } from "@/types";
 
-interface CardProps {
-  id: number;
-  title: string;
-  url: string;
-  tags: string[];
-}
+type CardProps = Pick<Bookmark, "id" | "title" | "url" | "tags">;
 
 const Card = ({ id, title, url, tags }: CardProps) => {
   const [isCooldown, setIsCooldown] = useState<boolean>(false);
@@ -17,6 +13,7 @@ const Card = ({ id, title, url, tags }: CardProps) => {
 
   const copyLink = () => {
     if (isCooldown) return;
+
     setIsCooldown(true);
     navigator.clipboard.writeText(url);
 
@@ -74,7 +71,7 @@ const Card = ({ id, title, url, tags }: CardProps) => {
       </a>
 
       <ul className="flex gap-3">
-        {tags.map((t) => (
+        {tags?.map((t) => (
           <Tag key={t}>{t}</Tag>
         ))}
       </ul>

@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/navbar/Navbar";
 import Footer from "@/components/layout/Footer";
 import { AuthProvider } from "@/context/AuthContext";
+import { BookmarksProvider } from "@/context/BookmarksContext";
 import { ModalProvider } from "@/context/ModalContext";
 import ModalHandler from "@/components/modal/ModalHandler";
 import RouteGuard from "@/app/RouteGuard";
@@ -31,15 +32,17 @@ export default function RootLayout({
         className={`${inter.className} antialiased min-h-screen flex flex-col`}
       >
         <AuthProvider>
-          <ModalProvider>
-            <ModalHandler>
-              <Navbar />
-              <main className="flex-1 flex flex-col">
-                <RouteGuard>{children}</RouteGuard>
-              </main>
-              <Footer />
-            </ModalHandler>
-          </ModalProvider>
+          <BookmarksProvider>
+            <ModalProvider>
+              <ModalHandler>
+                <Navbar />
+                <main className="flex-1 flex flex-col">
+                  <RouteGuard>{children}</RouteGuard>
+                </main>
+                <Footer />
+              </ModalHandler>
+            </ModalProvider>
+          </BookmarksProvider>
         </AuthProvider>
       </body>
     </html>

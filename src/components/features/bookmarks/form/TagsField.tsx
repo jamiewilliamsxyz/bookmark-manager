@@ -1,21 +1,25 @@
 import { useState } from "react";
 import Tag from "../Tag";
 
-interface TagsErrorState {
+interface TagsFieldProps {
+  tags: string[];
+  setTags: (tags: string[]) => void;
+}
+
+interface TagsError {
   status: boolean;
   message: string;
 }
 
-const TagsField = () => {
+const TagsField = ({ tags, setTags }: TagsFieldProps) => {
   const [tagsInput, setTagsInput] = useState<string>("");
-  const [tags, setTags] = useState<string[]>([]);
-  const [tagsError, setTagsError] = useState<TagsErrorState>({
+  const [tagsError, setTagsError] = useState<TagsError>({
     status: false,
     message: "",
   });
 
   const removeTag = (tag: string) => {
-    setTags((prev) => prev.filter((t) => t !== tag));
+    setTags(tags.filter((t) => t !== tag));
   };
 
   const formatTagValue = (value: string) => {
@@ -25,14 +29,14 @@ const TagsField = () => {
   const handleTagsInput = (value: string) => {
     setTagsInput(value);
 
-    // Check if max tags length has been reached
+    // Check if max tags (5) has been reached
     if (tags.length >= 5) {
       setTagsError({
         status: true,
         message: "Limit reached: You can add up to 5 tags",
       });
       return;
-      // Check if tag max character count has been reached
+      // Check if tag max character count (20) has been reached
     } else if (value.length > 21) {
       setTagsError({
         status: true,
@@ -53,11 +57,12 @@ const TagsField = () => {
       });
     }
 
+    // Adding the tag on comma
     if (value.includes(",")) {
-      const newValue = formatTagValue(value);
-      if (!newValue.length) return;
+      const newTag = formatTagValue(value);
+      if (!newTag.length) return;
       setTagsInput("");
-      setTags((prev) => [...prev, newValue]);
+      setTags([...tags, newTag]);
     }
   };
 
@@ -74,6 +79,7 @@ const TagsField = () => {
       >
         {tagsError.status ? tagsError.message : "Separate tags with commas"}
       </p>
+
       <input
         placeholder="Enter tags"
         value={tagsInput}

@@ -1,8 +1,4 @@
-interface TagProps {
-  children: string;
-}
-
-const Tag = ({ children }: TagProps) => {
+const Tag = ({ children }: { children: React.ReactNode }) => {
   return (
     <li className="bg-neutral-200 h-fit w-fit text-sm rounded-md shadow-lg text-[#1a1a1a] px-2.5 py-0.5 select-none">
       {children}
