@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Tag from "../Tag";
+import Tag from "../card/Tag";
 
 interface TagsFieldProps {
   tags: string[];

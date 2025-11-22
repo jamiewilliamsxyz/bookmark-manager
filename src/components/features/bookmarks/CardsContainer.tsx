@@ -2,7 +2,7 @@
 
 import { useBookmarks } from "@/hooks/useBookmarks";
 import { MAX_BOOKMARKS } from "@/constants/bookmarks";
-import Card from "./Card";
+import Card from "./card/Card";
 
 const CardsContainer = () => {
   const { bookmarks, loading } = useBookmarks();

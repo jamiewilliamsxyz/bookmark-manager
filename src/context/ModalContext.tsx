@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, createContext } from "react";
-
+import { useBookmarks } from "@/hooks/useBookmarks";
 import type { ModalContextType, ModalProps, ModalState } from "@/types";
 
 export const ModalContext = createContext<ModalContextType | undefined>(
@@ -9,6 +9,8 @@ export const ModalContext = createContext<ModalContextType | undefined>(
 );
 
 export const ModalProvider = ({ children }: ModalProps) => {
+  const { bookmarkToDeleteId, setBookmarkToDeleteId } = useBookmarks();
+
   const [currentModal, setCurrentModal] = useState<ModalState>(null);
 
   const openModal = (modalType: ModalState) => {
@@ -17,6 +19,7 @@ export const ModalProvider = ({ children }: ModalProps) => {
   };
 
   const closeModal = () => {
+    if (bookmarkToDeleteId) setBookmarkToDeleteId(null);
     setCurrentModal(null);
   };
 

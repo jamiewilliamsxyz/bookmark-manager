@@ -23,6 +23,9 @@ export const BookmarksProvider = ({
   const { session } = useAuth();
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [bookmarkToDeleteId, setBookmarkToDeleteId] = useState<number | null>(
+    null
+  );
 
   // Fetch bookmarks
   useEffect(() => {
@@ -88,23 +91,25 @@ export const BookmarksProvider = ({
   const updateBookmark = (): void => {};
 
   // Delete bookmark
-  const deleteBookmark = async (
-    id: number
-  ): Promise<BookmarkOperationResult<Bookmark>> => {
+  const deleteBookmark = async (): Promise<
+    BookmarkOperationResult<Bookmark>
+  > => {
     try {
+      if (!bookmarkToDeleteId)
+        return { success: false, error: "No bookmark found" };
+
       const { data, error } = await supabase
         .from("bookmarks")
         .delete()
-        .eq("id", id)
+        .eq("id", bookmarkToDeleteId)
         .select("*")
         .single();
 
-      if (error) {
-        return { success: false, error: error.message };
-      }
+      if (error) return { success: false, error: error.message };
 
       const bookmark = data as Bookmark;
-      setBookmarks((prev) => prev.filter((b) => b.id !== id));
+      setBookmarks((prev) => prev.filter((b) => b.id !== bookmarkToDeleteId));
+      setBookmarkToDeleteId(null);
       return { success: true, data: bookmark };
     } catch (err) {
       const message =
@@ -118,6 +123,8 @@ export const BookmarksProvider = ({
       value={{
         bookmarks,
         loading,
+        bookmarkToDeleteId,
+        setBookmarkToDeleteId,
         createBookmark,
         updateBookmark,
         deleteBookmark,

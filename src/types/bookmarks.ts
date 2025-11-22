@@ -30,6 +30,8 @@ export type BookmarkOperationResult<T> =
 export interface BookmarksContextValue {
   bookmarks: Bookmark[];
   loading: boolean;
+  bookmarkToDeleteId: number | null;
+  setBookmarkToDeleteId: React.Dispatch<React.SetStateAction<number | null>>;
   createBookmark: (
     data: CreateBookmarkData
   ) => Promise<BookmarkOperationResult<Bookmark>>;

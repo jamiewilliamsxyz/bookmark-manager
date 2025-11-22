@@ -3,7 +3,8 @@
 import { useEffect } from "react";
 import { useModal } from "@/hooks/useModal";
 import BookmarkForm from "@/components/features/bookmarks/form/BookmarkForm";
-import DeleteAccountConfirmation from "../features/auth/DeleteAccountConfirmation";
+import DeleteAccountConfirmation from "@/components/features/auth/DeleteAccountConfirmation";
+import DeleteBookmarkConfirmation from "@/components/features/bookmarks/card/DeleteBookmarkConfirmation";
 import type { ModalProps } from "@/types";
 
 const ModalHandler = ({ children }: ModalProps) => {
@@ -32,6 +33,7 @@ const ModalHandler = ({ children }: ModalProps) => {
           {/* Modals */}
           {currentModal === "bookmarkForm" && <BookmarkForm />}
           {currentModal === "deleteAccount" && <DeleteAccountConfirmation />}
+          {currentModal === "deleteBookmark" && <DeleteBookmarkConfirmation />}
         </div>
 
         {/* Overlay */}
