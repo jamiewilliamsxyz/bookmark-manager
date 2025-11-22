@@ -8,7 +8,7 @@ type CardActionsProps = Pick<Bookmark, "id" | "url">;
 
 const CardActions = ({ id, url }: CardActionsProps) => {
   const { openModal } = useModal();
-  const { setBookmarkToDeleteId } = useBookmarks();
+  const { setBookmarkToDeleteId, setDeleteType } = useBookmarks();
 
   const [isCooldown, setIsCooldown] = useState<boolean>(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -26,6 +26,7 @@ const CardActions = ({ id, url }: CardActionsProps) => {
 
   const handleDelete = (id: number) => {
     setBookmarkToDeleteId(id);
+    setDeleteType("single");
     openModal("deleteBookmark");
   };
 

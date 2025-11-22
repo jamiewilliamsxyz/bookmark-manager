@@ -26,6 +26,7 @@ export const BookmarksProvider = ({
   const [bookmarkToDeleteId, setBookmarkToDeleteId] = useState<number | null>(
     null
   );
+  const [deleteType, setDeleteType] = useState<"single" | "all" | null>(null);
 
   // Fetch bookmarks
   useEffect(() => {
@@ -118,16 +119,45 @@ export const BookmarksProvider = ({
     }
   };
 
+  // Delete all bookmarks
+  const deleteAllBookmarks = async (): Promise<
+    BookmarkOperationResult<Bookmark[]>
+  > => {
+    try {
+      const userId = session?.user?.id;
+      if (!userId) return { success: false, error: "Session not found" };
+
+      const { data, error } = await supabase
+        .from("bookmarks")
+        .delete()
+        .eq("user_id", userId)
+        .select("*");
+
+      if (error) return { success: false, error: error.message };
+
+      const deleted = data as Bookmark[];
+      setBookmarks([]);
+      return { success: true, data: deleted };
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "Unexpected error occurred";
+      return { success: false, error: message };
+    }
+  };
+
   return (
     <BookmarksContext
       value={{
         bookmarks,
         loading,
         bookmarkToDeleteId,
+        deleteType,
         setBookmarkToDeleteId,
+        setDeleteType,
         createBookmark,
         updateBookmark,
         deleteBookmark,
+        deleteAllBookmarks,
       }}
     >
       {children}

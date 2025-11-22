@@ -3,10 +3,15 @@ import { useModal } from "@/hooks/useModal";
 
 const DeleteBookmarkConfirmation = () => {
   const { closeModal } = useModal();
-  const { deleteBookmark, bookmarkToDeleteId } = useBookmarks();
+  const { deleteBookmark, deleteAllBookmarks, deleteType } = useBookmarks();
 
   const handleConfirm = async () => {
-    deleteBookmark(bookmarkToDeleteId as number);
+    if (deleteType === "single") {
+      await deleteBookmark();
+    } else if (deleteType === "all") {
+      await deleteAllBookmarks();
+    }
+
     closeModal();
   };
 
@@ -15,7 +20,7 @@ const DeleteBookmarkConfirmation = () => {
       <p className="text-lg">
         Are you sure you want to delete
         <br />
-        this bookmark?
+        {deleteType === "single" ? "this bookmark?" : "all bookmarks?"}
       </p>
 
       <div className="flex gap-5">

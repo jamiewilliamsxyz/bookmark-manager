@@ -9,7 +9,12 @@ export const ModalContext = createContext<ModalContextType | undefined>(
 );
 
 export const ModalProvider = ({ children }: ModalProps) => {
-  const { bookmarkToDeleteId, setBookmarkToDeleteId } = useBookmarks();
+  const {
+    bookmarkToDeleteId,
+    setBookmarkToDeleteId,
+    deleteType,
+    setDeleteType,
+  } = useBookmarks();
 
   const [currentModal, setCurrentModal] = useState<ModalState>(null);
 
@@ -20,6 +25,7 @@ export const ModalProvider = ({ children }: ModalProps) => {
 
   const closeModal = () => {
     if (bookmarkToDeleteId) setBookmarkToDeleteId(null);
+    if (deleteType) setDeleteType(null);
     setCurrentModal(null);
   };
 

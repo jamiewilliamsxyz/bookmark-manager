@@ -31,10 +31,13 @@ export interface BookmarksContextValue {
   bookmarks: Bookmark[];
   loading: boolean;
   bookmarkToDeleteId: number | null;
+  deleteType: "single" | "all" | null;
   setBookmarkToDeleteId: React.Dispatch<React.SetStateAction<number | null>>;
+  setDeleteType: React.Dispatch<React.SetStateAction<"single" | "all" | null>>;
   createBookmark: (
     data: CreateBookmarkData
   ) => Promise<BookmarkOperationResult<Bookmark>>;
   updateBookmark: () => void;
-  deleteBookmark: (id: number) => Promise<BookmarkOperationResult<Bookmark>>;
+  deleteBookmark: () => Promise<BookmarkOperationResult<Bookmark>>;
+  deleteAllBookmarks: () => Promise<BookmarkOperationResult<Bookmark[]>>;
 }
