@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { Clipboard, SquarePen, Trash } from "lucide-react";
+import type { Bookmark } from "@/types";
 
-const CardActions = ({ url }: { url: string }) => {
+type CardActionsProps = Pick<Bookmark, "id" | "url">;
+
+const CardActions = ({ id, url }: CardActionsProps) => {
   const [isCooldown, setIsCooldown] = useState<boolean>(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
