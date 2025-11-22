@@ -29,7 +29,7 @@ const Card = ({ id, title, url, tags }: CardProps) => {
   }, []);
 
   return (
-    <div className="bg-[#1a1a1a] border border-neutral-800 shadow rounded-md p-5 w-96 max-w-96 flex flex-col gap-5">
+    <div className="bg-[#1a1a1a] border border-neutral-800 shadow rounded-md p-5 min-w-94 max-w-94 h-fit flex flex-col gap-5">
       <div className="flex items-center justify-between">
         <p className="text-lg leading-0">{title}</p>
         <div className="flex gap-4">
@@ -70,7 +70,7 @@ const Card = ({ id, title, url, tags }: CardProps) => {
         {url}
       </a>
 
-      <ul className="flex gap-3">
+      <ul className="flex gap-3 flex-wrap">
         {tags?.map((t) => (
           <Tag key={t}>{t}</Tag>
         ))}

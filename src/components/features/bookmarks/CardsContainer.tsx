@@ -16,7 +16,7 @@ const CardsContainer = () => {
       {bookmarks.length >= MAX_BOOKMARKS && (
         <p className="text-red-500">{`Maximum of ${MAX_BOOKMARKS} bookmarks reached`}</p>
       )}
-      <div className="flex flex-wrap gap-5 w-1/2 items-center justify-center">
+      <div className="cards-container-scrollbar flex flex-wrap gap-5 items-base justify-center overflow-y-auto overflow-x-hidden max-h-[53vh]">
         {bookmarks.length > 0 ? (
           bookmarks.map((b) => (
             <Card

@@ -7,3 +7,27 @@ body {
 h1 {
   @apply font-medium text-neutral-100;
 }
+
+/* Scrollbar styles */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #1e1e1e;
+}
+
+.cards-container-scrollbar::-webkit-scrollbar-track {
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #262626;
+  border-radius: 9999px;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #2f2f2f;
+}
