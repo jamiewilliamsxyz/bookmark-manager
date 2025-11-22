@@ -1,10 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { Clipboard, SquarePen, Trash } from "lucide-react";
+import { useBookmarks } from "@/hooks/useBookmarks";
 import type { Bookmark } from "@/types";
 
 type CardActionsProps = Pick<Bookmark, "id" | "url">;
 
 const CardActions = ({ id, url }: CardActionsProps) => {
+  const { deleteBookmark } = useBookmarks();
+
   const [isCooldown, setIsCooldown] = useState<boolean>(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -47,7 +50,10 @@ const CardActions = ({ id, url }: CardActionsProps) => {
         <SquarePen color="#f5f5f5" strokeWidth={1} size={20} />
       </button>
 
-      <button className="cursor-pointer hover:opacity-75 duration-200 transition-opacity">
+      <button
+        onClick={() => deleteBookmark(id)}
+        className="cursor-pointer hover:opacity-75 duration-200 transition-opacity"
+      >
         <Trash color="#fb2c36" strokeWidth={1} size={20} />
       </button>
     </div>

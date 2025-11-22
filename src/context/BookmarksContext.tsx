@@ -88,7 +88,30 @@ export const BookmarksProvider = ({
   const updateBookmark = (): void => {};
 
   // Delete bookmark
-  const deleteBookmark = (): void => {};
+  const deleteBookmark = async (
+    id: number
+  ): Promise<BookmarkOperationResult<Bookmark>> => {
+    try {
+      const { data, error } = await supabase
+        .from("bookmarks")
+        .delete()
+        .eq("id", id)
+        .select("*")
+        .single();
+
+      if (error) {
+        return { success: false, error: error.message };
+      }
+
+      const bookmark = data as Bookmark;
+      setBookmarks((prev) => prev.filter((b) => b.id !== id));
+      return { success: true, data: bookmark };
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "Unexpected error occurred";
+      return { success: false, error: message };
+    }
+  };
 
   return (
     <BookmarksContext

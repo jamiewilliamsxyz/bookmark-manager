@@ -34,5 +34,5 @@ export interface BookmarksContextValue {
     data: CreateBookmarkData
   ) => Promise<BookmarkOperationResult<Bookmark>>;
   updateBookmark: () => void;
-  deleteBookmark: () => void;
+  deleteBookmark: (id: number) => Promise<BookmarkOperationResult<Bookmark>>;
 }
