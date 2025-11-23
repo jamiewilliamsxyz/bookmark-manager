@@ -22,6 +22,11 @@ const CardActions = ({ bookmarkData }: { bookmarkData: BookmarkToModify }) => {
     }, 2400);
   };
 
+  const handleEdit = (data: BookmarkToModify) => {
+    setBookmarkToModify(data);
+    openModal("editBookmark");
+  };
+
   const handleDelete = (data: BookmarkToModify) => {
     setBookmarkToModify(data);
     setDeleteType("single");
@@ -52,7 +57,10 @@ const CardActions = ({ bookmarkData }: { bookmarkData: BookmarkToModify }) => {
         )}
       </button>
 
-      <button className="cursor-pointer hover:opacity-75 duration-200 transition-opacity">
+      <button
+        onClick={() => handleEdit(bookmarkData)}
+        className="cursor-pointer hover:opacity-75 duration-200 transition-opacity"
+      >
         <SquarePen color="#f5f5f5" strokeWidth={1} size={20} />
       </button>
 

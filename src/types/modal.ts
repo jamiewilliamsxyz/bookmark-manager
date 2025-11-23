@@ -3,9 +3,10 @@ export interface ModalProps {
 }
 
 export type ModalState =
-  | "bookmarkForm"
+  | "createBookmark"
   | "deleteAccount"
   | "deleteBookmark"
+  | "editBookmark"
   | null;
 
 export interface ModalContextType {

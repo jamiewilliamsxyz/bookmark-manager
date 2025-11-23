@@ -58,7 +58,6 @@ export const BookmarksProvider = ({
       if (!userId) return { success: false, error: "Session not found" };
 
       // Create new bookmark object
-
       const newBookmark = {
         ...data,
         user_id: userId,
@@ -71,9 +70,7 @@ export const BookmarksProvider = ({
         .select("*")
         .single();
 
-      if (error) {
-        return { success: false, error: error.message };
-      }
+      if (error) return { success: false, error: error.message };
 
       // Handle success
       const bookmark = res as Bookmark; // Telling TS that the shape of the data is Bookmarks
@@ -89,7 +86,34 @@ export const BookmarksProvider = ({
   };
 
   // Update bookmark
-  const updateBookmark = (): void => {};
+  const updateBookmark = async (
+    data: CreateBookmarkData
+  ): Promise<BookmarkOperationResult<Bookmark>> => {
+    try {
+      if (!bookmarkToModify)
+        return { success: false, error: "No bookmark found" };
+
+      const { data: res, error } = await supabase
+        .from("bookmarks")
+        .update(data)
+        .eq("id", bookmarkToModify.id)
+        .select("*")
+        .single();
+
+      if (error) return { success: false, error: error.message };
+
+      const bookmark = res as Bookmark;
+      setBookmarks(
+        (prev) => prev.map((b) => (b.id === bookmarkToModify.id ? bookmark : b)) // Return all bookmarks, replacing the one that matches the updated bookmark's id
+      );
+      setBookmarkToModify(null);
+      return { success: true, data: bookmark }; // Return the updated bookmark
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "Unexpected error occurred";
+      return { success: false, error: message };
+    }
+  };
 
   // Delete bookmark
   const deleteBookmark = async (): Promise<

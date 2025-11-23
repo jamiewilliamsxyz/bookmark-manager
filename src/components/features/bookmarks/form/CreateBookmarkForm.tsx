@@ -8,7 +8,7 @@ import InputField from "./InputField";
 import TagsField from "./TagsField";
 import type { Bookmark, BookmarkOperationResult } from "@/types";
 
-const BookmarkForm = () => {
+const CreateBookmarkForm = () => {
   const { createBookmark } = useBookmarks();
   const { closeModal } = useModal();
 
@@ -64,4 +64,4 @@ const BookmarkForm = () => {
   );
 };
 
-export default BookmarkForm;
+export default CreateBookmarkForm;

@@ -2,15 +2,25 @@ interface InputFieldProps {
   id: string;
   label: string;
   placeholder: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputField = ({ id, label, placeholder }: InputFieldProps) => {
+const InputField = ({
+  id,
+  label,
+  placeholder,
+  value,
+  onChange,
+}: InputFieldProps) => {
   return (
     <div>
       <label htmlFor={id} className="text-lg">
         {label}
       </label>
       <input
+        onChange={onChange}
+        value={value}
         placeholder={placeholder}
         id={id}
         name={id}
