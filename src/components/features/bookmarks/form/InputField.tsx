@@ -2,9 +2,9 @@ interface InputFieldProps {
   id: string;
   label: string;
   placeholder: string;
-  type: string;
+  type?: string;
   value: string;
-  error: { status: boolean; message: string };
+  error?: { status: boolean; message: string };
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -12,7 +12,7 @@ const InputField = ({
   id,
   label,
   placeholder,
-  type,
+  type = "text",
   value,
   error,
   onChange,
@@ -32,6 +32,8 @@ const InputField = ({
         id={id}
         name={id}
         type={type}
+        required
+        aria-required="true"
         className="mt-1 py-2 px-3 bg-neutral-900 rounded-md border border-neutral-800 w-full focus:outline-none"
       />
     </div>

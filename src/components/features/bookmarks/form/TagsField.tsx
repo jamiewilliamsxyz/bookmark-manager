@@ -3,9 +3,9 @@ import Tag from "../card/Tag";
 interface TagsFieldProps {
   tags: string[];
   value: string;
-  error: { status: boolean; message: string };
+  error?: { status: boolean; message: string };
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  removeTag: (t: string) => void;
+  removeTag: (tag: string) => void;
 }
 
 const TagsField = ({
@@ -23,14 +23,14 @@ const TagsField = ({
 
       <p
         className={`${
-          error.status ? "text-red-500" : "text-neutral-400"
+          error?.status ? "text-red-500" : "text-neutral-400"
         } mt-0.5 text-sm`}
       >
-        {error.status ? error.message : "Separate tags with commas"}
+        {error?.status ? error.message : "Separate tags with commas"}
       </p>
 
       <input
-        placeholder="Enter tags"
+        placeholder="useful, resource, hi :D"
         value={value}
         onChange={onChange}
         id="tags"
