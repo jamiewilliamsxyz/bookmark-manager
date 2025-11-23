@@ -6,6 +6,7 @@ import { useAuth } from "@/hooks/useAuth";
 
 import type {
   Bookmark,
+  BookmarkToModify,
   CreateBookmarkData,
   BookmarksContextValue,
   BookmarkOperationResult,
@@ -23,9 +24,8 @@ export const BookmarksProvider = ({
   const { session } = useAuth();
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [bookmarkToDeleteId, setBookmarkToDeleteId] = useState<number | null>(
-    null
-  );
+  const [bookmarkToModify, setBookmarkToModify] =
+    useState<BookmarkToModify | null>(null);
   const [deleteType, setDeleteType] = useState<"single" | "all" | null>(null);
 
   // Fetch bookmarks
@@ -96,21 +96,21 @@ export const BookmarksProvider = ({
     BookmarkOperationResult<Bookmark>
   > => {
     try {
-      if (!bookmarkToDeleteId)
+      if (!bookmarkToModify)
         return { success: false, error: "No bookmark found" };
 
       const { data, error } = await supabase
         .from("bookmarks")
         .delete()
-        .eq("id", bookmarkToDeleteId)
+        .eq("id", bookmarkToModify.id)
         .select("*")
         .single();
 
       if (error) return { success: false, error: error.message };
 
       const bookmark = data as Bookmark;
-      setBookmarks((prev) => prev.filter((b) => b.id !== bookmarkToDeleteId));
-      setBookmarkToDeleteId(null);
+      setBookmarks((prev) => prev.filter((b) => b.id !== bookmarkToModify.id));
+      setBookmarkToModify(null);
       return { success: true, data: bookmark };
     } catch (err) {
       const message =
@@ -150,9 +150,9 @@ export const BookmarksProvider = ({
       value={{
         bookmarks,
         loading,
-        bookmarkToDeleteId,
+        bookmarkToModify,
         deleteType,
-        setBookmarkToDeleteId,
+        setBookmarkToModify,
         setDeleteType,
         createBookmark,
         updateBookmark,

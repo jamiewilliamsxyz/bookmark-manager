@@ -2,13 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import { Clipboard, SquarePen, Trash } from "lucide-react";
 import { useModal } from "@/hooks/useModal";
 import { useBookmarks } from "@/hooks/useBookmarks";
-import type { Bookmark } from "@/types";
+import type { BookmarkToModify } from "@/types";
 
-type CardActionsProps = Pick<Bookmark, "id" | "url">;
-
-const CardActions = ({ id, url }: CardActionsProps) => {
+const CardActions = ({ bookmarkData }: { bookmarkData: BookmarkToModify }) => {
   const { openModal } = useModal();
-  const { setBookmarkToDeleteId, setDeleteType } = useBookmarks();
+  const { setBookmarkToModify, setDeleteType } = useBookmarks();
 
   const [isCooldown, setIsCooldown] = useState<boolean>(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -17,15 +15,15 @@ const CardActions = ({ id, url }: CardActionsProps) => {
     if (isCooldown) return;
 
     setIsCooldown(true);
-    navigator.clipboard.writeText(url);
+    navigator.clipboard.writeText(bookmarkData.url);
 
     timeoutRef.current = setTimeout(() => {
       setIsCooldown(false);
     }, 2400);
   };
 
-  const handleDelete = (id: number) => {
-    setBookmarkToDeleteId(id);
+  const handleDelete = (data: BookmarkToModify) => {
+    setBookmarkToModify(data);
     setDeleteType("single");
     openModal("deleteBookmark");
   };
@@ -59,7 +57,7 @@ const CardActions = ({ id, url }: CardActionsProps) => {
       </button>
 
       <button
-        onClick={() => handleDelete(id)}
+        onClick={() => handleDelete(bookmarkData)}
         className="cursor-pointer hover:opacity-75 duration-200 transition-opacity"
       >
         <Trash color="#fb2c36" strokeWidth={1} size={20} />

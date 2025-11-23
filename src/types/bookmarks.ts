@@ -7,6 +7,8 @@ export interface Bookmark {
   user_id: string;
 }
 
+export type BookmarkToModify = Pick<Bookmark, "id" | "tags" | "title" | "url">;
+
 export interface CreateBookmarkData {
   title: string;
   url: string;
@@ -30,9 +32,11 @@ export type BookmarkOperationResult<T> =
 export interface BookmarksContextValue {
   bookmarks: Bookmark[];
   loading: boolean;
-  bookmarkToDeleteId: number | null;
+  bookmarkToModify: BookmarkToModify | null;
   deleteType: "single" | "all" | null;
-  setBookmarkToDeleteId: React.Dispatch<React.SetStateAction<number | null>>;
+  setBookmarkToModify: React.Dispatch<
+    React.SetStateAction<BookmarkToModify | null>
+  >;
   setDeleteType: React.Dispatch<React.SetStateAction<"single" | "all" | null>>;
   createBookmark: (
     data: CreateBookmarkData

@@ -9,7 +9,7 @@ const Card = ({ id, title, url, tags }: CardProps) => {
     <div className="bg-[#1a1a1a] border border-neutral-800 shadow rounded-md p-5 min-w-94 max-w-94 h-fit flex flex-col gap-5">
       <div className="flex items-center justify-between">
         <p className="text-lg leading-0">{title}</p>
-        <CardActions id={id} url={url} />
+        <CardActions bookmarkData={{ id, title, url, tags }} />
       </div>
 
       <a
