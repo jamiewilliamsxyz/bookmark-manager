@@ -20,8 +20,6 @@ const CreateBookmarkForm = () => {
       const title = formData.get("title") as string;
       const url = formData.get("url") as string;
 
-      // Need to add validation here
-
       const res: BookmarkOperationResult<Bookmark> = await createBookmark({
         title,
         url,

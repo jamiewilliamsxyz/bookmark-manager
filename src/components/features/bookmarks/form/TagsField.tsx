@@ -1,71 +1,20 @@
-import { useState } from "react";
 import Tag from "../card/Tag";
 
 interface TagsFieldProps {
   tags: string[];
-  setTags: (tags: string[]) => void;
+  value: string;
+  error: { status: boolean; message: string };
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  removeTag: (t: string) => void;
 }
 
-interface TagsError {
-  status: boolean;
-  message: string;
-}
-
-const TagsField = ({ tags, setTags }: TagsFieldProps) => {
-  const [tagsInput, setTagsInput] = useState<string>("");
-  const [tagsError, setTagsError] = useState<TagsError>({
-    status: false,
-    message: "",
-  });
-
-  const removeTag = (tag: string) => {
-    setTags(tags.filter((t) => t !== tag));
-  };
-
-  const formatTagValue = (value: string) => {
-    return value.trim().replace(",", "");
-  };
-
-  const handleTagsInput = (value: string) => {
-    setTagsInput(value);
-
-    // Check if max tags (5) has been reached
-    if (tags.length >= 5) {
-      setTagsError({
-        status: true,
-        message: "Limit reached: You can add up to 5 tags",
-      });
-      return;
-      // Check if tag max character count (20) has been reached
-    } else if (value.length > 21) {
-      setTagsError({
-        status: true,
-        message: "Tags must be 20 characters or less",
-      });
-      return;
-      // Check for duplicate tags
-    } else if (tags.filter((t) => t === formatTagValue(value)).length >= 1) {
-      setTagsError({
-        status: true,
-        message: "This tag already exists",
-      });
-      return;
-    } else {
-      setTagsError({
-        status: false,
-        message: "",
-      });
-    }
-
-    // Adding the tag on comma
-    if (value.includes(",")) {
-      const newTag = formatTagValue(value);
-      if (!newTag.length) return;
-      setTagsInput("");
-      setTags([...tags, newTag]);
-    }
-  };
-
+const TagsField = ({
+  value,
+  error,
+  tags,
+  onChange,
+  removeTag,
+}: TagsFieldProps) => {
   return (
     <div>
       <label htmlFor="tags" className="text-lg">
@@ -74,16 +23,16 @@ const TagsField = ({ tags, setTags }: TagsFieldProps) => {
 
       <p
         className={`${
-          tagsError.status ? "text-red-500" : "text-neutral-400"
+          error.status ? "text-red-500" : "text-neutral-400"
         } mt-0.5 text-sm`}
       >
-        {tagsError.status ? tagsError.message : "Separate tags with commas"}
+        {error.status ? error.message : "Separate tags with commas"}
       </p>
 
       <input
         placeholder="Enter tags"
-        value={tagsInput}
-        onChange={(e) => handleTagsInput(e.target.value)}
+        value={value}
+        onChange={onChange}
         id="tags"
         name="tags"
         type="text"
