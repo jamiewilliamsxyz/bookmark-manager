@@ -5,6 +5,7 @@ const CloseModalButton = ({ children }: { children: string }) => {
 
   return (
     <button
+      type="button"
       onClick={() => closeModal()}
       className="underline cursor-pointer hover:opacity-75 duration-200 transition-opacity w-fit h-fit"
     >
