@@ -18,11 +18,14 @@ const DeleteBookmarkConfirmation = () => {
 
   return (
     <div className="bg-[#1a1a1a] border border-neutral-800 shadow rounded-md p-5 flex flex-col gap-5">
-      <p className="text-lg">
-        Are you sure you want to delete
-        <br />
-        {deleteType === "single" ? "this bookmark?" : "all bookmarks?"}
-      </p>
+      <div>
+        <p className="text-lg mb-2">
+          Are you sure you want to delete
+          <br />
+          {deleteType === "single" ? "this bookmark?" : "all bookmarks?"}
+        </p>
+        <p className="text-neutral-400">This action cannot be undone</p>
+      </div>
 
       <div className="flex gap-5">
         <CloseModalButton>Cancel</CloseModalButton>
