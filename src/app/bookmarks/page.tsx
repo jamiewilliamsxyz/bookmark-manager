@@ -1,4 +1,6 @@
-import SearchArea from "@/components/features/bookmarks/SearchArea";
+import { SearchProvider } from "@/context/SearchContext";
+import SearchBar from "@/components/features/bookmarks/SearchBar";
+import FilterSelect from "@/components/features/bookmarks/filter/FilterSelect";
 import AddBookmarkButton from "@/components/features/bookmarks/AddBookmarkButton";
 import CardsContainer from "@/components/features/bookmarks/CardsContainer";
 
@@ -7,12 +9,17 @@ const BookmarksPage = () => {
     <div className="flex flex-1 flex-col justify-center items-center gap-12 py-12 w-[820px] self-center">
       <h1 className="text-6xl">Bookmarks</h1>
 
-      <div className="flex flex-col gap-5 items-center">
-        <SearchArea />
-        <AddBookmarkButton />
-      </div>
+      <SearchProvider>
+        <div className="flex flex-col gap-5 items-center">
+          <div className="flex gap-5 items-center">
+            <SearchBar />
+            <FilterSelect />
+          </div>
+          <AddBookmarkButton />
+        </div>
 
-      <CardsContainer />
+        <CardsContainer />
+      </SearchProvider>
     </div>
   );
 };

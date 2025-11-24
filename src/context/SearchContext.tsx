@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, createContext } from "react";
 
 import type { FilterOption } from "@/types";
