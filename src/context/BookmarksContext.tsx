@@ -77,7 +77,7 @@ export const BookmarksProvider = ({
 
       // Handle success
       const bookmark = res as Bookmark; // Telling TS that the shape of the data is Bookmarks
-      setBookmarks((prev) => [...prev, bookmark]);
+      setBookmarks((prev) => [bookmark, ...prev]);
       return { success: true, data: bookmark };
 
       // Handle unexpected errors
