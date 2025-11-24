@@ -2,7 +2,7 @@ import { useActionState } from "react";
 import { useBookmarkForm } from "@/hooks/useBookmarkForm";
 import { useBookmarks } from "@/hooks/context/useBookmarks";
 import { useModal } from "@/hooks/context/useModal";
-import ReturnButton from "@/components/modal/ReturnButton";
+import CloseModalButton from "@/components/modal/CloseModalButton";
 import InputField from "./InputField";
 import TagsField from "./TagsField";
 import type { Bookmark, BookmarkOperationResult } from "@/types";
@@ -118,7 +118,7 @@ const EditBookmarkForm = () => {
         Update
       </button>
 
-      <ReturnButton />
+      <CloseModalButton>Return</CloseModalButton>
     </form>
   );
 };

@@ -1,5 +1,6 @@
 import { useBookmarks } from "@/hooks/context/useBookmarks";
 import { useModal } from "@/hooks/context/useModal";
+import CloseModalButton from "@/components/modal/CloseModalButton";
 
 const DeleteBookmarkConfirmation = () => {
   const { closeModal } = useModal();
@@ -24,12 +25,7 @@ const DeleteBookmarkConfirmation = () => {
       </p>
 
       <div className="flex gap-5">
-        <button
-          onClick={() => closeModal()}
-          className="underline cursor-pointer hover:opacity-75 duration-200 transition-opacity w-fit h-fit"
-        >
-          Cancel
-        </button>
+        <CloseModalButton>Cancel</CloseModalButton>
 
         <button
           onClick={() => handleConfirm()}

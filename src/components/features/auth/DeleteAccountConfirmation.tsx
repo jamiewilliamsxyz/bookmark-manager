@@ -1,7 +1,7 @@
 import { supabase } from "@/api/supabaseClient";
 import { useAuth } from "@/hooks/context/useAuth";
 import { deleteUser } from "@/lib/deleteUser";
-import ReturnButton from "@/components/modal/ReturnButton";
+import CloseModalButton from "@/components/modal/CloseModalButton";
 
 const DeleteAccountConfirmation = () => {
   const { logOutUser } = useAuth();
@@ -47,7 +47,7 @@ const DeleteAccountConfirmation = () => {
       </div>
 
       <div className="flex gap-5">
-        <ReturnButton />
+        <CloseModalButton>Cancel</CloseModalButton>
         <button
           onClick={() => handleDelete()}
           className="text-red-500 underline cursor-pointer hover:opacity-75 duration-200 transition-opacity"

@@ -1,6 +1,6 @@
 import { useModal } from "@/hooks/context/useModal";
 
-const ReturnButton = () => {
+const CloseModalButton = ({ children }: { children: string }) => {
   const { closeModal } = useModal();
 
   return (
@@ -8,9 +8,9 @@ const ReturnButton = () => {
       onClick={() => closeModal()}
       className="underline cursor-pointer hover:opacity-75 duration-200 transition-opacity w-fit h-fit"
     >
-      Return
+      {children}
     </button>
   );
 };
 
-export default ReturnButton;
+export default CloseModalButton;
