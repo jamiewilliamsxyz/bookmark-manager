@@ -1,5 +1,5 @@
-import { useBookmarks } from "@/hooks/useBookmarks";
-import { useModal } from "@/hooks/useModal";
+import { useBookmarks } from "@/hooks/context/useBookmarks";
+import { useModal } from "@/hooks/context/useModal";
 
 const DeleteBookmarkConfirmation = () => {
   const { closeModal } = useModal();

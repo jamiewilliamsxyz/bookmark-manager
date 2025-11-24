@@ -1,7 +1,7 @@
 "use client";
 
-import { useBookmarks } from "@/hooks/useBookmarks";
-import { useModal } from "@/hooks/useModal";
+import { useBookmarks } from "@/hooks/context/useBookmarks";
+import { useModal } from "@/hooks/context/useModal";
 import { MAX_BOOKMARKS } from "@/constants/bookmarks";
 
 const AddBookmarkButton = () => {

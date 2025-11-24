@@ -1,5 +1,5 @@
 import { supabase } from "@/api/supabaseClient";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/hooks/context/useAuth";
 import { deleteUser } from "@/lib/deleteUser";
 import ReturnButton from "@/components/modal/ReturnButton";
 

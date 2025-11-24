@@ -2,7 +2,7 @@
 
 import { useActionState } from "react";
 import Link from "next/link";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/hooks/context/useAuth";
 import type { AuthFormProps, AuthResult } from "@/types";
 
 const AuthForm = ({ type }: AuthFormProps) => {

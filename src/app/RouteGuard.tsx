@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, redirect } from "next/navigation";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/hooks/context/useAuth";
 
 const RouteGuard = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();

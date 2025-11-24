@@ -1,4 +1,4 @@
-import { useModal } from "@/hooks/useModal";
+import { useModal } from "@/hooks/context/useModal";
 
 const DeleteAccountButton = () => {
   const { openModal } = useModal();

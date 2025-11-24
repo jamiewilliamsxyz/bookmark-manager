@@ -1,8 +1,8 @@
 "use client";
 
-import { useAuth } from "@/hooks/useAuth";
-import { useModal } from "@/hooks/useModal";
-import { useBookmarks } from "@/hooks/useBookmarks";
+import { useAuth } from "@/hooks/context/useAuth";
+import { useModal } from "@/hooks/context/useModal";
+import { useBookmarks } from "@/hooks/context/useBookmarks";
 import DeleteAccountButton from "@/components/features/auth/DeleteAccountButton";
 
 const AccountActions = () => {

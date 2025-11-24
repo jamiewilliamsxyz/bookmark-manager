@@ -1,6 +1,6 @@
 "use client";
 
-import { useBookmarks } from "@/hooks/useBookmarks";
+import { useBookmarks } from "@/hooks/context/useBookmarks";
 import { MAX_BOOKMARKS } from "@/constants/bookmarks";
 import Card from "./card/Card";
 

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import logoIcon from "../../../../public/logo.png";
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth } from "@/hooks/context/useAuth";
 
 const NavIcon = () => {
   return (
