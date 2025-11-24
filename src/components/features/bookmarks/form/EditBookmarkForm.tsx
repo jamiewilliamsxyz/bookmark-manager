@@ -5,6 +5,7 @@ import { useModal } from "@/hooks/context/useModal";
 import CloseModalButton from "@/components/modal/CloseModalButton";
 import InputField from "./InputField";
 import TagsField from "./TagsField";
+import { preventEnterSubmit } from "@/lib/preventEnterSubmit";
 import type { Bookmark, BookmarkOperationResult } from "@/types";
 
 const EditBookmarkForm = () => {
@@ -71,6 +72,7 @@ const EditBookmarkForm = () => {
   return (
     <form
       noValidate
+      onKeyDown={preventEnterSubmit}
       action={formAction}
       className="border border-neutral-800 bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-5 justify-start min-w-110 max-w-110"
     >
