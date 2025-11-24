@@ -32,6 +32,7 @@ export interface AuthContextType {
   signUpUser: (email: string, password: string) => Promise<AuthResult>;
   logInUser: (email: string, password: string) => Promise<AuthResult>;
   logOutUser: () => Promise<void>;
+  resetPassword: () => Promise<void>;
   confirmation: ConfirmationType;
   checkConfirmation: () => void;
 }

@@ -205,6 +205,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   };
 
+  // Reset password
+  const resetPassword = async () => {};
+
   return (
     <AuthContext
       value={{
@@ -215,6 +218,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         signUpUser,
         confirmation,
         checkConfirmation,
+        resetPassword,
       }}
     >
       {children}
