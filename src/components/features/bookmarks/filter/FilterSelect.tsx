@@ -4,9 +4,11 @@ import { useState, useRef, useEffect } from "react";
 import FilterTrigger from "./FilterTrigger";
 import FilterDropdown from "./FilterDropdown";
 
+import type { FilterOption } from "@/types";
+
 const FilterSelect = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState<"Title" | "Tag">("Title");
+  const [selected, setSelected] = useState<FilterOption>("Title");
 
   const containerRef = useRef<HTMLDivElement>(null);
 
