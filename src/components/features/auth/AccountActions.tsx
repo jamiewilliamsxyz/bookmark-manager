@@ -13,7 +13,6 @@ const AccountActions = () => {
   const accountActions = [
     { name: "Log out", action: logOutUser },
     { name: "Reset password", action: () => {} },
-    { name: "Change email", action: () => {} },
     {
       name: "Delete all bookmarks",
       action: () => {
