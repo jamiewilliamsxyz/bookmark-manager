@@ -7,8 +7,10 @@ type CardProps = Pick<Bookmark, "id" | "title" | "url" | "tags">;
 const Card = ({ id, title, url, tags }: CardProps) => {
   return (
     <div className="bg-[#1a1a1a] border border-neutral-800 shadow rounded-md p-5 min-w-94 max-w-94 h-fit flex flex-col gap-5">
-      <div className="flex items-center justify-between">
-        <p className="text-lg leading-0">{title}</p>
+      <div className="flex items-center justify-between gap-5">
+        <p title={title} className="text-lg truncate">
+          {title}
+        </p>
         <CardActions bookmarkData={{ id, title, url, tags }} />
       </div>
 
@@ -18,7 +20,7 @@ const Card = ({ id, title, url, tags }: CardProps) => {
         rel="noopener noreferrer"
         title={url}
         aria-label={url}
-        className="text-neutral-400 w-fit"
+        className="text-neutral-400 truncate"
       >
         {url}
       </a>
