@@ -1,4 +1,4 @@
-import EmailDisplay from "@/components/features/auth/EmailDisplay";
+import EmailBox from "@/components/features/auth/EmailBox";
 import AccountActions from "@/components/features/auth/AccountActions";
 
 const AccountPage = () => {
@@ -7,7 +7,7 @@ const AccountPage = () => {
       <h1 className="text-6xl">Account</h1>
       <div className="flex flex-col gap-5 items-center">
         <AccountActions />
-        <EmailDisplay />
+        <EmailBox />
       </div>
     </div>
   );
