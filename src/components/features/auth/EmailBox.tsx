@@ -3,7 +3,7 @@
 import { ArrowRight } from "lucide-react";
 import { useAuth } from "@/hooks/context/useAuth";
 
-const EmailDisplay = () => {
+const EmailBox = () => {
   const { session } = useAuth();
 
   return (
@@ -15,4 +15,4 @@ const EmailDisplay = () => {
   );
 };
 
-export default EmailDisplay;
+export default EmailBox;
