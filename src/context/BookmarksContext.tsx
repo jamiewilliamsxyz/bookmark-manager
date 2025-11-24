@@ -32,7 +32,10 @@ export const BookmarksProvider = ({
   useEffect(() => {
     const fetchBookmarks = async (): Promise<void> => {
       try {
-        const { data, error } = await supabase.from("bookmarks").select("*");
+        const { data, error } = await supabase
+          .from("bookmarks")
+          .select("*")
+          .order("created_at", { ascending: false });
 
         if (error) {
           console.error("Error fetching bookmarks:", error);
