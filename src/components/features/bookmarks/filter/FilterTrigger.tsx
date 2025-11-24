@@ -1,11 +1,11 @@
 import { ChevronDown } from "lucide-react";
 
-interface Props {
-  selected: "title" | "tag";
+interface FilterTriggerProps {
+  selected: "Title" | "Tag";
   onToggle: () => void;
 }
 
-const FilterTrigger = ({ selected, onToggle }: Props) => {
+const FilterTrigger = ({ selected, onToggle }: FilterTriggerProps) => {
   return (
     <div
       onClick={onToggle}

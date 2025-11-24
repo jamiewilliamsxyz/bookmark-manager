@@ -1,7 +1,7 @@
 interface FilterDropdownProps {
   isOpen: boolean;
-  selected: "title" | "tag";
-  onSelect: (selected: "title" | "tag") => void;
+  selected: "Title" | "Tag";
+  onSelect: (selected: "Title" | "Tag") => void;
 }
 
 const FilterDropdown = ({
@@ -16,10 +16,10 @@ const FilterDropdown = ({
       }`}
     >
       <p
-        onClick={() => onSelect("title")}
+        onClick={() => onSelect("Title")}
         className={`w-full px-1.5 py-0.75 rounded-md cursor-pointer transition-colors duration-200 
           ${
-            selected === "title"
+            selected === "Title"
               ? "bg-neutral-400 text-neutral-900 hover:bg-[#b3b3b3]"
               : "hover:bg-neutral-300"
           }`}
@@ -28,10 +28,10 @@ const FilterDropdown = ({
       </p>
 
       <p
-        onClick={() => onSelect("tag")}
+        onClick={() => onSelect("Tag")}
         className={`w-full px-1.5 py-0.75 rounded-md cursor-pointer transition-colors duration-200 
           ${
-            selected === "tag"
+            selected === "Tag"
               ? "bg-neutral-400 text-neutral-900 hover:bg-[#b3b3b3]"
               : "hover:bg-neutral-300"
           }`}

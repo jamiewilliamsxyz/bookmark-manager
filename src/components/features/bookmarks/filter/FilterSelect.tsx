@@ -6,7 +6,7 @@ import FilterDropdown from "./FilterDropdown";
 
 const FilterSelect = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState<"title" | "tag">("title");
+  const [selected, setSelected] = useState<"Title" | "Tag">("Title");
 
   const containerRef = useRef<HTMLDivElement>(null);
 
