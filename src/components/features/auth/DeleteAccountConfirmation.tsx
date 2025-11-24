@@ -1,38 +1,32 @@
-import { supabase } from "@/api/supabaseClient";
 import { useAuth } from "@/hooks/context/useAuth";
 import { deleteUser } from "@/lib/deleteUser";
 import CloseModalButton from "@/components/modal/CloseModalButton";
 
 const DeleteAccountConfirmation = () => {
-  const { logOutUser } = useAuth();
+  const { logOutUser, session } = useAuth();
 
   const handleDelete = async () => {
-    // Fetch user
     try {
-      const {
-        data: { user },
-        error,
-      } = await supabase.auth.getUser();
-      if (error) {
-        console.error("Supabase error while fetching user:", error.message);
-        return;
-      }
-      if (!user) {
-        console.error("User not found");
+      // Get user id
+      const userId = session?.user?.id;
+      if (!userId) {
+        console.error("Session not found");
         return;
       }
 
       // Delete and logout user
-      const deletedUser = await deleteUser(user.id);
+      const deletedUser = await deleteUser(userId as string);
       if (deletedUser) {
         logOutUser();
       } else {
         console.error("Failed to delete user");
       }
     } catch (err: unknown) {
-      if (err instanceof Error)
+      if (err instanceof Error) {
         console.error("Error deleting user:", err.message);
-      else console.error("Unknown error deleting user:", err);
+      } else {
+        console.error("Unknown error deleting user:", err);
+      }
     }
   };
 
