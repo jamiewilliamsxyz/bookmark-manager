@@ -10,35 +10,38 @@ const AccountActions = () => {
   const { openModal } = useModal();
   const { setDeleteType } = useBookmarks();
 
-  const accountActions = [
-    { name: "Log out", action: logOutUser },
-    { name: "Reset password", action: () => {} },
-    {
-      name: "Delete all bookmarks",
-      action: () => {
-        setDeleteType("all");
-        openModal("deleteBookmark");
-      },
-    },
-  ];
-
   return (
-    <div className="bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-5 border border-neutral-800 items-center justify-center">
-      {accountActions.map((i) => (
+    <div className="flex gap-5">
+      <div className="bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-3 border border-neutral-800 items-center justify-center">
         <button
-          key={i.name}
-          onClick={i.action}
+          onClick={logOutUser}
           disabled={loading}
-          className={`${
-            i.name === "Delete all bookmarks"
-              ? "text-red-500"
-              : "text-neutral-200"
-          } underline cursor-pointer hover:opacity-75 duration-200 transition-opacity w-fit h-fit`}
+          className="underline cursor-pointer hover:opacity-75 duration-200 transition-opacity w-fit h-fit"
         >
-          {i.name}
+          Log out
         </button>
-      ))}
-      <DeleteAccountButton />
+        <button
+          onClick={() => {}}
+          disabled={loading}
+          className="underline cursor-pointer hover:opacity-75 duration-200 transition-opacity w-fit h-fit"
+        >
+          Reset password
+        </button>
+      </div>
+
+      <div className="bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-3 border border-neutral-800 items-center justify-center">
+        <DeleteAccountButton />
+        <button
+          disabled={loading}
+          onClick={() => {
+            setDeleteType("all");
+            openModal("deleteBookmark");
+          }}
+          className="underline cursor-pointer hover:opacity-75 duration-200 transition-opacity w-fit h-fit text-red-500"
+        >
+          Delete all bookmarks
+        </button>
+      </div>
     </div>
   );
 };
