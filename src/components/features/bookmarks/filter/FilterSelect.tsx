@@ -1,14 +1,14 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { useSearch } from "@/hooks/context/useSearch";
 import FilterTrigger from "./FilterTrigger";
 import FilterDropdown from "./FilterDropdown";
 
-import type { FilterOption } from "@/types";
-
 const FilterSelect = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selected, setSelected] = useState<FilterOption>("Title");
+  const { selectedFilter, setSelectedFilter } = useSearch();
+
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -39,13 +39,13 @@ const FilterSelect = () => {
   return (
     <div ref={containerRef} className="relative">
       <FilterTrigger
-        selected={selected}
+        selected={selectedFilter}
         onToggle={() => setIsOpen((prev) => !prev)}
       />
       <FilterDropdown
         isOpen={isOpen}
-        selected={selected}
-        onSelect={setSelected}
+        selected={selectedFilter}
+        onSelect={setSelectedFilter}
       />
     </div>
   );
