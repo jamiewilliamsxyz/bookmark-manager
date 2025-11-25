@@ -30,7 +30,7 @@ const TagsField = ({
       </p>
 
       <input
-        placeholder="useful, resource, hi :D"
+        placeholder="useful, resource, 123"
         value={value}
         onChange={onChange}
         id="tags"
