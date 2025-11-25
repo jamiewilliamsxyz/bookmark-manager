@@ -1,7 +1,7 @@
 import { SearchProvider } from "@/context/SearchContext";
 import SearchBar from "@/components/features/bookmarks/SearchBar";
 import FilterSelect from "@/components/features/bookmarks/bookmark-filter/FilterSelect";
-import AddBookmarkButton from "@/components/features/bookmarks/AddBookmarkButton";
+import CreateBookmarkButton from "@/components/features/bookmarks/CreateBookmarkButton";
 import CardsContainer from "@/components/features/bookmarks/CardsContainer";
 
 const BookmarksPage = () => {
@@ -14,7 +14,7 @@ const BookmarksPage = () => {
           <SearchBar />
           <div className="flex gap-5">
             <FilterSelect />
-            <AddBookmarkButton />
+            <CreateBookmarkButton />
           </div>
         </div>
 

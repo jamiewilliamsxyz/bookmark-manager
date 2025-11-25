@@ -4,7 +4,7 @@ import { useBookmarks } from "@/hooks/context/useBookmarks";
 import { useModal } from "@/hooks/context/useModal";
 import { MAX_BOOKMARKS } from "@/constants/bookmarks";
 
-const AddBookmarkButton = () => {
+const CreateBookmarkButton = () => {
   const { openModal } = useModal();
   const { bookmarks } = useBookmarks();
 
@@ -23,4 +23,4 @@ const AddBookmarkButton = () => {
   );
 };
 
-export default AddBookmarkButton;
+export default CreateBookmarkButton;
