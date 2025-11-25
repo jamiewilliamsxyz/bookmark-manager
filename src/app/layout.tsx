@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/navbar/Navbar";
+import NavBar from "@/components/layout/nav/NavBar";
 import Footer from "@/components/layout/Footer";
 import { AuthProvider } from "@/context/AuthContext";
 import { BookmarksProvider } from "@/context/BookmarksContext";
@@ -35,7 +35,7 @@ export default function RootLayout({
           <BookmarksProvider>
             <ModalProvider>
               <ModalHandler>
-                <Navbar />
+                <NavBar />
                 <main className="flex-1 flex flex-col">
                   <RouteGuard>{children}</RouteGuard>
                 </main>
