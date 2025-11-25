@@ -8,7 +8,7 @@ const DeleteAccountButton = () => {
       onClick={() => openModal("deleteAccount")}
       className="text-red-500 underline cursor-pointer hover:opacity-75 duration-200 transition-opacity w-fit h-fit"
     >
-      Delete Account
+      Delete account
     </button>
   );
 };
