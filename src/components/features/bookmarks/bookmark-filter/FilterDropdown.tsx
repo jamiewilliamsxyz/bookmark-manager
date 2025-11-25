@@ -1,3 +1,5 @@
+import { Check } from "lucide-react";
+
 interface FilterDropdownProps {
   isOpen: boolean;
   selected: "Title" | "Tag";
@@ -11,33 +13,33 @@ const FilterDropdown = ({
 }: FilterDropdownProps) => {
   return (
     <div
-      className={`absolute right-0 mt-2 w-[135px] bg-neutral-100 text-neutral-800 shadow flex flex-col gap-2 items-start rounded-md p-2 transition-all duration-200 ${
+      className={`text-sm shadow bg-[#1a1a1a] rounded-md border border-neutral-800 absolute right-0 mt-2 w-fit transition-all duration-200 ${
         isOpen ? "opacity-100 " : "opacity-0 pointer-events-none"
       }`}
     >
-      <p
+      <div
         onClick={() => onSelect("Title")}
-        className={`w-full px-1.5 py-0.75 rounded-md cursor-pointer transition-colors duration-200 
-          ${
-            selected === "Title"
-              ? "bg-neutral-400 text-neutral-900 hover:bg-[#b3b3b3]"
-              : "hover:bg-neutral-300"
-          }`}
+        className={`${
+          selected === "Title" ? "text-neutral-200" : "text-neutral-400"
+        } px-3.5 pt-3 pb-1.5 cursor-pointer hover:opacity-75 transition-opacity duration-200 flex gap-3`}
       >
-        Title
-      </p>
+        <p>Title</p>
+        {selected === "Title" && (
+          <Check strokeWidth={1.1} color="#ffffff" size={17} />
+        )}
+      </div>
 
-      <p
+      <div
         onClick={() => onSelect("Tag")}
-        className={`w-full px-1.5 py-0.75 rounded-md cursor-pointer transition-colors duration-200 
-          ${
-            selected === "Tag"
-              ? "bg-neutral-400 text-neutral-900 hover:bg-[#b3b3b3]"
-              : "hover:bg-neutral-300"
-          }`}
+        className={`${
+          selected === "Tag" ? "text-neutral-200" : "text-neutral-400"
+        } px-3.5 pb-3 pt-1.5 cursor-pointer hover:opacity-75 transition-opacity duration-200 flex gap-3`}
       >
-        Tag
-      </p>
+        <p>Tag</p>
+        {selected === "Tag" && (
+          <Check strokeWidth={1.1} color="#ffffff" size={17} />
+        )}
+      </div>
     </div>
   );
 };

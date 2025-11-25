@@ -1,5 +1,4 @@
 import { ChevronDown } from "lucide-react";
-
 import type { FilterOption } from "@/types";
 
 interface FilterTriggerProps {
