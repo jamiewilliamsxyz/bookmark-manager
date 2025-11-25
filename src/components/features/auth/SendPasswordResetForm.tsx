@@ -3,6 +3,7 @@
 import { useState, useActionState } from "react";
 import { useAuth } from "@/hooks/context/useAuth";
 import { preventEnterSubmit } from "@/lib/preventEnterSubmit";
+import FormSubmitButton from "@/components/ui/FormSubmitButton";
 import type { PasswordResetState } from "@/types";
 
 const ResetPasswordForm = () => {
@@ -70,12 +71,9 @@ const ResetPasswordForm = () => {
 
           {state.error && <p className="text-red-500 text-sm">{state.error}</p>}
 
-          <button
-            disabled={pending || state.success}
-            className="cursor-pointer hover:opacity-75 duration-200 transition-opacity mt-0.75 bg-neutral-100 py-1.25 w-full rounded-md text-lg text-neutral-800"
-          >
+          <FormSubmitButton isDisabled={pending || state.success}>
             {pending ? "Loading..." : "Send"}
-          </button>
+          </FormSubmitButton>
 
           <p className="text-neutral-400 text-sm">
             You&apos;ll receive an email to reset your password

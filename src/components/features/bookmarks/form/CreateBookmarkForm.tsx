@@ -5,6 +5,7 @@ import { useModal } from "@/hooks/context/useModal";
 import CloseModalButton from "@/components/modal/CloseModalButton";
 import InputField from "./InputField";
 import TagsField from "./TagsField";
+import FormSubmitButton from "@/components/ui/FormSubmitButton";
 import { preventEnterSubmit } from "@/lib/preventEnterSubmit";
 import type { Bookmark, BookmarkOperationResult } from "@/types";
 
@@ -88,17 +89,8 @@ const CreateBookmarkForm = () => {
         <p className="text-red-500 text-sm">{state.message}</p>
       )}
 
-      <button
-        disabled={isSubmitDisabled}
-        type="submit"
-        className={`${
-          isSubmitDisabled
-            ? "opacity-75 cursor-not-allowed"
-            : "cursor-pointer hover:opacity-75 duration-200 transition-opacity"
-        } mt-0.75 bg-neutral-100 py-1.25 w-full rounded-md text-lg text-neutral-800`}
-      >
-        Create
-      </button>
+      <FormSubmitButton isDisabled={isSubmitDisabled}>Update</FormSubmitButton>
+
       <CloseModalButton>Return</CloseModalButton>
     </form>
   );

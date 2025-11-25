@@ -4,6 +4,7 @@ import { useState, useActionState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/hooks/context/useAuth";
 import { preventEnterSubmit } from "@/lib/preventEnterSubmit";
+import FormSubmitButton from "@/components/ui/FormSubmitButton";
 import type { PasswordResetState } from "@/types";
 
 const ChangePasswordForm = () => {
@@ -72,12 +73,9 @@ const ChangePasswordForm = () => {
 
           {state.error && <p className="text-red-500 text-sm">{state.error}</p>}
 
-          <button
-            disabled={pending || state.success}
-            className="cursor-pointer hover:opacity-75 duration-200 transition-opacity mt-0.75 bg-neutral-100 py-1.25 w-full rounded-md text-lg text-neutral-800"
-          >
+          <FormSubmitButton isDisabled={pending || state.success}>
             {pending ? "Loading..." : "Update"}
-          </button>
+          </FormSubmitButton>
         </form>
       )}
     </>

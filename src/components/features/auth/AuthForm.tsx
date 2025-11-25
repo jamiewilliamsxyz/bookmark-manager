@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/hooks/context/useAuth";
+import FormSubmitButton from "@/components/ui/FormSubmitButton";
 import type { AuthFormProps, AuthResult } from "@/types";
 
 const AuthForm = ({ type }: AuthFormProps) => {
@@ -97,13 +98,9 @@ const AuthForm = ({ type }: AuthFormProps) => {
 
             {error && <p className="text-red-500">{error.message}</p>}
 
-            <button
-              type="submit"
-              disabled={pending}
-              className="shadow mt-0.75 bg-neutral-100 py-1.25 w-full rounded-md text-lg text-neutral-800 cursor-pointer hover:opacity-75 duration-200 transition-opacity"
-            >
+            <FormSubmitButton isDisabled={pending}>
               {pending ? "Loading..." : type === "login" ? "Log In" : "Sign Up"}
-            </button>
+            </FormSubmitButton>
 
             <div className="flex items-center gap-1.5 text-[0.95rem] text-neutral-400">
               {type === "login" ? (
