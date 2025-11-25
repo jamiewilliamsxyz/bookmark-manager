@@ -13,9 +13,9 @@ const FilterDropdown = ({
 }: FilterDropdownProps) => {
   return (
     <div
-      className={`text-sm shadow bg-[#1a1a1a] rounded-md border border-neutral-800 absolute right-0 mt-2 w-fit transition-all duration-200 ${
+      className={`${
         isOpen ? "opacity-100 " : "opacity-0 pointer-events-none"
-      }`}
+      } text-sm shadow bg-[#1a1a1a] rounded-md border border-neutral-800 absolute right-0 mt-2 w-22 transition-all duration-200`}
     >
       <div
         onClick={() => onSelect("Title")}
