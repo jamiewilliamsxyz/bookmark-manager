@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useModal } from "@/hooks/context/useModal";
+import { useModal } from "@/hooks/context-hooks/useModal";
 import CreateBookmarkForm from "@/components/features/bookmarks/bookmark-forms/CreateBookmarkForm";
 import DeleteAccountConfirmation from "@/components/features/auth/DeleteAccountConfirmation";
 import DeleteBookmarkConfirmation from "@/components/features/bookmarks/DeleteBookmarkConfirmation";

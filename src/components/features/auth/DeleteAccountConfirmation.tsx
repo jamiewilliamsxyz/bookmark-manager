@@ -1,4 +1,4 @@
-import { useAuth } from "@/hooks/context/useAuth";
+import { useAuth } from "@/hooks/context-hooks/useAuth";
 import { deleteUser } from "@/lib/deleteUser";
 import CloseModalButton from "@/components/modal/CloseModalButton";
 

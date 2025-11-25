@@ -1,7 +1,7 @@
 "use client";
 
-import { useBookmarks } from "@/hooks/context/useBookmarks";
-import { useSearch } from "@/hooks/context/useSearch";
+import { useBookmarks } from "@/hooks/context-hooks/useBookmarks";
+import { useSearch } from "@/hooks/context-hooks/useSearch";
 import { MAX_BOOKMARKS } from "@/constants/bookmarks";
 import Card from "./bookmark-card/Card";
 import Spinner from "@/components/ui/Spinner";

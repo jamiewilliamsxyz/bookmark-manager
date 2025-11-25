@@ -1,6 +1,6 @@
 "use client";
 
-import { useAuth } from "@/hooks/context/useAuth";
+import { useAuth } from "@/hooks/context-hooks/useAuth";
 
 const EmailBox = () => {
   const { session } = useAuth();

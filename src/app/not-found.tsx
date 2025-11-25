@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useAuth } from "@/hooks/context/useAuth";
+import { useAuth } from "@/hooks/context-hooks/useAuth";
 
 const NotFoundPage = () => {
   const { session } = useAuth();

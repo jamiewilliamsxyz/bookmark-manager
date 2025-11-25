@@ -2,8 +2,8 @@
 
 import { useActionState } from "react";
 import Link from "next/link";
-import { useAuth } from "@/hooks/context/useAuth";
-import { useAuthFormValidation } from "@/hooks/useAuthFormValidation";
+import { useAuth } from "@/hooks/context-hooks/useAuth";
+import { useAuthFormValidation } from "@/hooks/form-hooks/useAuthFormValidation";
 import { preventEnterSubmit } from "@/lib/preventEnterSubmit";
 import FormSubmitButton from "@/components/ui/FormSubmitButton";
 import type { PasswordResetState } from "@/types";

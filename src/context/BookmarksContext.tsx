@@ -2,7 +2,7 @@
 
 import { useState, createContext, useEffect } from "react";
 import { supabase } from "@/api/supabaseClient";
-import { useAuth } from "@/hooks/context/useAuth";
+import { useAuth } from "@/hooks/context-hooks/useAuth";
 
 import type {
   Bookmark,

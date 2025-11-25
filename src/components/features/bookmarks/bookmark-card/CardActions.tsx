@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Clipboard, SquarePen, Trash } from "lucide-react";
-import { useModal } from "@/hooks/context/useModal";
-import { useBookmarks } from "@/hooks/context/useBookmarks";
+import { useModal } from "@/hooks/context-hooks/useModal";
+import { useBookmarks } from "@/hooks/context-hooks/useBookmarks";
 import type { BookmarkToModify } from "@/types";
 
 const CardActions = ({ bookmarkData }: { bookmarkData: BookmarkToModify }) => {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { useSearch } from "@/hooks/context/useSearch";
+import { useSearch } from "@/hooks/context-hooks/useSearch";
 import { Search } from "lucide-react";
 
 const SearchBar = () => {

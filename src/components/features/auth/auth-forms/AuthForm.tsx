@@ -2,7 +2,7 @@
 
 import { useActionState } from "react";
 import Link from "next/link";
-import { useAuth } from "@/hooks/context/useAuth";
+import { useAuth } from "@/hooks/context-hooks/useAuth";
 import FormSubmitButton from "@/components/ui/FormSubmitButton";
 import type { AuthFormProps, AuthResult } from "@/types";
 

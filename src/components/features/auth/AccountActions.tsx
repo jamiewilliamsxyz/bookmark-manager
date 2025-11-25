@@ -1,9 +1,9 @@
 "use client";
 
 import { redirect } from "next/navigation";
-import { useAuth } from "@/hooks/context/useAuth";
-import { useModal } from "@/hooks/context/useModal";
-import { useBookmarks } from "@/hooks/context/useBookmarks";
+import { useAuth } from "@/hooks/context-hooks/useAuth";
+import { useModal } from "@/hooks/context-hooks/useModal";
+import { useBookmarks } from "@/hooks/context-hooks/useBookmarks";
 import DeleteAccountButton from "@/components/features/auth/DeleteAccountButton";
 
 const AccountActions = () => {

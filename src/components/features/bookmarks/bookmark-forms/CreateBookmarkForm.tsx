@@ -1,7 +1,7 @@
 import { useActionState } from "react";
-import { useBookmarkForm } from "@/hooks/useBookmarkForm";
-import { useBookmarks } from "@/hooks/context/useBookmarks";
-import { useModal } from "@/hooks/context/useModal";
+import { useBookmarkForm } from "@/hooks/form-hooks/useBookmarkForm";
+import { useBookmarks } from "@/hooks/context-hooks/useBookmarks";
+import { useModal } from "@/hooks/context-hooks/useModal";
 import CloseModalButton from "@/components/modal/CloseModalButton";
 import InputField from "./InputField";
 import TagsField from "./TagsField";

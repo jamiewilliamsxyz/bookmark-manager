@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, createContext } from "react";
-import { useBookmarks } from "@/hooks/context/useBookmarks";
+import { useBookmarks } from "@/hooks/context-hooks/useBookmarks";
 import type { ModalContextType, ModalProps, ModalState } from "@/types";
 
 export const ModalContext = createContext<ModalContextType | undefined>(

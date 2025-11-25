@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, redirect } from "next/navigation";
-import { useAuth } from "@/hooks/context/useAuth";
+import { useAuth } from "@/hooks/context-hooks/useAuth";
 import Spinner from "@/components/ui/Spinner";
 
 const RouteGuard = ({ children }: { children: React.ReactNode }) => {

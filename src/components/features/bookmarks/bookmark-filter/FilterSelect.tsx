@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { useSearch } from "@/hooks/context/useSearch";
+import { useSearch } from "@/hooks/context-hooks/useSearch";
 import FilterTrigger from "./FilterTrigger";
 import FilterDropdown from "./FilterDropdown";
 

@@ -1,4 +1,4 @@
-import { useModal } from "@/hooks/context/useModal";
+import { useModal } from "@/hooks/context-hooks/useModal";
 
 const CloseModalButton = ({ children }: { children: string }) => {
   const { closeModal } = useModal();
