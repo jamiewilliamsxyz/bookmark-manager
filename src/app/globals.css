@@ -8,6 +8,10 @@ h1 {
   @apply font-medium text-neutral-100;
 }
 
+::placeholder {
+  @apply text-neutral-400;
+}
+
 /* Scrollbar styles */
 
 ::-webkit-scrollbar {
