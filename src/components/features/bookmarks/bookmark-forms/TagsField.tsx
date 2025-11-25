@@ -6,7 +6,7 @@ interface TagsFieldProps {
   error?: { status: boolean; message: string };
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-  removeTag: (tag: string) => void;
+  removeTag: (index: number) => void;
 }
 
 const TagsField = ({
@@ -54,11 +54,11 @@ const TagsField = ({
 
       {tags.length > 0 && (
         <ul className="mt-2 flex gap-3 flex-wrap">
-          {tags.map((t) => (
+          {tags.map((t, index) => (
             <div
               className="cursor-pointer hover:opacity-75 duration-200 transition-opacity"
-              key={t}
-              onClick={() => removeTag(t)}
+              key={index}
+              onClick={() => removeTag(index)}
             >
               <Tag>{t}</Tag>
             </div>

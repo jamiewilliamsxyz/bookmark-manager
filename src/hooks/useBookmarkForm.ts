@@ -67,8 +67,8 @@ export const useBookmarkForm = ({
     }
   };
 
-  const removeTag = (tagToRemove: string) => {
-    setTags((prev) => prev.filter((t) => t !== tagToRemove));
+  const removeTag = (indexToRemove: number) => {
+    setTags((prev) => prev.filter((_, index) => index !== indexToRemove));
     resetTagError();
   };
 
