@@ -9,7 +9,7 @@ h1 {
 }
 
 ::placeholder {
-  @apply text-neutral-400;
+  @apply text-neutral-500;
 }
 
 /* Scrollbar styles */
