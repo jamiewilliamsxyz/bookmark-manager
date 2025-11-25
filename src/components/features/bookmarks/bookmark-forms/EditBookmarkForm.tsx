@@ -80,7 +80,7 @@ const EditBookmarkForm = () => {
       <InputField
         id="title"
         label="Title"
-        placeholder="Enter title"
+        placeholder="Useful Resource Name"
         type="text"
         value={title}
         error={errors.title}
@@ -90,7 +90,7 @@ const EditBookmarkForm = () => {
       <InputField
         id="url"
         label="URL"
-        placeholder="Enter URL"
+        placeholder="https://example.com"
         type="text"
         value={url}
         error={errors.url}
