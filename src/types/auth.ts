@@ -19,6 +19,10 @@ export interface AuthSuccess {
   };
 }
 
+export interface AuthSuccessNoData {
+  success: true;
+}
+
 export interface AuthFailure {
   success: false;
   error: string;
@@ -26,13 +30,16 @@ export interface AuthFailure {
 
 export type AuthResult = AuthSuccess | AuthFailure;
 
+export type AuthResultNoData = AuthSuccessNoData | AuthFailure;
+
 export interface AuthContextType {
   session: SessionType;
   loading: LoadingType;
   signUpUser: (email: string, password: string) => Promise<AuthResult>;
   logInUser: (email: string, password: string) => Promise<AuthResult>;
   logOutUser: () => Promise<void>;
-  resetPassword: () => Promise<void>;
+  sendPasswordReset: (email: string) => Promise<AuthResultNoData>;
+  updatePassword: (newPassword: string) => Promise<AuthResultNoData>;
   confirmation: ConfirmationType;
   checkConfirmation: () => void;
 }
@@ -43,4 +50,9 @@ export interface AuthProviderProps {
 
 export interface AuthFormProps {
   type: "login" | "signup";
+}
+
+export interface PasswordResetState {
+  error: string | null;
+  success: boolean;
 }

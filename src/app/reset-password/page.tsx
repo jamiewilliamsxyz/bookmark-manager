@@ -1,10 +1,10 @@
-import ResetPasswordForm from "@/components/features/auth/ResetPasswordForm";
+import SendPasswordResetForm from "@/components/features/auth/SendPasswordResetForm";
 
 const ResetPasswordPage = () => {
   return (
     <div className="flex flex-1 flex-col justify-center items-center">
       <h1 className="text-5xl mb-12">Reset Password</h1>
-      <ResetPasswordForm />
+      <SendPasswordResetForm />
     </div>
   );
 };

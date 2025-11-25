@@ -9,6 +9,7 @@ import type {
   AuthContextType,
   AuthProviderProps,
   AuthResult,
+  AuthResultNoData,
   ConfirmationType,
 } from "@/types";
 
@@ -205,8 +206,50 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   };
 
-  // Reset password
-  const resetPassword = async () => {};
+  // Send password reset email
+  const sendPasswordReset = async (
+    email: string
+  ): Promise<AuthResultNoData> => {
+    setLoading(true);
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: "http://localhost:3000/update-password", // UPDATE BEFORE PRODUCTION
+      });
+
+      if (error) return { success: false, error: error.message };
+
+      return { success: true };
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        return { success: false, error: err.message };
+      }
+      return { success: false, error: "Unexpected error has occurred" };
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Update password
+  const updatePassword = async (
+    newPassword: string
+  ): Promise<AuthResultNoData> => {
+    setLoading(true);
+    try {
+      const { error } = await supabase.auth.updateUser({
+        password: newPassword,
+      });
+
+      if (error) return { success: false, error: error.message };
+      return { success: true };
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        return { success: false, error: err.message };
+      }
+      return { success: false, error: "Unexpected error has occurred" };
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <AuthContext
@@ -218,7 +261,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         signUpUser,
         confirmation,
         checkConfirmation,
-        resetPassword,
+        sendPasswordReset,
+        updatePassword,
       }}
     >
       {children}
