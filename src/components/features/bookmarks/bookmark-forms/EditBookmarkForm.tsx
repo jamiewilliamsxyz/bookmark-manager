@@ -23,6 +23,7 @@ const EditBookmarkForm = () => {
     handleTitleChange,
     handleUrlChange,
     handleTagsInputChange,
+    handleTagsInputKeyDown,
     removeTag,
   } = useBookmarkForm({
     initialTitle: bookmarkToModify?.title || "",
@@ -102,6 +103,7 @@ const EditBookmarkForm = () => {
         value={tagsInput}
         error={errors.tags}
         onChange={(e) => handleTagsInputChange(e.target.value)}
+        onKeyDown={(e) => handleTagsInputKeyDown(e.key, tagsInput)}
         removeTag={removeTag}
       />
 

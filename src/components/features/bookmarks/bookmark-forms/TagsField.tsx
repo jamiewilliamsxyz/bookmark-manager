@@ -5,6 +5,7 @@ interface TagsFieldProps {
   value: string;
   error?: { status: boolean; message: string };
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyDown: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   removeTag: (tag: string) => void;
 }
 
@@ -13,6 +14,7 @@ const TagsField = ({
   error,
   tags,
   onChange,
+  onKeyDown,
   removeTag,
 }: TagsFieldProps) => {
   return (
@@ -33,6 +35,7 @@ const TagsField = ({
         placeholder="useful, resource, 123"
         value={value}
         onChange={onChange}
+        onKeyDown={onKeyDown}
         id="tags"
         name="tags"
         type="text"

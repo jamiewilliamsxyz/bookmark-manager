@@ -20,6 +20,7 @@ const CreateBookmarkForm = () => {
     handleTitleChange,
     handleUrlChange,
     handleTagsInputChange,
+    handleTagsInputKeyDown,
     removeTag,
   } = useBookmarkForm();
   const { createBookmark } = useBookmarks();
@@ -82,6 +83,7 @@ const CreateBookmarkForm = () => {
         value={tagsInput}
         error={errors.tags}
         onChange={(e) => handleTagsInputChange(e.target.value)}
+        onKeyDown={(e) => handleTagsInputKeyDown(e.key, tagsInput)}
         removeTag={removeTag}
       />
 
