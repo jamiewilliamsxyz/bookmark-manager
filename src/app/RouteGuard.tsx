@@ -2,6 +2,7 @@
 
 import { usePathname, redirect } from "next/navigation";
 import { useAuth } from "@/hooks/context/useAuth";
+import Spinner from "@/components/ui/Spinner";
 
 const RouteGuard = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
@@ -11,7 +12,7 @@ const RouteGuard = ({ children }: { children: React.ReactNode }) => {
   if (loading)
     return (
       <div className="flex flex-1 justify-center items-center px-8 w-full">
-        Loading...
+        <Spinner variant="light" />
       </div>
     );
 
