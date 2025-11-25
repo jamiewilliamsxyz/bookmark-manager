@@ -18,18 +18,28 @@ const TagsField = ({
   removeTag,
 }: TagsFieldProps) => {
   return (
-    <div>
+    <div className="flex flex-col">
       <label htmlFor="tags" className="text-lg">
         Tags
       </label>
 
-      <p
-        className={`${
-          error?.status ? "text-red-500" : "text-neutral-400"
-        } mt-0.5 text-sm`}
-      >
-        {error?.status ? error.message : "Separate tags with commas"}
-      </p>
+      <div className="my-0.5 text-sm">
+        {error?.status ? (
+          <p className="text-red-500">{error?.message}</p>
+        ) : (
+          <p className="text-neutral-400">
+            Press
+            <span className="bg-neutral-800 px-1.75 py-0.75 rounded-md mx-1.25 font-mono">
+              Enter
+            </span>
+            or
+            <span className="bg-neutral-800 px-1.75 py-0.75 rounded-md mx-1.25 font-mono">
+              ,
+            </span>
+            to add a tag
+          </p>
+        )}
+      </div>
 
       <input
         placeholder="useful, resource, 123"
