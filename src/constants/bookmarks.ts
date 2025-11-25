@@ -6,6 +6,10 @@ export const VALIDATION_RULES = {
   TAG_MAX_LENGTH: 20,
   MAX_TAGS: 5,
   URL_PATTERN: /^https?:\/\/\S+$/,
+  EMAIL_MAX_LENGTH: 300,
+  EMAIL_PATTERN: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+  PASSWORD_MIN_LENGTH: 8,
+  PASSWORD_MAX_LENGTH: 72,
 };
 
 export const INITIAL_ERROR = { status: false, message: "" };

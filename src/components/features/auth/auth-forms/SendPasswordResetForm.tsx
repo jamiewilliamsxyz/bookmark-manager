@@ -1,16 +1,15 @@
 "use client";
 
-import { useState, useActionState } from "react";
+import { useActionState } from "react";
 import { useAuth } from "@/hooks/context/useAuth";
+import { useAuthFormValidation } from "@/hooks/useAuthFormValidation";
 import { preventEnterSubmit } from "@/lib/preventEnterSubmit";
 import FormSubmitButton from "@/components/ui/FormSubmitButton";
 import type { PasswordResetState } from "@/types";
 
 const ResetPasswordForm = () => {
-  const { session, sendPasswordReset } = useAuth();
-  const [email, setEmail] = useState<string>(() =>
-    session ? (session.user.email as string) : ""
-  ); // Auto fill with user email if they are logged in
+  const { sendPasswordReset } = useAuth();
+  const { errors, email, handleEmailChange } = useAuthFormValidation();
 
   const [state, formAction, pending] = useActionState(
     async (_prevState: PasswordResetState | null, formData: FormData) => {
@@ -53,11 +52,15 @@ const ResetPasswordForm = () => {
             <label htmlFor="email" className="text-lg">
               Email
             </label>
-            <p className="text-red-500 mt-0.5 text-sm">
-              Email validation error
-            </p>
+
+            {errors.email.status && (
+              <p className="text-red-500 mt-0.5 text-sm">
+                {errors.email.message}
+              </p>
+            )}
+
             <input
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => handleEmailChange(e.target.value)}
               value={email}
               placeholder="example@gmail.com"
               id="email"
@@ -72,7 +75,7 @@ const ResetPasswordForm = () => {
           {state.error && <p className="text-red-500 text-sm">{state.error}</p>}
 
           <FormSubmitButton
-            isDisabled={pending || state.success}
+            isDisabled={pending || state.success || errors.email.status}
             isLoading={pending}
             text="Send"
           />

@@ -1,15 +1,16 @@
 "use client";
 
-import { useState, useActionState } from "react";
+import { useActionState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/hooks/context/useAuth";
+import { useAuthFormValidation } from "@/hooks/useAuthFormValidation";
 import { preventEnterSubmit } from "@/lib/preventEnterSubmit";
 import FormSubmitButton from "@/components/ui/FormSubmitButton";
 import type { PasswordResetState } from "@/types";
 
 const ChangePasswordForm = () => {
   const { updatePassword } = useAuth();
-  const [password, setPassword] = useState<string>("");
+  const { errors, password, handlePasswordChange } = useAuthFormValidation();
 
   const [state, formAction, pending] = useActionState(
     async (_prevState: PasswordResetState | null, formData: FormData) => {
@@ -55,11 +56,15 @@ const ChangePasswordForm = () => {
             <label htmlFor="password" className="text-lg">
               New password
             </label>
-            <p className="text-red-500 mt-0.5 text-sm">
-              Password validation error
-            </p>
+
+            {errors.password.status && (
+              <p className="text-red-500 mt-0.5 text-sm">
+                {errors.password.message}
+              </p>
+            )}
+
             <input
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => handlePasswordChange(e.target.value)}
               value={password}
               placeholder="••••••••••••••••"
               id="password"
@@ -74,7 +79,7 @@ const ChangePasswordForm = () => {
           {state.error && <p className="text-red-500 text-sm">{state.error}</p>}
 
           <FormSubmitButton
-            isDisabled={pending || state.success}
+            isDisabled={pending || state.success || errors.password.status}
             isLoading={pending}
             text="Update"
           />
