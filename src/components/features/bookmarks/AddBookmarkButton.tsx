@@ -16,9 +16,9 @@ const AddBookmarkButton = () => {
   return (
     <button
       onClick={openCreateBookmarkForm}
-      className="text-neutral-800 bg-neutral-100 py-2 px-5.5 w-fit rounded-md shadow hover:opacity-75 cursor-pointer duration-200 transition-opacity"
+      className="text-neutral-800 border border-neutral-900 bg-neutral-100 py-2 px-5.5 w-fit rounded-md shadow hover:opacity-75 cursor-pointer duration-200 transition-opacity"
     >
-      Add bookmark
+      Create bookmark
     </button>
   );
 };

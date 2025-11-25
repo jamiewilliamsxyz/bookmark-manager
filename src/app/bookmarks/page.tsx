@@ -10,12 +10,12 @@ const BookmarksPage = () => {
       <h1 className="text-6xl">Bookmarks</h1>
 
       <SearchProvider>
-        <div className="flex flex-col gap-5 items-center">
-          <div className="flex gap-5 items-center">
-            <SearchBar />
+        <div className="flex flex-col gap-5">
+          <SearchBar />
+          <div className="flex gap-5">
             <FilterSelect />
+            <AddBookmarkButton />
           </div>
-          <AddBookmarkButton />
         </div>
 
         <CardsContainer />
