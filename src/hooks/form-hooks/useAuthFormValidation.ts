@@ -1,11 +1,17 @@
-// Auth forms validation
+// Auth form validation
 
 import { useState } from "react";
 import { VALIDATION_RULES, INITIAL_ERROR } from "@/constants/bookmarks";
 
-export const useAuthFormValidation = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+interface UseAuthFormValidationProps {
+  initialEmail?: string;
+}
+
+export const useAuthFormValidation = ({
+  initialEmail = "",
+}: UseAuthFormValidationProps = {}) => {
+  const [email, setEmail] = useState<string>(initialEmail);
+  const [password, setPassword] = useState<string>("");
 
   const [errors, setErrors] = useState({
     email: INITIAL_ERROR,

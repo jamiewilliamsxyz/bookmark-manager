@@ -8,8 +8,10 @@ import FormSubmitButton from "@/components/ui/FormSubmitButton";
 import type { PasswordResetState } from "@/types";
 
 const ResetPasswordForm = () => {
-  const { sendPasswordReset } = useAuth();
-  const { errors, email, handleEmailChange } = useAuthFormValidation();
+  const { session, sendPasswordReset } = useAuth();
+  const { errors, email, handleEmailChange } = useAuthFormValidation({
+    initialEmail: session?.user?.email || "",
+  });
 
   const [state, formAction, pending] = useActionState(
     async (_prevState: PasswordResetState | null, formData: FormData) => {
