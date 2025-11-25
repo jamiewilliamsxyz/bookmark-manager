@@ -3,7 +3,7 @@
 import { useBookmarks } from "@/hooks/context/useBookmarks";
 import { useSearch } from "@/hooks/context/useSearch";
 import { MAX_BOOKMARKS } from "@/constants/bookmarks";
-import Card from "./card/Card";
+import Card from "./bookmark-card/Card";
 import Spinner from "@/components/ui/Spinner";
 
 const CardsContainer = () => {

@@ -2,10 +2,10 @@
 
 import { useEffect } from "react";
 import { useModal } from "@/hooks/context/useModal";
-import CreateBookmarkForm from "@/components/features/bookmarks/form/CreateBookmarkForm";
+import CreateBookmarkForm from "@/components/features/bookmarks/bookmark-forms/CreateBookmarkForm";
 import DeleteAccountConfirmation from "@/components/features/auth/DeleteAccountConfirmation";
 import DeleteBookmarkConfirmation from "@/components/features/bookmarks/DeleteBookmarkConfirmation";
-import EditBookmarkForm from "@/components/features/bookmarks/form/EditBookmarkForm";
+import EditBookmarkForm from "@/components/features/bookmarks/bookmark-forms/EditBookmarkForm";
 import type { ModalProps } from "@/types";
 
 const ModalHandler = ({ children }: ModalProps) => {

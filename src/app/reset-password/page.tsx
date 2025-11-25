@@ -1,4 +1,4 @@
-import SendPasswordResetForm from "@/components/features/auth/SendPasswordResetForm";
+import SendPasswordResetForm from "@/components/features/auth/auth-forms/SendPasswordResetForm";
 
 const ResetPasswordPage = () => {
   return (

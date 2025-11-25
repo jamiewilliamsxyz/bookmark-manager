@@ -1,4 +1,4 @@
-import Tag from "../card/Tag";
+import Tag from "../bookmark-card/Tag";
 
 interface TagsFieldProps {
   tags: string[];

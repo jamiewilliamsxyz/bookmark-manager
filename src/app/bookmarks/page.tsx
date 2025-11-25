@@ -1,6 +1,6 @@
 import { SearchProvider } from "@/context/SearchContext";
 import SearchBar from "@/components/features/bookmarks/SearchBar";
-import FilterSelect from "@/components/features/bookmarks/filter/FilterSelect";
+import FilterSelect from "@/components/features/bookmarks/bookmark-filter/FilterSelect";
 import AddBookmarkButton from "@/components/features/bookmarks/AddBookmarkButton";
 import CardsContainer from "@/components/features/bookmarks/CardsContainer";
 

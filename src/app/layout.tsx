@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import NavBar from "@/components/layout/nav/NavBar";
-import Footer from "@/components/layout/Footer";
+import NavBar from "@/components/layout/nav-bar/NavBar";
+import Footer from "@/components/layout/footer/Footer";
 import { AuthProvider } from "@/context/AuthContext";
 import { BookmarksProvider } from "@/context/BookmarksContext";
 import { ModalProvider } from "@/context/ModalContext";
 import ModalHandler from "@/components/modal/ModalHandler";
-import RouteGuard from "@/app/RouteGuard";
+import RouteGuard from "@/components/features/auth/RouteGuard";
 
 export const metadata: Metadata = {
   title: "Bookmark Manager",
