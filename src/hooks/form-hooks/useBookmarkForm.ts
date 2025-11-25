@@ -72,13 +72,6 @@ export const useBookmarkForm = ({
     resetTagError();
   };
 
-  const resetForm = () => {
-    setTitle(initialTitle);
-    setUrl(initialUrl);
-    setTags(initialTags);
-    setTagsInput("");
-  };
-
   return {
     title,
     url,
@@ -91,6 +84,5 @@ export const useBookmarkForm = ({
     handleTagsInputChange,
     handleTagsInputKeyDown,
     removeTag,
-    resetForm,
   };
 };
