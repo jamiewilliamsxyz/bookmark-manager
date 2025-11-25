@@ -1,13 +1,16 @@
 interface SpinnerProps {
-  variant: "light" | "dark";
+  theme: "light" | "dark";
+  size: "small" | "large";
 }
 
-const Spinner = ({ variant }: SpinnerProps) => {
+const Spinner = ({ theme, size }: SpinnerProps) => {
   return (
     <div
       className={`${
-        variant === "light" ? "border-neutral-200" : "border-neutral-800"
-      } w-6 h-6 border-2 border-t-transparent rounded-full animate-spin`}
+        theme === "light" ? "border-neutral-200" : "border-neutral-800"
+      } ${
+        size === "small" ? "w-5.25 h-5.25" : "w-6.5 h-6.5"
+      } border-2 border-t-transparent rounded-full animate-spin`}
     ></div>
   );
 };

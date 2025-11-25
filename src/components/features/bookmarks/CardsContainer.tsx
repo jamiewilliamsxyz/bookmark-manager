@@ -4,6 +4,7 @@ import { useBookmarks } from "@/hooks/context/useBookmarks";
 import { useSearch } from "@/hooks/context/useSearch";
 import { MAX_BOOKMARKS } from "@/constants/bookmarks";
 import Card from "./card/Card";
+import Spinner from "@/components/ui/Spinner";
 
 const CardsContainer = () => {
   const { bookmarks, loading } = useBookmarks();
@@ -25,7 +26,7 @@ const CardsContainer = () => {
     return true;
   });
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Spinner theme="light" size="large" />;
 
   return (
     <>

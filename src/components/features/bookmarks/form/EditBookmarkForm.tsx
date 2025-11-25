@@ -37,7 +37,7 @@ const EditBookmarkForm = () => {
     url === bookmarkToModify.url &&
     JSON.stringify(tags) === JSON.stringify(bookmarkToModify.tags || []);
 
-  const [state, formAction] = useActionState(
+  const [state, formAction, pending] = useActionState(
     // eslint-disable-next-line
     async (_prevState: any, formData: FormData) => {
       if (isUnchanged)
@@ -68,7 +68,7 @@ const EditBookmarkForm = () => {
   );
 
   const isSubmitDisabled =
-    !!isUnchanged || isError() || !title.trim() || !url.trim();
+    !!isUnchanged || isError() || !title.trim() || !url.trim() || pending;
 
   return (
     <form
@@ -109,7 +109,11 @@ const EditBookmarkForm = () => {
         <p className="text-red-500 text-sm">{state.message}</p>
       )}
 
-      <FormSubmitButton isDisabled={isSubmitDisabled}>Update</FormSubmitButton>
+      <FormSubmitButton
+        isDisabled={isSubmitDisabled}
+        isLoading={pending}
+        text="Update"
+      />
 
       <CloseModalButton>Return</CloseModalButton>
     </form>

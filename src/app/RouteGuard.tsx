@@ -12,7 +12,7 @@ const RouteGuard = ({ children }: { children: React.ReactNode }) => {
   if (loading)
     return (
       <div className="flex flex-1 justify-center items-center px-8 w-full">
-        <Spinner variant="light" />
+        <Spinner theme="light" size="large" />
       </div>
     );
 

@@ -25,7 +25,7 @@ const CreateBookmarkForm = () => {
   const { createBookmark } = useBookmarks();
   const { closeModal } = useModal();
 
-  const [state, formAction] = useActionState(
+  const [state, formAction, pending] = useActionState(
     // eslint-disable-next-line
     async (_prevState: any, formData: FormData) => {
       const formTitle = formData.get("title") as string;
@@ -48,7 +48,7 @@ const CreateBookmarkForm = () => {
     null
   );
 
-  const isSubmitDisabled = isError() || !title.trim() || !url.trim();
+  const isSubmitDisabled = isError() || !title.trim() || !url.trim() || pending;
 
   return (
     <form
@@ -89,7 +89,11 @@ const CreateBookmarkForm = () => {
         <p className="text-red-500 text-sm">{state.message}</p>
       )}
 
-      <FormSubmitButton isDisabled={isSubmitDisabled}>Update</FormSubmitButton>
+      <FormSubmitButton
+        isDisabled={isSubmitDisabled}
+        isLoading={pending}
+        text="Create"
+      />
 
       <CloseModalButton>Return</CloseModalButton>
     </form>

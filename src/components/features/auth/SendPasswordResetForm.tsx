@@ -71,9 +71,11 @@ const ResetPasswordForm = () => {
 
           {state.error && <p className="text-red-500 text-sm">{state.error}</p>}
 
-          <FormSubmitButton isDisabled={pending || state.success}>
-            {pending ? "Loading..." : "Send"}
-          </FormSubmitButton>
+          <FormSubmitButton
+            isDisabled={pending || state.success}
+            isLoading={pending}
+            text="Send"
+          />
 
           <p className="text-neutral-400 text-sm">
             You&apos;ll receive an email to reset your password

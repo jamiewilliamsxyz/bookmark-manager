@@ -98,9 +98,11 @@ const AuthForm = ({ type }: AuthFormProps) => {
 
             {error && <p className="text-red-500">{error.message}</p>}
 
-            <FormSubmitButton isDisabled={pending}>
-              {pending ? "Loading..." : type === "login" ? "Log In" : "Sign Up"}
-            </FormSubmitButton>
+            <FormSubmitButton
+              isDisabled={pending}
+              isLoading={pending}
+              text={type === "login" ? "Log In" : "Sign Up"}
+            />
 
             <div className="flex items-center gap-1.5 text-[0.95rem] text-neutral-400">
               {type === "login" ? (

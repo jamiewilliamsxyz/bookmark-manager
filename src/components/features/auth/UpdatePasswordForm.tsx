@@ -73,9 +73,11 @@ const ChangePasswordForm = () => {
 
           {state.error && <p className="text-red-500 text-sm">{state.error}</p>}
 
-          <FormSubmitButton isDisabled={pending || state.success}>
-            {pending ? "Loading..." : "Update"}
-          </FormSubmitButton>
+          <FormSubmitButton
+            isDisabled={pending || state.success}
+            isLoading={pending}
+            text="Update"
+          />
         </form>
       )}
     </>
