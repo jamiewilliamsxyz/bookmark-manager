@@ -1,17 +1,17 @@
 interface FooterLinkProps {
   text: string;
-  url: string;
+  href: string;
 }
 
-const ExternalLink = ({ text, url }: FooterLinkProps) => {
+const ExternalLink = ({ text, href }: FooterLinkProps) => {
   return (
     <a
-      href={url}
+      href={href}
       target="_blank"
       rel="noopener noreferrer"
-      title={url}
+      title={href}
       aria-label={text}
-      className="cursor-pointer hover:opacity-75 duration-200 transition-opacity text-neutral-400 text-sm"
+      className="cursor-pointer hover:opacity-75 duration-200 transition-opacity text-neutral-400 text-sm font-medium"
     >
       {text}
     </a>
