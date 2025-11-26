@@ -86,7 +86,7 @@ const SignUpForm = () => {
           <FormSubmitButton
             isDisabled={isSubmitDisabled}
             isLoading={pending}
-            text="Log In"
+            text="Sign up"
           />
 
           <div className="flex items-center gap-1.5 text-[0.95rem] text-neutral-400">

@@ -4,18 +4,19 @@ import { useActionState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/hooks/context-hooks/useAuth";
 import { useAuthFormValidation } from "@/hooks/form-hooks/useAuthFormValidation";
-import PasswordField from "@/components/features/auth/auth-forms/PasswordField";
+import FormInputField from "@/components/form/FormInputField";
 import FormSubmitButton from "@/components/form/FormSubmitButton";
 import type { PasswordResetState } from "@/types";
 
 const ChangePasswordForm = () => {
   const { updatePassword } = useAuth();
-  const { errors } = useAuthFormValidation();
+  const { errors, password, handlePasswordChange, isError } =
+    useAuthFormValidation();
 
   const [state, formAction, pending] = useActionState(
     async (_prevState: PasswordResetState | null, formData: FormData) => {
-      const password = formData.get("password");
-      const res = await updatePassword(password as string);
+      const formPassword = formData.get("password");
+      const res = await updatePassword(formPassword as string);
 
       if (!res.success) {
         return {
@@ -31,6 +32,13 @@ const ChangePasswordForm = () => {
     },
     { error: null, success: false }
   );
+
+  const isSubmitDisabled =
+    isError() ||
+    !password.trim() ||
+    pending ||
+    state.success ||
+    errors.password.status;
 
   return (
     <>
@@ -51,12 +59,20 @@ const ChangePasswordForm = () => {
           action={formAction}
           className="border border-neutral-800 bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-5 justify-start min-w-88 max-w-88"
         >
-          <PasswordField />
+          <FormInputField
+            id="password"
+            label="Password"
+            placeholder="••••••••••••••••"
+            type="password"
+            value={password}
+            error={errors.password}
+            onChange={(e) => handlePasswordChange(e.target.value)}
+          />
 
           {state.error && <p className="text-red-500 text-sm">{state.error}</p>}
 
           <FormSubmitButton
-            isDisabled={pending || state.success || errors.password.status}
+            isDisabled={isSubmitDisabled}
             isLoading={pending}
             text="Update"
           />

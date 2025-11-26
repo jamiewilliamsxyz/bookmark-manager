@@ -3,20 +3,20 @@
 import { useActionState } from "react";
 import { useAuth } from "@/hooks/context-hooks/useAuth";
 import { useAuthFormValidation } from "@/hooks/form-hooks/useAuthFormValidation";
-import EmailField from "@/components/features/auth/auth-forms/EmailField";
+import FormInputField from "@/components/form/FormInputField";
 import FormSubmitButton from "@/components/form/FormSubmitButton";
 import type { PasswordResetState } from "@/types";
 
 const ResetPasswordForm = () => {
   const { session, sendPasswordReset } = useAuth();
-  const { errors } = useAuthFormValidation({
+  const { errors, email, handleEmailChange, isError } = useAuthFormValidation({
     initialEmail: session?.user?.email || "",
   });
 
   const [state, formAction, pending] = useActionState(
     async (_prevState: PasswordResetState | null, formData: FormData) => {
-      const email = formData.get("email");
-      const res = await sendPasswordReset(email as string);
+      const formEmail = formData.get("email");
+      const res = await sendPasswordReset(formEmail as string);
 
       if (!res.success) {
         return {
@@ -32,6 +32,13 @@ const ResetPasswordForm = () => {
     },
     { error: null, success: false }
   );
+
+  const isSubmitDisabled =
+    isError() ||
+    !email.trim() ||
+    pending ||
+    state.success ||
+    errors.email.status;
 
   return (
     <>
@@ -49,12 +56,19 @@ const ResetPasswordForm = () => {
           action={formAction}
           className="border border-neutral-800 bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-5 justify-start min-w-88 max-w-88"
         >
-          <EmailField />
-
+          <FormInputField
+            id="email"
+            label="Email"
+            placeholder="example@gmail.com"
+            type="email"
+            value={email}
+            error={errors.email}
+            onChange={(e) => handleEmailChange(e.target.value)}
+          />
           {state.error && <p className="text-red-500 text-sm">{state.error}</p>}
 
           <FormSubmitButton
-            isDisabled={pending || state.success || errors.email.status}
+            isDisabled={isSubmitDisabled}
             isLoading={pending}
             text="Send"
           />
