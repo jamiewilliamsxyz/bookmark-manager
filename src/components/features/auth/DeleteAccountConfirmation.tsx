@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { useAuth } from "@/hooks/context-hooks/useAuth";
 import { deleteUser } from "@/lib/deleteUser";
 import CloseModalButton from "@/components/modal/CloseModalButton";
@@ -5,29 +8,27 @@ import CloseModalButton from "@/components/modal/CloseModalButton";
 const DeleteAccountConfirmation = () => {
   const { logOutUser, session } = useAuth();
 
-  const handleDelete = async () => {
-    try {
-      // Get user id
-      const userId = session?.user?.id;
-      if (!userId) {
-        console.error("Session not found");
-        return;
-      }
+  const [error, setError] = useState<string | null>(null);
 
-      // Delete and logout user
-      const deletedUser = await deleteUser(userId as string);
-      if (deletedUser) {
-        logOutUser();
-      } else {
-        console.error("Failed to delete user");
-      }
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        console.error("Error deleting user:", err.message);
-      } else {
-        console.error("Unknown error deleting user:", err);
-      }
+  const handleDelete = async () => {
+    setError(null);
+
+    // Get user id
+    const userId = session?.user.id;
+    if (!userId) {
+      setError("User not found");
+      return;
     }
+
+    // Delete user and handle error
+    const res = await deleteUser(userId);
+    if (res) {
+      setError(res);
+      return;
+    }
+
+    // Logout
+    await logOutUser();
   };
 
   return (
@@ -49,6 +50,7 @@ const DeleteAccountConfirmation = () => {
           Confirm
         </button>
       </div>
+      {error && <p className="text-sm text-red-500">{error}</p>}
     </div>
   );
 };

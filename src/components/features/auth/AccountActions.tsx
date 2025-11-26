@@ -23,7 +23,7 @@ const AccountActions = () => {
 
   return (
     <>
-      {!logOutError && <p className="text-sm text-red-500">{logOutError}</p>}
+      {logOutError && <p className="text-sm text-red-500">{logOutError}</p>}
       <div className="flex gap-5">
         <div className="bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-3 border border-neutral-800 items-center justify-center">
           <button
