@@ -60,7 +60,7 @@ const TagsField = ({
               key={index}
               onClick={() => removeTag(index)}
             >
-              <Tag>{t}</Tag>
+              <Tag text={t} varient="removable" />
             </div>
           ))}
         </ul>
