@@ -3,8 +3,8 @@
 import { useActionState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/hooks/context-hooks/useAuth";
-import EmailField from "@/components/form/EmailField";
-import PasswordField from "@/components/form/PasswordField";
+import EmailField from "@/components/features/auth/auth-forms/EmailField";
+import PasswordField from "@/components/features/auth/auth-forms/PasswordField";
 import FormSubmitButton from "@/components/form/FormSubmitButton";
 
 const LogInForm = () => {

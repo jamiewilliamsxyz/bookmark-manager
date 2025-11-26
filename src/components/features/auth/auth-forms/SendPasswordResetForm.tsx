@@ -3,7 +3,7 @@
 import { useActionState } from "react";
 import { useAuth } from "@/hooks/context-hooks/useAuth";
 import { useAuthFormValidation } from "@/hooks/form-hooks/useAuthFormValidation";
-import EmailField from "@/components/form/EmailField";
+import EmailField from "@/components/features/auth/auth-forms/EmailField";
 import FormSubmitButton from "@/components/form/FormSubmitButton";
 import type { PasswordResetState } from "@/types";
 

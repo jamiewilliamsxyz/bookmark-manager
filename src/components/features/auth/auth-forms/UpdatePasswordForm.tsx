@@ -4,7 +4,7 @@ import { useActionState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/hooks/context-hooks/useAuth";
 import { useAuthFormValidation } from "@/hooks/form-hooks/useAuthFormValidation";
-import PasswordField from "@/components/form/PasswordField";
+import PasswordField from "@/components/features/auth/auth-forms/PasswordField";
 import FormSubmitButton from "@/components/form/FormSubmitButton";
 import type { PasswordResetState } from "@/types";
 
