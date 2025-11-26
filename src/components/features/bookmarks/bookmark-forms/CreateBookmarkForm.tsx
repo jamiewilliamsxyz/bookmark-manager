@@ -3,7 +3,7 @@ import { useBookmarkForm } from "@/hooks/form-hooks/useBookmarkForm";
 import { useBookmarks } from "@/hooks/context-hooks/useBookmarks";
 import { useModal } from "@/hooks/context-hooks/useModal";
 import CloseModalButton from "@/components/modal/CloseModalButton";
-import InputField from "./InputField";
+import FormInputField from "@/components/form/FormInputField";
 import TagsField from "./TagsField";
 import FormSubmitButton from "@/components/form/FormSubmitButton";
 import { preventEnterSubmit } from "@/lib/preventEnterSubmit";
@@ -58,7 +58,7 @@ const CreateBookmarkForm = () => {
       action={formAction}
       className="border border-neutral-800 bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-5 justify-start min-w-110 max-w-110"
     >
-      <InputField
+      <FormInputField
         id="title"
         label="Title"
         placeholder="Useful Resource Name"
@@ -68,7 +68,7 @@ const CreateBookmarkForm = () => {
         onChange={(e) => handleTitleChange(e.target.value)}
       />
 
-      <InputField
+      <FormInputField
         id="url"
         label="URL"
         placeholder="https://example.com"
