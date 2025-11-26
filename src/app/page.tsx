@@ -16,7 +16,7 @@ const Home = () => {
         <Link2 className="w-8 h-8 text-neutral-100 opacity-50 animate-[float_5.5s_ease-in-out_infinite]" />
       </div>
 
-      <div className="absolute top-[70%] right-[calc(50%-400px)] -rotate-[18deg]">
+      <div className="absolute top-[70%] right-[calc(50%-400px)] -rotate-18">
         <Bookmark className="w-10 h-10 text-neutral-100 opacity-55 animate-[float_6.5s_ease-in-out_infinite]" />
       </div>
 
