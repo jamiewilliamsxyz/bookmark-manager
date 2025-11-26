@@ -1,6 +1,6 @@
 "use client";
 
-import { redirect } from "next/navigation";
+import Link from "next/link";
 import { useAuth } from "@/hooks/context-hooks/useAuth";
 import { useModal } from "@/hooks/context-hooks/useModal";
 import { useBookmarks } from "@/hooks/context-hooks/useBookmarks";
@@ -21,13 +21,12 @@ const AccountActions = () => {
         >
           Log out
         </button>
-        <button
-          onClick={() => redirect("/reset-password")}
-          disabled={loading}
+        <Link
+          href="/reset-password"
           className="underline cursor-pointer hover:opacity-75 duration-200 transition-opacity w-fit h-fit"
         >
           Reset password
-        </button>
+        </Link>
       </div>
 
       <div className="bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-3 border border-neutral-800 items-center justify-center">

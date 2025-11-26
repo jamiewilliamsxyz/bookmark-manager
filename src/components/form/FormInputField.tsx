@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+import Link from "next/link";
 
 interface FormInputFieldProps {
   id: string;
@@ -30,12 +30,12 @@ const FormInputField = ({
       {resetPasswordLink && (
         <div className="mt-1 flex items-center gap-1.5 text-sm text-neutral-400">
           <p>Can&apos;t login?</p>
-          <button
-            onClick={() => redirect("/reset-password")}
+          <Link
+            href="/reset-password"
             className="underline text-neutral-300 hover:opacity-75 cursor-pointer duration-200 transition-opacity"
           >
             Reset password
-          </button>
+          </Link>
         </div>
       )}
 
