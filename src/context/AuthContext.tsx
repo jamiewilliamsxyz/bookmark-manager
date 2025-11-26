@@ -40,12 +40,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         } else {
           setSession(data.session);
         }
-      } catch (err: unknown) {
-        if (err instanceof Error) {
-          console.error("Error fetching session:", err.message);
-        } else {
-          console.error("Unknown error fetching session:", err);
-        }
+      } catch (err) {
+        const message =
+          err instanceof Error ? err.message : "Unexpected error occurred";
+        console.error(message);
         setSession(null);
       } finally {
         setLoading(false);
@@ -80,7 +78,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       });
 
       if (error) {
-        console.error("Supabase signup error:", error.message);
         return { success: false, error: error.message };
       } else if (!data.session && !data.user) {
         setSession(null);
@@ -110,7 +107,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       const { data, error } = await supabase.auth.getSession();
 
       if (error) {
-        console.error("Error checking session:", error.message);
         setConfirmation((prev) => ({
           ...prev,
           message: "Unable to check your email confirmation. Please try again.",
@@ -131,11 +127,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             "Your email has not been confirmed yet. Please check your inbox",
         }));
       }
-    } catch (err: unknown) {
-      console.error("Unexpected error checking email confirmation:", err);
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "Unexpected error occurred";
+
       setConfirmation((prev) => ({
         ...prev,
-        message: "Unexpected error. Please try again.",
+        message: message,
       }));
     }
   };
@@ -154,7 +152,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
       // Handle Supabase error
       if (error) {
-        console.error("Supabase login error:", error.message);
         return { success: false, error: error.message };
       } else if (!data.session) {
         setSession(null);
@@ -184,14 +181,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       const { error } = await supabase.auth.signOut({ scope: "local" });
 
       if (error) console.error("Supabase logout error:", error.message);
-
       setSession(null);
     } catch (err: unknown) {
-      if (err instanceof Error) {
-        console.error("Unexpected logout error has occurred:", err.message);
-      } else {
-        console.error("Unknown logout error:", err);
-      }
+      const message =
+        err instanceof Error ? err.message : "Unexpected error occurred";
+      console.error(message);
     } finally {
       setLoading(false);
     }
