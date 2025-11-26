@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/hooks/context-hooks/useAuth";
+import { preventEnterSubmit } from "@/lib/preventEnterSubmit";
 import EmailField from "@/components/features/auth/auth-forms/EmailField";
 import PasswordField from "@/components/features/auth/auth-forms/PasswordField";
 import FormSubmitButton from "@/components/form/FormSubmitButton";
@@ -34,6 +35,8 @@ const LogInForm = () => {
 
   return (
     <form
+      noValidate
+      onKeyDown={preventEnterSubmit}
       action={formAction}
       className="border border-neutral-800 bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-5 min-w-96 max-w-96"
     >
