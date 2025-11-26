@@ -36,7 +36,7 @@ const ResetPasswordForm = () => {
   return (
     <>
       {state.success ? (
-        <div className="bg-[#1a1a1a] rounded-md shadow p-5 border border-neutral-800">
+        <div className="border border-neutral-800 bg-[#1a1a1a] rounded-md shadow p-5">
           <p className="text-neutral-400 text-center">
             A password reset link has been
             <br />
@@ -47,7 +47,7 @@ const ResetPasswordForm = () => {
         <form
           noValidate
           action={formAction}
-          className="bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-5 border border-neutral-800 justify-center"
+          className="border border-neutral-800 bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-5 justify-start min-w-88 max-w-88"
         >
           <EmailField />
 
