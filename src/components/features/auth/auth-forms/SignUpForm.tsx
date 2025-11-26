@@ -89,7 +89,7 @@ const SignUpForm = () => {
             text="Sign up"
           />
 
-          <div className="flex items-center gap-1.5 text-[0.95rem] text-neutral-400">
+          <div className="flex items-center gap-1.5 text-sm text-neutral-400">
             <p className="mt-0.5">Already have an account?</p>
             <Link
               href="/login"
