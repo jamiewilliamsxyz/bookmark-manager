@@ -95,14 +95,10 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       } else {
         return { success: false, error: "Signup failed. Please try again." };
       }
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        console.error("Unexpected signup error:", err.message);
-        return { success: false, error: err.message };
-      } else {
-        console.error("Unknown signup error:", err);
-        return { success: false, error: "An unexpected error has occurred" };
-      }
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "Unexpected error occurred";
+      return { success: false, error: message };
     } finally {
       setLoading(false);
     }

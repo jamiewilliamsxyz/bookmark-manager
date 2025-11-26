@@ -3,35 +3,48 @@
 import { useActionState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/hooks/context-hooks/useAuth";
+import { useAuthFormValidation } from "@/hooks/form-hooks/useAuthFormValidation";
 import EmailConfirmation from "../EmailConfirmation";
-import EmailField from "@/components/features/auth/auth-forms/EmailField";
-import PasswordField from "@/components/features/auth/auth-forms/PasswordField";
+import FormInputField from "@/components/form/FormInputField";
 import FormSubmitButton from "@/components/form/FormSubmitButton";
 
 const SignUpForm = () => {
   const { signUpUser, checkConfirmation, confirmation } = useAuth();
+  const {
+    email,
+    password,
+    errors,
+    handleEmailChange,
+    handlePasswordChange,
+    isError,
+  } = useAuthFormValidation();
 
-  const [error, formAction, pending] = useActionState(
-    async (_prevState: Error | null, formData: FormData) => {
-      const email = formData.get("email");
-      const password = formData.get("password");
+  const [state, formAction, pending] = useActionState(
+    // eslint-disable-next-line
+    async (_prevState: any | null, formData: FormData) => {
+      const formEmail = formData.get("email");
+      const formPassword = formData.get("password");
 
-      const res = await signUpUser(email as string, password as string);
+      const res = await signUpUser(formEmail as string, formPassword as string);
 
       // Handle known errors
       if (!res.success) {
-        return new Error(res.error);
+        console.error(res.error);
+        return { success: false, message: res.error || "Something went wrong" };
       }
 
       // Handle if success/there's a session
       if (res.data.session && res.success) {
-        return null;
+        return { success: true };
       }
 
-      return new Error("Error while signing up");
+      return { success: false, message: "Error while signing up" };
     },
     null
   );
+
+  const isSubmitDisabled =
+    isError() || !email.trim() || !password.trim() || pending;
 
   return (
     <form
@@ -46,15 +59,34 @@ const SignUpForm = () => {
         />
       ) : (
         <>
-          <EmailField />
-          <PasswordField />
+          <FormInputField
+            id="email"
+            label="Email"
+            placeholder="example@gmail.com"
+            type="email"
+            value={email}
+            error={errors.email}
+            onChange={(e) => handleEmailChange(e.target.value)}
+          />
 
-          {error && <p className="text-red-500">{error.message}</p>}
+          <FormInputField
+            id="password"
+            label="Password"
+            placeholder="••••••••••••••••"
+            type="password"
+            value={password}
+            error={errors.password}
+            onChange={(e) => handlePasswordChange(e.target.value)}
+          />
+
+          {state?.success === false && (
+            <p className="text-red-500 text-sm">{state.message}</p>
+          )}
 
           <FormSubmitButton
-            isDisabled={pending}
+            isDisabled={isSubmitDisabled}
             isLoading={pending}
-            text="Sign Up"
+            text="Log In"
           />
 
           <div className="flex items-center gap-1.5 text-[0.95rem] text-neutral-400">
