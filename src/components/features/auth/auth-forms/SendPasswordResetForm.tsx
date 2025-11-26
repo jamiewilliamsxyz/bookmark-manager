@@ -4,7 +4,7 @@ import { useActionState } from "react";
 import { useAuth } from "@/hooks/context-hooks/useAuth";
 import { useAuthFormValidation } from "@/hooks/form-hooks/useAuthFormValidation";
 import { preventEnterSubmit } from "@/lib/preventEnterSubmit";
-import FormSubmitButton from "@/components/ui/FormSubmitButton";
+import FormSubmitButton from "@/components/form/FormSubmitButton";
 import type { PasswordResetState } from "@/types";
 
 const ResetPasswordForm = () => {

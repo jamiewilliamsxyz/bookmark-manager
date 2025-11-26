@@ -5,7 +5,7 @@ import { useModal } from "@/hooks/context-hooks/useModal";
 import CloseModalButton from "@/components/modal/CloseModalButton";
 import InputField from "./InputField";
 import TagsField from "./TagsField";
-import FormSubmitButton from "@/components/ui/FormSubmitButton";
+import FormSubmitButton from "@/components/form/FormSubmitButton";
 import { preventEnterSubmit } from "@/lib/preventEnterSubmit";
 import type { Bookmark, BookmarkOperationResult } from "@/types";
 

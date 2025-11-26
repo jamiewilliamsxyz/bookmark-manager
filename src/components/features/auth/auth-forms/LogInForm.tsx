@@ -3,7 +3,7 @@
 import { useActionState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/hooks/context-hooks/useAuth";
-import FormSubmitButton from "@/components/ui/FormSubmitButton";
+import FormSubmitButton from "@/components/form/FormSubmitButton";
 
 const LogInForm = () => {
   const { logInUser } = useAuth();
