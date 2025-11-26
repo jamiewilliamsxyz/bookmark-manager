@@ -68,6 +68,7 @@ const LogInForm = () => {
         type="password"
         value={password}
         error={errors.password}
+        resetPasswordLink={true}
         onChange={(e) => handlePasswordChange(e.target.value)}
       />
 
@@ -81,8 +82,8 @@ const LogInForm = () => {
         text="Log in"
       />
 
-      <div className="flex items-center gap-1.5 text-[0.95rem] text-neutral-400">
-        <p className="mt-0.5">Don&apos;t have an account?</p>
+      <div className="mt-0.5 flex items-center gap-1.5 text-sm text-neutral-400">
+        <p>Don&apos;t have an account?</p>
         <Link
           href="/signup"
           className="underline text-neutral-300 hover:opacity-75 cursor-pointer duration-200 transition-opacity"
