@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/hooks/context-hooks/useAuth";
 import { useModal } from "@/hooks/context-hooks/useModal";
@@ -11,38 +12,50 @@ const AccountActions = () => {
   const { openModal } = useModal();
   const { setDeleteType } = useBookmarks();
 
-  return (
-    <div className="flex gap-5">
-      <div className="bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-3 border border-neutral-800 items-center justify-center">
-        <button
-          onClick={logOutUser}
-          disabled={loading}
-          className="underline cursor-pointer hover:opacity-75 duration-200 transition-opacity w-fit h-fit"
-        >
-          Log out
-        </button>
-        <Link
-          href="/reset-password"
-          className="underline cursor-pointer hover:opacity-75 duration-200 transition-opacity w-fit h-fit"
-        >
-          Reset password
-        </Link>
-      </div>
+  const [logOutError, setLogOutError] = useState<string | null>(null);
 
-      <div className="bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-3 border border-neutral-800 items-center justify-center">
-        <DeleteAccountButton />
-        <button
-          disabled={loading}
-          onClick={() => {
-            setDeleteType("all");
-            openModal("deleteBookmark");
-          }}
-          className="underline cursor-pointer hover:opacity-75 duration-200 transition-opacity w-fit h-fit text-red-500"
-        >
-          Delete all bookmarks
-        </button>
+  const handleLogOut = async () => {
+    setLogOutError(null);
+
+    const res = await logOutUser();
+    if (res) setLogOutError(res);
+  };
+
+  return (
+    <>
+      {!logOutError && <p className="text-sm text-red-500">{logOutError}</p>}
+      <div className="flex gap-5">
+        <div className="bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-3 border border-neutral-800 items-center justify-center">
+          <button
+            onClick={handleLogOut}
+            disabled={loading}
+            className="underline cursor-pointer hover:opacity-75 duration-200 transition-opacity w-fit h-fit"
+          >
+            Log out
+          </button>
+          <Link
+            href="/reset-password"
+            className="underline cursor-pointer hover:opacity-75 duration-200 transition-opacity w-fit h-fit"
+          >
+            Reset password
+          </Link>
+        </div>
+
+        <div className="bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-3 border border-neutral-800 items-center justify-center">
+          <DeleteAccountButton />
+          <button
+            disabled={loading}
+            onClick={() => {
+              setDeleteType("all");
+              openModal("deleteBookmark");
+            }}
+            className="underline cursor-pointer hover:opacity-75 duration-200 transition-opacity w-fit h-fit text-red-500"
+          >
+            Delete all bookmarks
+          </button>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

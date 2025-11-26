@@ -37,7 +37,7 @@ export interface AuthContextType {
   loading: LoadingType;
   signUpUser: (email: string, password: string) => Promise<AuthResult>;
   logInUser: (email: string, password: string) => Promise<AuthResult>;
-  logOutUser: () => Promise<void>;
+  logOutUser: () => Promise<string | null>;
   sendPasswordReset: (email: string) => Promise<AuthResultNoData>;
   updatePassword: (newPassword: string) => Promise<AuthResultNoData>;
   confirmation: ConfirmationType;

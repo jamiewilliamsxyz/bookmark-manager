@@ -175,17 +175,17 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   // Log out user
-  const logOutUser = async () => {
+  const logOutUser = async (): Promise<string | null> => {
     setLoading(true);
     try {
       const { error } = await supabase.auth.signOut({ scope: "local" });
 
-      if (error) console.error("Supabase logout error:", error.message);
+      if (error) return error.message;
+
       setSession(null);
-    } catch (err: unknown) {
-      const message =
-        err instanceof Error ? err.message : "Unexpected error occurred";
-      console.error(message);
+      return null;
+    } catch (err) {
+      return err instanceof Error ? err.message : "Unexpected error occurred";
     } finally {
       setLoading(false);
     }
