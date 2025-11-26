@@ -121,5 +121,16 @@ export const useAuthFormValidation = ({
     validatePassword(value);
   };
 
-  return { email, password, errors, handleEmailChange, handlePasswordChange };
+  const isError = () => {
+    return errors.email.status || errors.password.status;
+  };
+
+  return {
+    email,
+    password,
+    errors,
+    handleEmailChange,
+    handlePasswordChange,
+    isError,
+  };
 };

@@ -171,15 +171,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           data: { user: data.user, session: data.session },
         };
       }
-    } catch (err: unknown) {
+    } catch (err) {
       // Handle unexpected error
-      if (err instanceof Error) {
-        console.error("Unexpected login error:", err.message);
-        return { success: false, error: err.message };
-      } else {
-        console.error("Unknown login error:", err);
-        return { success: false, error: "Unexpected error has occurred" };
-      }
+      const message =
+        err instanceof Error ? err.message : "Unexpected error occurred";
+      return { success: false, error: message };
     } finally {
       setLoading(false);
     }
