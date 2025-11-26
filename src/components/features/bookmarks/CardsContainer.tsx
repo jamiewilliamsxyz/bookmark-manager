@@ -48,7 +48,7 @@ const CardsContainer = () => {
           <p>
             {bookmarks.length > 0
               ? "No bookmarks match your search"
-              : "You currently don&apos;t have any bookmarks"}
+              : "You currently don't have any bookmarks"}
           </p>
         )}
       </div>
