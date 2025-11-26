@@ -4,13 +4,13 @@ import { useActionState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/hooks/context-hooks/useAuth";
 import { useAuthFormValidation } from "@/hooks/form-hooks/useAuthFormValidation";
-import { preventEnterSubmit } from "@/lib/preventEnterSubmit";
+import PasswordField from "@/components/form/PasswordField";
 import FormSubmitButton from "@/components/form/FormSubmitButton";
 import type { PasswordResetState } from "@/types";
 
 const ChangePasswordForm = () => {
   const { updatePassword } = useAuth();
-  const { errors, password, handlePasswordChange } = useAuthFormValidation();
+  const { errors } = useAuthFormValidation();
 
   const [state, formAction, pending] = useActionState(
     async (_prevState: PasswordResetState | null, formData: FormData) => {
@@ -48,33 +48,10 @@ const ChangePasswordForm = () => {
       ) : (
         <form
           noValidate
-          onKeyDown={preventEnterSubmit}
           action={formAction}
           className="bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-5 border border-neutral-800 justify-center"
         >
-          <div>
-            <label htmlFor="password" className="text-lg">
-              New password
-            </label>
-
-            {errors.password.status && (
-              <p className="text-red-500 mt-0.5 text-sm">
-                {errors.password.message}
-              </p>
-            )}
-
-            <input
-              onChange={(e) => handlePasswordChange(e.target.value)}
-              value={password}
-              placeholder="••••••••••••••••"
-              id="password"
-              name="password"
-              type="password"
-              required
-              aria-required="true"
-              className="mt-1 py-2 px-3 bg-neutral-900 rounded-md border border-neutral-800 w-full focus:outline-none"
-            />
-          </div>
+          <PasswordField />
 
           {state.error && <p className="text-red-500 text-sm">{state.error}</p>}
 

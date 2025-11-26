@@ -3,13 +3,13 @@
 import { useActionState } from "react";
 import { useAuth } from "@/hooks/context-hooks/useAuth";
 import { useAuthFormValidation } from "@/hooks/form-hooks/useAuthFormValidation";
-import { preventEnterSubmit } from "@/lib/preventEnterSubmit";
+import EmailField from "@/components/form/EmailField";
 import FormSubmitButton from "@/components/form/FormSubmitButton";
 import type { PasswordResetState } from "@/types";
 
 const ResetPasswordForm = () => {
   const { session, sendPasswordReset } = useAuth();
-  const { errors, email, handleEmailChange } = useAuthFormValidation({
+  const { errors } = useAuthFormValidation({
     initialEmail: session?.user?.email || "",
   });
 
@@ -46,33 +46,10 @@ const ResetPasswordForm = () => {
       ) : (
         <form
           noValidate
-          onKeyDown={preventEnterSubmit}
           action={formAction}
           className="bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-5 border border-neutral-800 justify-center"
         >
-          <div>
-            <label htmlFor="email" className="text-lg">
-              Email
-            </label>
-
-            {errors.email.status && (
-              <p className="text-red-500 mt-0.5 text-sm">
-                {errors.email.message}
-              </p>
-            )}
-
-            <input
-              onChange={(e) => handleEmailChange(e.target.value)}
-              value={email}
-              placeholder="example@gmail.com"
-              id="email"
-              name="email"
-              type="email"
-              required
-              aria-required="true"
-              className="mt-1 py-2 px-3 bg-neutral-900 rounded-md border border-neutral-800 w-full focus:outline-none"
-            />
-          </div>
+          <EmailField />
 
           {state.error && <p className="text-red-500 text-sm">{state.error}</p>}
 

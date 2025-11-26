@@ -4,6 +4,8 @@ import { useActionState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/hooks/context-hooks/useAuth";
 import EmailConfirmation from "../EmailConfirmation";
+import EmailField from "@/components/form/EmailField";
+import PasswordField from "@/components/form/PasswordField";
 import FormSubmitButton from "@/components/form/FormSubmitButton";
 
 const SignUpForm = () => {
@@ -46,35 +48,8 @@ const SignUpForm = () => {
           />
         ) : (
           <>
-            <div>
-              <label htmlFor="email" className="text-lg">
-                Email
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="Enter your email"
-                className="mt-1 py-2 px-3 bg-neutral-900 rounded-md border border-neutral-800 w-full focus:outline-none"
-                required
-                aria-required="true"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="password" className="text-lg">
-                Password
-              </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                placeholder="Enter your password"
-                className="mt-1 py-2 px-3 bg-neutral-900 rounded-md border border-neutral-800 w-full focus:outline-none"
-                aria-required="true"
-                required
-              />
-            </div>
+            <EmailField />
+            <PasswordField />
 
             {error && <p className="text-red-500">{error.message}</p>}
 

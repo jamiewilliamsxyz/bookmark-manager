@@ -3,6 +3,8 @@
 import { useActionState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/hooks/context-hooks/useAuth";
+import EmailField from "@/components/form/EmailField";
+import PasswordField from "@/components/form/PasswordField";
 import FormSubmitButton from "@/components/form/FormSubmitButton";
 
 const LogInForm = () => {
@@ -38,55 +40,26 @@ const LogInForm = () => {
         action={formAction}
         className="border border-neutral-800 bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-5 min-w-96 max-w-96"
       >
-        <>
-          <div>
-            <label htmlFor="email" className="text-lg">
-              Email
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Enter your email"
-              className="mt-1 py-2 px-3 bg-neutral-900 rounded-md border border-neutral-800 w-full focus:outline-none"
-              required
-              aria-required="true"
-            />
-          </div>
+        <EmailField />
+        <PasswordField />
 
-          <div>
-            <label htmlFor="password" className="text-lg">
-              Password
-            </label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              placeholder="Enter your password"
-              className="mt-1 py-2 px-3 bg-neutral-900 rounded-md border border-neutral-800 w-full focus:outline-none"
-              aria-required="true"
-              required
-            />
-          </div>
+        {error && <p className="text-red-500">{error.message}</p>}
 
-          {error && <p className="text-red-500">{error.message}</p>}
+        <FormSubmitButton
+          isDisabled={pending}
+          isLoading={pending}
+          text="Log In"
+        />
 
-          <FormSubmitButton
-            isDisabled={pending}
-            isLoading={pending}
-            text="Log In"
-          />
-
-          <div className="flex items-center gap-1.5 text-[0.95rem] text-neutral-400">
-            <p className="mt-0.5">Don&apos;t have an account?</p>
-            <Link
-              href="/signup"
-              className="underline text-neutral-300 hover:opacity-75 cursor-pointer duration-200 transition-opacity"
-            >
-              Sign up
-            </Link>
-          </div>
-        </>
+        <div className="flex items-center gap-1.5 text-[0.95rem] text-neutral-400">
+          <p className="mt-0.5">Don&apos;t have an account?</p>
+          <Link
+            href="/signup"
+            className="underline text-neutral-300 hover:opacity-75 cursor-pointer duration-200 transition-opacity"
+          >
+            Sign up
+          </Link>
+        </div>
       </form>
     </>
   );
