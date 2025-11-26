@@ -34,44 +34,40 @@ const SignUpForm = () => {
   );
 
   return (
-    <>
-      <h1 className="text-5xl text-center mb-12">Sign Up</h1>
+    <form
+      action={formAction}
+      className="border border-neutral-800 bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-5 min-w-96 max-w-96"
+    >
+      {confirmation.isConfirming ? (
+        <EmailConfirmation
+          confirmation={confirmation}
+          checkConfirmation={checkConfirmation}
+        />
+      ) : (
+        <>
+          <EmailField />
+          <PasswordField />
 
-      <form
-        action={formAction}
-        className="border border-neutral-800 bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-5 min-w-96 max-w-96"
-      >
-        {confirmation.isConfirming ? (
-          <EmailConfirmation
-            confirmation={confirmation}
-            checkConfirmation={checkConfirmation}
+          {error && <p className="text-red-500">{error.message}</p>}
+
+          <FormSubmitButton
+            isDisabled={pending}
+            isLoading={pending}
+            text="Sign Up"
           />
-        ) : (
-          <>
-            <EmailField />
-            <PasswordField />
 
-            {error && <p className="text-red-500">{error.message}</p>}
-
-            <FormSubmitButton
-              isDisabled={pending}
-              isLoading={pending}
-              text="Sign Up"
-            />
-
-            <div className="flex items-center gap-1.5 text-[0.95rem] text-neutral-400">
-              <p className="mt-0.5">Already have an account?</p>
-              <Link
-                href="/login"
-                className="underline text-neutral-300 hover:opacity-75 cursor-pointer duration-200 transition-opacity"
-              >
-                Log in
-              </Link>
-            </div>
-          </>
-        )}
-      </form>
-    </>
+          <div className="flex items-center gap-1.5 text-[0.95rem] text-neutral-400">
+            <p className="mt-0.5">Already have an account?</p>
+            <Link
+              href="/login"
+              className="underline text-neutral-300 hover:opacity-75 cursor-pointer duration-200 transition-opacity"
+            >
+              Log in
+            </Link>
+          </div>
+        </>
+      )}
+    </form>
   );
 };
 
