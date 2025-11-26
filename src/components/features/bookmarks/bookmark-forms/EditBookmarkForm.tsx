@@ -54,7 +54,6 @@ const EditBookmarkForm = () => {
       });
 
       if (!res.success) {
-        console.error(res.error);
         return {
           success: false,
           message: res.error || "Something went wrong",
