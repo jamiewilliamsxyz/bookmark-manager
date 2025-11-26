@@ -44,14 +44,6 @@ export interface AuthContextType {
   checkConfirmation: () => void;
 }
 
-export interface AuthProviderProps {
-  children: React.ReactNode;
-}
-
-export interface AuthFormProps {
-  type: "login" | "signup";
-}
-
 export interface PasswordResetState {
   error: string | null;
   success: boolean;

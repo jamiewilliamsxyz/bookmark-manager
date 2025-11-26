@@ -29,7 +29,7 @@ export type BookmarkOperationResult<T> =
   | BookmarkOperationSuccess<T>
   | BookmarkOperationError;
 
-export interface BookmarksContextValue {
+export interface BookmarksContextType {
   bookmarks: Bookmark[];
   loading: boolean;
   bookmarkToModify: BookmarkToModify | null;

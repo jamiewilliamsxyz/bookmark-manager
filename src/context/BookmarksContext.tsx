@@ -8,13 +8,13 @@ import type {
   Bookmark,
   BookmarkToModify,
   CreateBookmarkData,
-  BookmarksContextValue,
+  BookmarksContextType,
   BookmarkOperationResult,
 } from "@/types";
 
-export const BookmarksContext = createContext<
-  BookmarksContextValue | undefined
->(undefined);
+export const BookmarksContext = createContext<BookmarksContextType | undefined>(
+  undefined
+);
 
 export const BookmarksProvider = ({
   children,

@@ -1,9 +1,9 @@
-import AuthForm from "@/components/features/auth/auth-forms/AuthForm";
+import LogInForm from "@/components/features/auth/auth-forms/LogInForm";
 
 const LogInPage = () => {
   return (
     <div className="flex flex-1 flex-col justify-center items-center px-8 w-full">
-      <AuthForm type="login" />
+      <LogInForm />
     </div>
   );
 };

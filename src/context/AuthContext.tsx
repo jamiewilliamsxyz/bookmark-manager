@@ -7,7 +7,6 @@ import type {
   SessionType,
   LoadingType,
   AuthContextType,
-  AuthProviderProps,
   AuthResult,
   AuthResultNoData,
   ConfirmationType,
@@ -17,7 +16,7 @@ export const AuthContext = createContext<AuthContextType | undefined>(
   undefined
 );
 
-export const AuthProvider = ({ children }: AuthProviderProps) => {
+export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [session, setSession] = useState<SessionType | null>(null);
   const [loading, setLoading] = useState<LoadingType>(true);
   const [confirmation, setConfirmation] = useState<ConfirmationType>({
