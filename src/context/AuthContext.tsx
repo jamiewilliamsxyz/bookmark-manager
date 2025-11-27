@@ -197,9 +197,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   ): Promise<AuthResultNoData> => {
     setLoading(true);
     try {
-      const { error } = await supabase.auth.resetPasswordForEmail(email, {
-        redirectTo: "http://localhost:3000/update-password", // UPDATE BEFORE PRODUCTION
-      });
+      const { error } = await supabase.auth.resetPasswordForEmail(
+        email.toLowerCase()
+      );
 
       if (error) return { success: false, error: error.message };
 

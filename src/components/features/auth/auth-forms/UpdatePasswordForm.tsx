@@ -8,7 +8,7 @@ import FormInputField from "@/components/form/FormInputField";
 import FormSubmitButton from "@/components/form/FormSubmitButton";
 import type { PasswordResetState } from "@/types";
 
-const ChangePasswordForm = () => {
+const UpdatePasswordForm = () => {
   const { updatePassword } = useAuth();
   const { errors, password, handlePasswordChange, isError } =
     useAuthFormValidation();
@@ -82,4 +82,4 @@ const ChangePasswordForm = () => {
   );
 };
 
-export default ChangePasswordForm;
+export default UpdatePasswordForm;

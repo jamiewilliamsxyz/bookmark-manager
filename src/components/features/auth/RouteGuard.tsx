@@ -22,7 +22,7 @@ const RouteGuard = ({ children }: { children: React.ReactNode }) => {
       redirect("/bookmarks");
     }
   } else {
-    // If they are not authenticated and on bookmarks
+    // If they are not authenticated and on bookmarks or account page
     if (pathname === "/bookmarks" || pathname === "/account") {
       redirect("/login");
     }

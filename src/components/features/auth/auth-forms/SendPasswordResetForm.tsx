@@ -7,7 +7,7 @@ import FormInputField from "@/components/form/FormInputField";
 import FormSubmitButton from "@/components/form/FormSubmitButton";
 import type { PasswordResetState } from "@/types";
 
-const ResetPasswordForm = () => {
+const SendPasswordResetForm = () => {
   const { session, sendPasswordReset } = useAuth();
   const { errors, email, handleEmailChange, isError } = useAuthFormValidation({
     initialEmail: session?.user?.email || "",
@@ -82,4 +82,4 @@ const ResetPasswordForm = () => {
   );
 };
 
-export default ResetPasswordForm;
+export default SendPasswordResetForm;
