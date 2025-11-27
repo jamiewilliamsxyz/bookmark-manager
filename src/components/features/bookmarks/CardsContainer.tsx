@@ -7,7 +7,7 @@ import Card from "./bookmark-card/Card";
 import Spinner from "@/components/ui/Spinner";
 
 const CardsContainer = () => {
-  const { bookmarks, loading } = useBookmarks();
+  const { bookmarks, bookmarksStatus } = useBookmarks();
   const { query, selectedFilter } = useSearch();
 
   // Bookmarks to render based on query and filter
@@ -26,13 +26,16 @@ const CardsContainer = () => {
     return true;
   });
 
-  if (loading) return <Spinner theme="light" size="large" />;
+  if (bookmarksStatus.isLoading) return <Spinner theme="light" size="large" />;
+  if (bookmarksStatus.isLoading)
+    return <p className="text-red-500">{bookmarksStatus.error}</p>;
 
   return (
     <>
       {bookmarks.length >= MAX_BOOKMARKS && (
         <p className="text-red-500">{`Maximum of ${MAX_BOOKMARKS} bookmarks reached`}</p>
       )}
+
       <div className="cards-container-scrollbar flex flex-wrap gap-5 items-base justify-center overflow-y-auto overflow-x-hidden max-h-[53vh]">
         {filteredBookmarks.length > 0 ? (
           filteredBookmarks.map((b) => (

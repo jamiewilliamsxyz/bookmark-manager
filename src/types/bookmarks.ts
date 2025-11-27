@@ -25,13 +25,18 @@ export interface BookmarkOperationError {
   error: string;
 }
 
+export interface BookmarksStatus {
+  isLoading: boolean;
+  error: string | null;
+}
+
 export type BookmarkOperationResult<T> =
   | BookmarkOperationSuccess<T>
   | BookmarkOperationError;
 
 export interface BookmarksContextType {
   bookmarks: Bookmark[];
-  loading: boolean;
+  bookmarksStatus: BookmarksStatus;
   bookmarkToModify: BookmarkToModify | null;
   deleteType: "single" | "all" | null;
   setBookmarkToModify: React.Dispatch<

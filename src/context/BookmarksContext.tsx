@@ -10,6 +10,7 @@ import type {
   CreateBookmarkData,
   BookmarksContextType,
   BookmarkOperationResult,
+  BookmarksStatus,
 } from "@/types";
 
 export const BookmarksContext = createContext<BookmarksContextType | undefined>(
@@ -23,7 +24,11 @@ export const BookmarksProvider = ({
 }) => {
   const { session } = useAuth();
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [bookmarksStatus, setBookmarksStatus] = useState<BookmarksStatus>({
+    isLoading: true,
+    error: null,
+  });
+
   const [bookmarkToModify, setBookmarkToModify] =
     useState<BookmarkToModify | null>(null);
   const [deleteType, setDeleteType] = useState<"single" | "all" | null>(null);
@@ -37,14 +42,19 @@ export const BookmarksProvider = ({
           .select("*")
           .order("created_at", { ascending: false });
 
-        if (error) {
-          console.error("Error fetching bookmarks:", error);
-          return;
-        }
+        if (error) throw error;
 
-        if (data) setBookmarks(data as Bookmark[]);
-      } finally {
-        setLoading(false);
+        setBookmarks(data as Bookmark[]);
+        setBookmarksStatus({
+          isLoading: false,
+          error: null,
+        });
+      } catch (err) {
+        setBookmarksStatus({
+          isLoading: false,
+          error:
+            err instanceof Error ? err.message : "Unexpected error occurred",
+        });
       }
     };
 
@@ -176,7 +186,7 @@ export const BookmarksProvider = ({
     <BookmarksContext
       value={{
         bookmarks,
-        loading,
+        bookmarksStatus,
         bookmarkToModify,
         deleteType,
         setBookmarkToModify,
