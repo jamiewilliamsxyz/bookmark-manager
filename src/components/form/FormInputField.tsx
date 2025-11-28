@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 interface FormInputFieldProps {
   id: string;
   label: string;
@@ -7,7 +5,6 @@ interface FormInputFieldProps {
   type: string;
   value: string;
   error: { status: boolean; message: string };
-  resetPasswordLink?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -18,7 +15,6 @@ const FormInputField = ({
   type,
   value,
   error,
-  resetPasswordLink,
   onChange,
 }: FormInputFieldProps) => {
   return (
@@ -26,18 +22,6 @@ const FormInputField = ({
       <label htmlFor={id} className="text-lg">
         {label}
       </label>
-
-      {resetPasswordLink && (
-        <div className="mt-1 flex items-center gap-1.5 text-sm text-neutral-400">
-          <p>Can&apos;t login?</p>
-          <Link
-            href="/reset-password"
-            className="underline text-neutral-300 hover:opacity-75 cursor-pointer duration-200 transition-opacity"
-          >
-            Reset password
-          </Link>
-        </div>
-      )}
 
       <p className="text-red-500 mt-0.5 text-sm">
         {error?.status && error.message}

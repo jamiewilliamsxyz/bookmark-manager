@@ -67,7 +67,6 @@ const LogInForm = () => {
         type="password"
         value={password}
         error={errors.password}
-        resetPasswordLink={true}
         onChange={(e) => handlePasswordChange(e.target.value)}
       />
 

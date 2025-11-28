@@ -18,7 +18,7 @@ export const AuthContext = createContext<AuthContextType | undefined>(
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [session, setSession] = useState<SessionType | null>(null);
-  const [loading, setLoading] = useState<LoadingType>(true);
+  const [isLoading, setIsLoading] = useState<LoadingType>(true);
   const [confirmation, setConfirmation] = useState<ConfirmationType>({
     isConfirming: false,
     message: null,
@@ -46,7 +46,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         console.error(message);
         setSession(null);
       } finally {
-        setLoading(false);
+        setIsLoading(false);
       }
     };
 
@@ -70,7 +70,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     email: string,
     password: string
   ): Promise<AuthResult> => {
-    setLoading(true);
+    setIsLoading(true);
     try {
       const { data, error } = await supabase.auth.signUp({
         email: email,
@@ -97,7 +97,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         err instanceof Error ? err.message : "Unexpected error occurred";
       return { success: false, error: message };
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -143,7 +143,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     email: string,
     password: string
   ): Promise<AuthResult> => {
-    setLoading(true);
+    setIsLoading(true);
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
         email: email.toLowerCase(),
@@ -170,13 +170,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         err instanceof Error ? err.message : "Unexpected error occurred";
       return { success: false, error: message };
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
   // Log out user
   const logOutUser = async (): Promise<string | null> => {
-    setLoading(true);
+    setIsLoading(true);
     try {
       const { error } = await supabase.auth.signOut({ scope: "local" });
 
@@ -187,39 +187,30 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     } catch (err) {
       return err instanceof Error ? err.message : "Unexpected error occurred";
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
-  // Send password reset email
-  const sendPasswordReset = async (
-    email: string
-  ): Promise<AuthResultNoData> => {
-    setLoading(true);
-    try {
-      const { error } = await supabase.auth.resetPasswordForEmail(
-        email.toLowerCase()
-      );
-
-      if (error) return { success: false, error: error.message };
-
-      return { success: true };
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        return { success: false, error: err.message };
-      }
-      return { success: false, error: "Unexpected error has occurred" };
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Update password
-  const updatePassword = async (
+  // Change password
+  const changePassword = async (
+    currentPassword: string,
     newPassword: string
   ): Promise<AuthResultNoData> => {
-    setLoading(true);
+    setIsLoading(true);
     try {
+      // Check if current password is correct by re-authenticating them
+      const email = session?.user.email;
+      if (!email) return { success: false, error: "No email found" };
+
+      const { error: reAuthError } = await supabase.auth.signInWithPassword({
+        email,
+        password: currentPassword,
+      });
+
+      if (reAuthError)
+        return { success: false, error: "Your current password is incorrect" };
+
+      // Set new password
       const { error } = await supabase.auth.updateUser({
         password: newPassword,
       });
@@ -232,7 +223,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       }
       return { success: false, error: "Unexpected error has occurred" };
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -240,14 +231,13 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     <AuthContext
       value={{
         session,
-        loading,
+        isLoading,
+        confirmation,
         logInUser,
         logOutUser,
         signUpUser,
-        confirmation,
         checkConfirmation,
-        sendPasswordReset,
-        updatePassword,
+        changePassword,
       }}
     >
       {children}

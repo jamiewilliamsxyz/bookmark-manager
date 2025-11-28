@@ -8,15 +8,20 @@ import FormInputField from "@/components/form/FormInputField";
 import FormSubmitButton from "@/components/form/FormSubmitButton";
 import type { PasswordResetState } from "@/types";
 
-const UpdatePasswordForm = () => {
-  const { updatePassword } = useAuth();
+const ChangePasswordForm = () => {
+  const { changePassword } = useAuth();
   const { errors, password, handlePasswordChange, isError } =
     useAuthFormValidation();
 
   const [state, formAction, pending] = useActionState(
     async (_prevState: PasswordResetState | null, formData: FormData) => {
-      const formPassword = formData.get("password");
-      const res = await updatePassword(formPassword as string);
+      const formCurrentPassword = formData.get("currentPassword");
+      const formNewPassword = formData.get("newPassword");
+
+      const res = await changePassword(
+        formCurrentPassword as string,
+        formNewPassword as string
+      );
 
       if (!res.success) {
         return {
@@ -47,9 +52,9 @@ const UpdatePasswordForm = () => {
           <p className="text-neutral-400">
             You password has been successfully
             <br />
-            been updated
+            been changed
           </p>
-          <Link href="/login" className="w-fit h-fit">
+          <Link href="/bookmarks" className="w-fit h-fit">
             Return
           </Link>
         </div>
@@ -59,9 +64,25 @@ const UpdatePasswordForm = () => {
           action={formAction}
           className="border border-neutral-800 bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-5 justify-start min-w-88 max-w-88"
         >
+          <div>
+            <label htmlFor="currentPassword" className="text-lg">
+              Current password
+            </label>
+
+            <input
+              placeholder="••••••••••••••••"
+              id="currentPassword"
+              name="currentPassword"
+              type="password"
+              required
+              aria-required="true"
+              className="mt-1 py-2 px-3 bg-neutral-900 rounded-md border border-neutral-800 w-full focus:outline-none"
+            />
+          </div>
+
           <FormInputField
-            id="password"
-            label="Password"
+            id="newPassword"
+            label="New password"
             placeholder="••••••••••••••••"
             type="password"
             value={password}
@@ -74,7 +95,7 @@ const UpdatePasswordForm = () => {
           <FormSubmitButton
             isDisabled={isSubmitDisabled}
             isLoading={pending}
-            text="Update"
+            text="Change"
           />
         </form>
       )}
@@ -82,4 +103,4 @@ const UpdatePasswordForm = () => {
   );
 };
 
-export default UpdatePasswordForm;
+export default ChangePasswordForm;

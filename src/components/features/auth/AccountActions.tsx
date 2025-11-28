@@ -8,7 +8,7 @@ import { useBookmarks } from "@/hooks/context-hooks/useBookmarks";
 import DeleteAccountButton from "@/components/features/auth/DeleteAccountButton";
 
 const AccountActions = () => {
-  const { logOutUser, loading } = useAuth();
+  const { logOutUser, isLoading } = useAuth();
   const { openModal } = useModal();
   const { setDeleteType } = useBookmarks();
 
@@ -28,23 +28,23 @@ const AccountActions = () => {
         <div className="bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-3 border border-neutral-800 items-center justify-center">
           <button
             onClick={handleLogOut}
-            disabled={loading}
+            disabled={isLoading}
             className="underline cursor-pointer hover:opacity-75 duration-200 transition-opacity w-fit h-fit"
           >
             Log out
           </button>
           <Link
-            href="/reset-password"
+            href="/change-password"
             className="underline cursor-pointer hover:opacity-75 duration-200 transition-opacity w-fit h-fit"
           >
-            Reset password
+            Change password
           </Link>
         </div>
 
         <div className="bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-3 border border-neutral-800 items-center justify-center">
           <DeleteAccountButton />
           <button
-            disabled={loading}
+            disabled={isLoading}
             onClick={() => {
               setDeleteType("all");
               openModal("deleteBookmark");

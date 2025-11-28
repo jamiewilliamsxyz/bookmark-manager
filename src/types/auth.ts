@@ -34,13 +34,15 @@ export type AuthResultNoData = AuthSuccessNoData | AuthFailure;
 
 export interface AuthContextType {
   session: SessionType;
-  loading: LoadingType;
+  isLoading: LoadingType;
+  confirmation: ConfirmationType;
   signUpUser: (email: string, password: string) => Promise<AuthResult>;
   logInUser: (email: string, password: string) => Promise<AuthResult>;
   logOutUser: () => Promise<string | null>;
-  sendPasswordReset: (email: string) => Promise<AuthResultNoData>;
-  updatePassword: (newPassword: string) => Promise<AuthResultNoData>;
-  confirmation: ConfirmationType;
+  changePassword: (
+    currentPassword: string,
+    newPassword: string
+  ) => Promise<AuthResultNoData>;
   checkConfirmation: () => void;
 }
 
