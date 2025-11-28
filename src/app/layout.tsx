@@ -17,8 +17,8 @@ export const metadata: Metadata = {
 
 const inter = Inter({
   subsets: ["latin"],
-  display: "swap",
   weight: ["400", "500"],
+  fallback: ["system-ui", "sans-serif"],
 });
 
 export default function RootLayout({
