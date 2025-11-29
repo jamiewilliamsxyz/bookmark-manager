@@ -87,7 +87,7 @@ const CreateBookmarkForm = () => {
       />
 
       {state?.success === false && (
-        <p role="alert" aria-live="assertive" className="text-red-500 text-sm">
+        <p role="alert" className="text-red-500 text-sm">
           {state.message}
         </p>
       )}

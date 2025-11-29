@@ -25,7 +25,7 @@ const TagsField = ({
 
       <div className="my-0.5 text-sm">
         {error?.status ? (
-          <p role="alert" aria-live="assertive" className="text-red-500">
+          <p role="alert" className="text-red-500 text-sm">
             {error?.message}
           </p>
         ) : (

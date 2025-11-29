@@ -25,12 +25,7 @@ const FormInputField = ({
         {label}
       </label>
 
-      <p
-        id={errorId}
-        role="alert"
-        aria-live="assertive"
-        className="text-red-500 mt-0.5 text-sm"
-      >
+      <p id={errorId} role="alert" className="text-red-500 mt-0.5 text-sm">
         {error?.status && error.message}
       </p>
 

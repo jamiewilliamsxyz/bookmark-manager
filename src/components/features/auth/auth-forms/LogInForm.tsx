@@ -71,7 +71,9 @@ const LogInForm = () => {
       />
 
       {state?.success === false && (
-        <p className="text-red-500 text-sm">{state.message}</p>
+        <p role="alert" className="text-red-500 text-sm">
+          {state.message}
+        </p>
       )}
 
       <FormSubmitButton

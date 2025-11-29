@@ -51,7 +51,7 @@ const DeleteAccountConfirmation = () => {
         </button>
       </div>
       {error && (
-        <p role="alert" aria-live="assertive" className="text-sm text-red-500">
+        <p role="alert" className="text-sm text-red-500">
           {error}
         </p>
       )}

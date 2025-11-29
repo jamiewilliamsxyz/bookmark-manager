@@ -23,7 +23,7 @@ const AccountActions = () => {
   return (
     <>
       {logOutError && (
-        <p role="alert" aria-live="assertive" className="text-sm text-red-500">
+        <p role="alert" className="text-sm text-red-500">
           {logOutError}
         </p>
       )}

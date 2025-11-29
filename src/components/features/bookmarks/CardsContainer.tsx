@@ -29,7 +29,7 @@ const CardsContainer = () => {
   if (bookmarksStatus.isLoading) return <Spinner theme="light" size="large" />;
   if (bookmarksStatus.error)
     return (
-      <p role="alert" aria-live="assertive" className="text-red-500">
+      <p role="alert" className="text-red-500">
         {bookmarksStatus.error}
       </p>
     );
