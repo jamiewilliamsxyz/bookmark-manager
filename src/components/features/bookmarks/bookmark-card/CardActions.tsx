@@ -44,6 +44,7 @@ const CardActions = ({ bookmarkData }: { bookmarkData: BookmarkToModify }) => {
       <button
         onClick={copyLink}
         disabled={isCooldown}
+        aria-label="Copy link"
         className={
           isCooldown
             ? ""
@@ -59,6 +60,7 @@ const CardActions = ({ bookmarkData }: { bookmarkData: BookmarkToModify }) => {
 
       <button
         onClick={() => handleEdit(bookmarkData)}
+        aria-label="Edit bookmark"
         className="cursor-pointer hover:opacity-75 duration-200 transition-opacity"
       >
         <SquarePen color="#f5f5f5" strokeWidth={1} size={20} />
@@ -66,6 +68,7 @@ const CardActions = ({ bookmarkData }: { bookmarkData: BookmarkToModify }) => {
 
       <button
         onClick={() => handleDelete(bookmarkData)}
+        aria-label="Delete bookmark"
         className="cursor-pointer hover:opacity-75 duration-200 transition-opacity"
       >
         <Trash color="#fb2c36" strokeWidth={1} size={20} />
