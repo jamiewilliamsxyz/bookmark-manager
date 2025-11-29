@@ -25,7 +25,9 @@ const TagsField = ({
 
       <div className="my-0.5 text-sm">
         {error?.status ? (
-          <p className="text-red-500">{error?.message}</p>
+          <p role="alert" aria-live="assertive" className="text-red-500">
+            {error?.message}
+          </p>
         ) : (
           <p className="text-neutral-400">
             Press
@@ -55,13 +57,12 @@ const TagsField = ({
       {tags.length > 0 && (
         <ul className="mt-2 flex gap-3 flex-wrap">
           {tags.map((t, index) => (
-            <div
-              className="cursor-pointer hover:opacity-75 duration-200 transition-opacity"
+            <Tag
               key={index}
-              onClick={() => removeTag(index)}
-            >
-              <Tag text={t} varient="removable" />
-            </div>
+              text={t}
+              variant="removable"
+              onRemove={() => removeTag(index)}
+            />
           ))}
         </ul>
       )}
