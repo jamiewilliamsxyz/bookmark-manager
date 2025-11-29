@@ -32,7 +32,10 @@ const DeleteAccountConfirmation = () => {
   };
 
   return (
-    <div className="bg-[#1a1a1a] border border-neutral-800 shadow rounded-md p-5 flex flex-col gap-5">
+    <div
+      aria-label="Delete account"
+      className="bg-[#1a1a1a] border border-neutral-800 shadow rounded-md p-5 flex flex-col gap-5"
+    >
       <div>
         <p className="text-lg mb-2">
           Are you sure you want to delete <br />
