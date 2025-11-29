@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/layout/nav-bar/NavBar";
@@ -13,6 +14,12 @@ export const metadata: Metadata = {
   title: "Bookmark Manager",
   description:
     "A simple bookmark manager to keep track of important links - made with Next.js, Supabase, TypeScript & TailwindCSS",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 const inter = Inter({
