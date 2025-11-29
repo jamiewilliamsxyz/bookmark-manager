@@ -7,7 +7,7 @@ const Home = () => {
     <div className="flex-1 flex justify-center">
       <FloatingIcons />
 
-      <div className="w-[800px] flex flex-col justify-center items-center gap-12">
+      <div className="w-[800px] flex flex-col justify-center items-center gap-12 py-12">
         <header className="flex gap-6 flex-col items-center text-center">
           <h1 className="text-6xl bg-linear-to-r from-neutral-50 to-neutral-400 bg-clip-text text-transparent!">
             Save, tag and search your links all in one place
