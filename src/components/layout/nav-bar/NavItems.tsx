@@ -10,8 +10,8 @@ const NavItems = () => {
   if (isLoading) {
     return (
       <>
-        <li className="h-5 w-16 bg-[#212121] animate-pulse rounded-md"></li>
-        <li className="h-5 w-16 bg-[#212121] animate-pulse rounded-md"></li>
+        <li className="h-4.25 w-17 bg-neutral-800 animate-pulse rounded-md self-center"></li>
+        <li className="h-4.25 w-17 bg-neutral-800 animate-pulse rounded-md self-center"></li>
       </>
     );
   }
