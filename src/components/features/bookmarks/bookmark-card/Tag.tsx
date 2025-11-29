@@ -12,7 +12,7 @@ const Tag = ({ text, varient }: TagProps) => {
         varient === "removable"
           ? "pl-2.5 pr-2 flex items-center gap-1.5"
           : "px-2.5"
-      } py-0.5 bg-neutral-200 h-fit w-fit text-sm rounded-md shadow-lg text-[#1a1a1a] select-none`}
+      } py-0.5 bg-neutral-200 h-fit w-fit text-sm rounded-md shadow-lg text-[#1a1a1a]`}
     >
       {text}
       {varient === "removable" && (
