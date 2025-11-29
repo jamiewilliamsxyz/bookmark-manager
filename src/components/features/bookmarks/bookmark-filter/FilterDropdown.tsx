@@ -11,14 +11,13 @@ const FilterDropdown = ({
   selected,
   onSelect,
 }: FilterDropdownProps) => {
+  if (!isOpen) return null;
+
   return (
-    <div
-      className={`${
-        isOpen ? "opacity-100 " : "opacity-0 pointer-events-none"
-      } text-sm shadow bg-[#1a1a1a] rounded-md border border-neutral-800 absolute right-0 mt-2 w-22 transition-all duration-200`}
-    >
-      <div
+    <div className="text-sm shadow bg-[#1a1a1a] rounded-md border border-neutral-800 absolute right-0 mt-2 w-22 transition-all duration-200">
+      <button
         onClick={() => onSelect("Title")}
+        aria-pressed={selected === "Title"}
         className={`${
           selected === "Title" ? "text-neutral-200" : "text-neutral-400"
         } px-3.5 pt-3 pb-1.5 cursor-pointer hover:opacity-75 transition-opacity duration-200 flex gap-3`}
@@ -27,10 +26,11 @@ const FilterDropdown = ({
         {selected === "Title" && (
           <Check strokeWidth={1.1} color="#ffffff" size={17} />
         )}
-      </div>
+      </button>
 
-      <div
+      <button
         onClick={() => onSelect("Tag")}
+        aria-pressed={selected === "Title"}
         className={`${
           selected === "Tag" ? "text-neutral-200" : "text-neutral-400"
         } px-3.5 pb-3 pt-1.5 cursor-pointer hover:opacity-75 transition-opacity duration-200 flex gap-3`}
@@ -39,7 +39,7 @@ const FilterDropdown = ({
         {selected === "Tag" && (
           <Check strokeWidth={1.1} color="#ffffff" size={17} />
         )}
-      </div>
+      </button>
     </div>
   );
 };

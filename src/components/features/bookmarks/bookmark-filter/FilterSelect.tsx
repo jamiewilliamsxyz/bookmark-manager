@@ -41,6 +41,7 @@ const FilterSelect = () => {
       <FilterTrigger
         selected={selectedFilter}
         onToggle={() => setIsOpen((prev) => !prev)}
+        isOpen={isOpen}
       />
       <FilterDropdown
         isOpen={isOpen}
