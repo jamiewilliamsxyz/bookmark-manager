@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import type { Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -10,11 +9,8 @@ import { ModalProvider } from "@/context/ModalContext";
 import ModalHandler from "@/components/modal/ModalHandler";
 import RouteGuard from "@/components/features/auth/RouteGuard";
 
-export const metadata: Metadata = {
-  title: "Bookmark Manager",
-  description:
-    "A simple bookmark manager to keep track of important links - made with Next.js, Supabase, TypeScript & TailwindCSS",
-};
+import { metadata } from "@/lib/metadata";
+export { metadata };
 
 export const viewport: Viewport = {
   width: "device-width",
