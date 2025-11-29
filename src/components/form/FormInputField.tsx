@@ -17,13 +17,20 @@ const FormInputField = ({
   error,
   onChange,
 }: FormInputFieldProps) => {
+  const errorId = `${id}-error`;
+
   return (
     <div>
       <label htmlFor={id} className="text-lg">
         {label}
       </label>
 
-      <p className="text-red-500 mt-0.5 text-sm">
+      <p
+        id={errorId}
+        role="alert"
+        aria-live="assertive"
+        className="text-red-500 mt-0.5 text-sm"
+      >
         {error?.status && error.message}
       </p>
 
@@ -36,6 +43,8 @@ const FormInputField = ({
         type={type}
         required
         aria-required="true"
+        aria-invalid={error?.status}
+        aria-describedby={error?.status ? errorId : undefined}
         className="mt-1 py-2 px-3 bg-neutral-900 rounded-md border border-neutral-800 w-full focus:outline-none"
       />
     </div>

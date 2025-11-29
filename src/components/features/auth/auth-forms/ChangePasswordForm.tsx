@@ -54,7 +54,7 @@ const ChangePasswordForm = () => {
       {state.success ? (
         <div className="bg-[#1a1a1a] rounded-md shadow p-5 border border-neutral-800 flex flex-col gap-5">
           <p className="text-neutral-400">
-            You password has been successfully
+            Your password has been successfully
             <br />
             been changed
           </p>
@@ -96,7 +96,15 @@ const ChangePasswordForm = () => {
             onChange={(e) => handlePasswordChange(e.target.value)}
           />
 
-          {state.error && <p className="text-red-500 text-sm">{state.error}</p>}
+          {state.error && (
+            <p
+              role="alert"
+              aria-live="assertive"
+              className="text-red-500 text-sm"
+            >
+              {state.error}
+            </p>
+          )}
 
           <FormSubmitButton
             isDisabled={isSubmitDisabled}
