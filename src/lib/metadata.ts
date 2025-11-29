@@ -1,7 +1,41 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("http://localhost:3000"), // REPLACE FOR PRODUCTION
+
   title: "Bookmark Manager",
   description:
-    "A simple bookmark manager to keep track of important links - made with Next.js, Supabase, TypeScript & TailwindCSS",
+    "Stop losing important links. Save, tag and search them in a lightweight, streamlined interface",
+  keywords: [
+    "bookmark manager",
+    "online bookmark manager",
+    "bookmark management tool",
+    "save links online",
+    "link organiser",
+    "web bookmark organiser",
+    "cloud bookmark manager",
+    "link manager",
+    "bookmark storage",
+    "manage bookmarks online",
+    "bookmark app",
+    "distraction-free bookmark manager",
+    "minimalist bookmark tool",
+  ],
+  authors: [{ name: "Jamie Williams" }],
+  openGraph: {
+    type: "website",
+    url: "http://localhost:3000", // REPLACE FOR PRODUCTION
+    title: "Bookmark Manager",
+    description:
+      "Stop losing important links. Save, tag and search them in a lightweight, streamlined interface",
+    siteName: "Bookmark Manager",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Bookmark Manager",
+    description:
+      "Stop losing important links. Save, tag and search them in a lightweight, streamlined interface",
+  },
+  icons: { icon: "/favicon.ico" },
+  alternates: { canonical: "http://localhost:3000" }, // REPLACE FOR PRODUCTION
 };
