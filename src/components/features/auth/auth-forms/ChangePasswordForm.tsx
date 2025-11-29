@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import Link from "next/link";
 import { useAuth } from "@/hooks/context-hooks/useAuth";
 import { useAuthFormValidation } from "@/hooks/form-hooks/useAuthFormValidation";
@@ -13,6 +13,8 @@ const ChangePasswordForm = () => {
   const { changePassword } = useAuth();
   const { errors, password, handlePasswordChange, isError } =
     useAuthFormValidation();
+
+  const [currentPassword, setCurrentPassword] = useState("");
 
   const [state, formAction, pending] = useActionState(
     async (_prevState: PasswordResetState | null, formData: FormData) => {
@@ -42,6 +44,7 @@ const ChangePasswordForm = () => {
   const isSubmitDisabled =
     isError() ||
     !password.trim() ||
+    !currentPassword.trim() ||
     pending ||
     state.success ||
     errors.password.status;
@@ -76,6 +79,8 @@ const ChangePasswordForm = () => {
               name="currentPassword"
               type="password"
               required
+              value={currentPassword}
+              onChange={(e) => setCurrentPassword(e.target.value)}
               aria-required="true"
               className="mt-1 py-2 px-3 bg-neutral-900 rounded-md border border-neutral-800 w-full focus:outline-none"
             />
