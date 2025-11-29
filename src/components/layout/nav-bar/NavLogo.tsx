@@ -14,7 +14,9 @@ const NavLogo = () => {
       className="flex gap-1.75 items-center justify-center hover:opacity-75 duration-200 transition-opacity"
     >
       <Image
-        src={logoIcon}
+        src={logoIcon.src}
+        width={22}
+        height={22}
         draggable={false}
         alt="Bookmark Manager logo"
         className="w-5.5 h-5.5 text-neutral-100"

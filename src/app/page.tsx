@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { MoveRight } from "lucide-react";
-import FloatingIcons from "@/components/FloatingIcons";
+import FloatingIcons from "@/components/landing-page/FloatingIcons";
+import DemoVideo from "@/components/landing-page/DemoVideo";
 
 const Home = () => {
   return (
@@ -19,9 +20,8 @@ const Home = () => {
         </header>
 
         <div className="flex gap-9.5 flex-col items-center">
-          <div className="bg-neutral-200 rounded-md h-[360px] w-[640px] text-neutral-800 shadow-[0_0_58px_rgba(255,255,255,0.13)]">
-            placeholder video
-          </div>
+          <DemoVideo />
+
           <Link
             href="/signup"
             className="flex px-5.5 gap-5 items-center bg-neutral-100 shadow py-2 rounded-md text-neutral-800 cursor-pointer hover:opacity-75 duration-200 transition-opacity"
