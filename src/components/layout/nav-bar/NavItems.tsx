@@ -5,7 +5,16 @@ import { useAuth } from "@/hooks/context-hooks/useAuth";
 import NavLink from "./NavLink";
 
 const NavItems = () => {
-  const { session } = useAuth();
+  const { session, isLoading } = useAuth();
+
+  if (isLoading) {
+    return (
+      <>
+        <li className="h-5 w-16 bg-[#212121] animate-pulse rounded-md"></li>
+        <li className="h-5 w-16 bg-[#212121] animate-pulse rounded-md"></li>
+      </>
+    );
+  }
 
   if (session) {
     return (
