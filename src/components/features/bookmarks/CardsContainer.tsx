@@ -4,7 +4,7 @@ import { useBookmarks } from "@/hooks/context-hooks/useBookmarks";
 import { useSearch } from "@/hooks/context-hooks/useSearch";
 import { MAX_BOOKMARKS } from "@/constants/bookmarks";
 import Card from "./bookmark-card/Card";
-import Spinner from "@/components/ui/Spinner";
+import CardsContainerSkeleton from "./CardsContainerSkeleton";
 
 const CardsContainer = () => {
   const { bookmarks, bookmarksStatus } = useBookmarks();
@@ -26,7 +26,10 @@ const CardsContainer = () => {
     return true;
   });
 
-  if (bookmarksStatus.isLoading) return <Spinner theme="light" size="large" />;
+  // Loading skeleton
+  if (bookmarksStatus.isLoading) return <CardsContainerSkeleton />;
+
+  // Error message
   if (bookmarksStatus.error)
     return (
       <p role="alert" className="text-red-500">
@@ -34,6 +37,7 @@ const CardsContainer = () => {
       </p>
     );
 
+  // Bookmark cards
   return (
     <>
       {bookmarks.length >= MAX_BOOKMARKS && (
@@ -55,6 +59,7 @@ const CardsContainer = () => {
             />
           ))
         ) : (
+          // Status message
           <p role="status">
             {bookmarks.length > 0
               ? "No bookmarks match your search"
