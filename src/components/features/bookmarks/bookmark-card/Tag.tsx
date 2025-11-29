@@ -9,7 +9,7 @@ interface TagProps {
 const Tag = ({ text, variant, onRemove }: TagProps) => {
   if (variant === "removable" && onRemove) {
     return (
-      <li className="bg-red-600">
+      <li>
         <button
           type="button"
           onClick={onRemove}
