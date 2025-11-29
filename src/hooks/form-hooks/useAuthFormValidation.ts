@@ -5,10 +5,12 @@ import { VALIDATION_RULES, INITIAL_ERROR } from "@/constants/bookmarks";
 
 interface UseAuthFormValidationProps {
   initialEmail?: string;
+  mode?: "signUp" | "logIn" | "changePassword";
 }
 
 export const useAuthFormValidation = ({
   initialEmail = "",
+  mode = "signUp",
 }: UseAuthFormValidationProps = {}) => {
   const [email, setEmail] = useState<string>(initialEmail);
   const [password, setPassword] = useState<string>("");
@@ -38,7 +40,7 @@ export const useAuthFormValidation = ({
       return false;
     }
 
-    if (value.length > EMAIL_MAX_LENGTH) {
+    if (value.length > EMAIL_MAX_LENGTH && mode !== "logIn") {
       setErrors((prev) => ({
         ...prev,
         email: {
@@ -80,7 +82,7 @@ export const useAuthFormValidation = ({
       return false;
     }
 
-    if (value.length < PASSWORD_MIN_LENGTH) {
+    if (value.length < PASSWORD_MIN_LENGTH && mode !== "logIn") {
       setErrors((prev) => ({
         ...prev,
         password: {
@@ -91,7 +93,7 @@ export const useAuthFormValidation = ({
       return false;
     }
 
-    if (value.length > PASSWORD_MAX_LENGTH) {
+    if (value.length > PASSWORD_MAX_LENGTH && mode !== "logIn") {
       setErrors((prev) => ({
         ...prev,
         password: {

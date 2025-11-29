@@ -16,7 +16,7 @@ const LogInForm = () => {
     handleEmailChange,
     handlePasswordChange,
     isError,
-  } = useAuthFormValidation();
+  } = useAuthFormValidation({ mode: "logIn" });
 
   const [state, formAction, pending] = useActionState(
     // eslint-disable-next-line
