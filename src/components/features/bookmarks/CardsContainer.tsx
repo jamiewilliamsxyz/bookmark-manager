@@ -32,7 +32,7 @@ const CardsContainer = () => {
   // Error message
   if (bookmarksStatus.error)
     return (
-      <p role="alert" className="text-red-500">
+      <p role="alert" className="text-red-500 text-sm">
         {bookmarksStatus.error}
       </p>
     );
@@ -43,7 +43,7 @@ const CardsContainer = () => {
       {bookmarks.length >= MAX_BOOKMARKS && (
         <p
           role="status"
-          className="text-red-500"
+          className="text-red-500 text-sm -my-5"
         >{`Maximum of ${MAX_BOOKMARKS} bookmarks reached`}</p>
       )}
 
