@@ -47,11 +47,12 @@ const Home = () => {
           <div className="bg-neutral-200 rounded-md h-[360px] w-[640px] text-neutral-800 shadow-[0_0_58px_rgba(255,255,255,0.13)]">
             placeholder video
           </div>
-          <Link href="/signup">
-            <button className="flex px-5.5 gap-5 items-center bg-neutral-100 shadow py-2 rounded-md text-neutral-800 cursor-pointer hover:opacity-75 duration-200 transition-opacity">
-              Start organising
-              <MoveRight strokeWidth={1.75} color="#171717" size={22} />
-            </button>
+          <Link
+            href="/signup"
+            className="flex px-5.5 gap-5 items-center bg-neutral-100 shadow py-2 rounded-md text-neutral-800 cursor-pointer hover:opacity-75 duration-200 transition-opacity"
+          >
+            Start organising
+            <MoveRight strokeWidth={1.75} color="#171717" size={22} />
           </Link>
         </div>
       </div>
