@@ -10,8 +10,8 @@ const NavItems = () => {
   if (isLoading) {
     return (
       <>
-        <li className="h-4.25 w-17 bg-neutral-800 animate-pulse rounded-md self-center"></li>
-        <li className="h-4.25 w-17 bg-neutral-800 animate-pulse rounded-md self-center"></li>
+        <li className="h-4.5 w-17 bg-neutral-800 animate-pulse rounded-md self-center my-1.75"></li>
+        <li className="h-4.5 w-17 bg-neutral-800 animate-pulse rounded-md self-center my-1.75"></li>
       </>
     );
   }
@@ -30,7 +30,7 @@ const NavItems = () => {
         <li className="flex items-center">
           <Link
             href="/signup"
-            className="bg-neutral-100 px-4 py-1.5 font-medium text-sm rounded-md shadow text-neutral-800 cursor-pointer hover:opacity-75 duration-200 transition-opacity"
+            className="bg-neutral-100 px-3.5 py-1.5 font-medium text-sm rounded-md shadow text-neutral-800 cursor-pointer hover:opacity-75 duration-200 transition-opacity"
           >
             Sign up
           </Link>

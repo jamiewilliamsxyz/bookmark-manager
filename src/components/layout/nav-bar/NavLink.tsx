@@ -13,7 +13,7 @@ const NavLink = <T extends string>({ href, children }: NavLinkProps<T>) => {
   const pathname = usePathname();
 
   return (
-    <li className="flex items-center">
+    <li className="flex items-center my-1.5">
       <Link
         href={href}
         className={`${
