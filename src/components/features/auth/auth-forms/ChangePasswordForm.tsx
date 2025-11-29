@@ -6,6 +6,7 @@ import { useAuth } from "@/hooks/context-hooks/useAuth";
 import { useAuthFormValidation } from "@/hooks/form-hooks/useAuthFormValidation";
 import FormInputField from "@/components/form/FormInputField";
 import FormSubmitButton from "@/components/form/FormSubmitButton";
+import CloseModalButton from "@/components/modal/CloseModalButton";
 import type { PasswordResetState } from "@/types";
 
 const ChangePasswordForm = () => {
@@ -97,6 +98,8 @@ const ChangePasswordForm = () => {
             isLoading={pending}
             text="Change"
           />
+
+          <CloseModalButton>Return</CloseModalButton>
         </form>
       )}
     </>

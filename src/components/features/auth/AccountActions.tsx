@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { useAuth } from "@/hooks/context-hooks/useAuth";
 import { useModal } from "@/hooks/context-hooks/useModal";
 import { useBookmarks } from "@/hooks/context-hooks/useBookmarks";
@@ -33,12 +32,13 @@ const AccountActions = () => {
           >
             Log out
           </button>
-          <Link
-            href="/change-password"
+          <button
+            onClick={() => openModal("changePassword")}
+            disabled={isLoading}
             className="underline cursor-pointer hover:opacity-75 duration-200 transition-opacity w-fit h-fit"
           >
             Change password
-          </Link>
+          </button>
         </div>
 
         <div className="bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-3 border border-neutral-800 items-center justify-center">

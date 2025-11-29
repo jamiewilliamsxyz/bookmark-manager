@@ -6,6 +6,7 @@ import CreateBookmarkForm from "@/components/features/bookmarks/bookmark-forms/C
 import DeleteAccountConfirmation from "@/components/features/auth/DeleteAccountConfirmation";
 import DeleteBookmarkConfirmation from "@/components/features/bookmarks/DeleteBookmarkConfirmation";
 import EditBookmarkForm from "@/components/features/bookmarks/bookmark-forms/EditBookmarkForm";
+import ChangePasswordForm from "../features/auth/auth-forms/ChangePasswordForm";
 import type { ModalProps } from "@/types";
 
 const ModalHandler = ({ children }: ModalProps) => {
@@ -36,6 +37,7 @@ const ModalHandler = ({ children }: ModalProps) => {
           {currentModal === "deleteAccount" && <DeleteAccountConfirmation />}
           {currentModal === "deleteBookmark" && <DeleteBookmarkConfirmation />}
           {currentModal === "editBookmark" && <EditBookmarkForm />}
+          {currentModal === "changePassword" && <ChangePasswordForm />}
         </div>
 
         {/* Overlay */}

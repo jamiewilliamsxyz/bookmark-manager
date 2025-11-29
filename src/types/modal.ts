@@ -7,6 +7,7 @@ export type ModalState =
   | "deleteAccount"
   | "deleteBookmark"
   | "editBookmark"
+  | "changePassword"
   | null;
 
 export interface ModalContextType {
