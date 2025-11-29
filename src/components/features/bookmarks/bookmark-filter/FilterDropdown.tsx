@@ -22,7 +22,7 @@ const FilterDropdown = ({
           selected === "Title" ? "text-neutral-200" : "text-neutral-400"
         } px-3.5 pt-3 pb-1.5 cursor-pointer hover:opacity-75 transition-opacity duration-200 flex gap-3`}
       >
-        <p>Title</p>
+        <span>Title</span>
         {selected === "Title" && (
           <Check strokeWidth={1.1} color="#ffffff" size={17} />
         )}
@@ -35,7 +35,7 @@ const FilterDropdown = ({
           selected === "Tag" ? "text-neutral-200" : "text-neutral-400"
         } px-3.5 pb-3 pt-1.5 cursor-pointer hover:opacity-75 transition-opacity duration-200 flex gap-3`}
       >
-        <p>Tag</p>
+        <span>Tag</span>
         {selected === "Tag" && (
           <Check strokeWidth={1.1} color="#ffffff" size={17} />
         )}

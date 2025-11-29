@@ -52,7 +52,7 @@ const CardActions = ({ bookmarkData }: { bookmarkData: BookmarkToModify }) => {
         }
       >
         {isCooldown ? (
-          <p className="text-sm">Copied!</p>
+          <span className="text-sm">Copied!</span>
         ) : (
           <Clipboard color="#f5f5f5" strokeWidth={1} size={20} />
         )}
