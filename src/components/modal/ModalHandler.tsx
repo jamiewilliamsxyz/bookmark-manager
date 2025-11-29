@@ -31,7 +31,12 @@ const ModalHandler = ({ children }: ModalProps) => {
         className="flex-1 flex flex-col justify-center items-center"
       >
         {/* Modal container */}
-        <div onClick={(e) => e.stopPropagation()} className="z-50 fixed">
+        <div
+          onClick={(e) => e.stopPropagation()}
+          role="dialog"
+          aria-modal="true"
+          className="z-50 fixed"
+        >
           {/* Modals */}
           {currentModal === "createBookmark" && <CreateBookmarkForm />}
           {currentModal === "deleteAccount" && <DeleteAccountConfirmation />}
