@@ -27,7 +27,7 @@ const Card = ({ id, title, url, tags }: CardProps) => {
 
       <ul className="flex gap-3 flex-wrap">
         {tags?.map((t, index) => (
-          <Tag key={index} text={t} varient="default" />
+          <Tag key={index} text={t} variant="default" />
         ))}
       </ul>
     </div>
