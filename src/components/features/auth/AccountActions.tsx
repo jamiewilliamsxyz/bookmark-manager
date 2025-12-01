@@ -27,7 +27,7 @@ const AccountActions = () => {
           {logOutError}
         </p>
       )}
-      <div className="flex gap-5">
+      <div className="flex gap-5 flex-col sm:flex-row w-full">
         <div className="bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-3 border border-neutral-800 items-center justify-center">
           <button
             onClick={handleLogOut}
