@@ -11,7 +11,7 @@ const ExternalLink = ({ text, href }: FooterLinkProps) => {
       rel="noopener noreferrer"
       title={href}
       aria-label={text}
-      className="cursor-pointer hover:opacity-75 duration-200 transition-opacity text-neutral-400 text-sm font-medium"
+      className="cursor-pointer hover:opacity-75 duration-200 transition-opacity text-neutral-400 font-medium text-center text-xs sm:text-sm"
     >
       {text}
     </a>

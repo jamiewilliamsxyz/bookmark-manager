@@ -21,7 +21,9 @@ const NavLogo = () => {
         alt="Bookmark Manager logo"
         className="w-5.5 h-5.5 text-neutral-100"
       />
-      <p className="font-medium text-neutral-100">Bookmark Manager</p>
+      <p className="font-medium text-neutral-100 hidden sm:block">
+        Bookmark Manager
+      </p>
     </Link>
   );
 };
