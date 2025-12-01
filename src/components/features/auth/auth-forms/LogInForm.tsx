@@ -48,7 +48,7 @@ const LogInForm = () => {
     <form
       noValidate
       action={formAction}
-      className="border border-neutral-800 bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-5 justify-start min-w-96 max-w-96"
+      className="border border-neutral-800 bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-5 w-78 sm:w-96"
     >
       <FormInputField
         id="email"
