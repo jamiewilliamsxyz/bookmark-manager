@@ -1,4 +1,4 @@
-# Bookmark Manager
+## Bookmark Manager
 
 [Live Demo](https://google.com)
 
@@ -8,9 +8,9 @@ Bookmark Manager is a streamlined link management web app built with Next.js, Re
 
 ---
 
-## 📋 Features
+### 📋 Features
 
-- User signup and login with email confirmation
+- User login and signup with email confirmation
 - Account management: change password, logout, delete account, delete all bookmarks
 - Create, edit and delete bookmarks
 - Display bookmarks as cards with copy link, edit and delete controls
@@ -21,14 +21,14 @@ Bookmark Manager is a streamlined link management web app built with Next.js, Re
 
 ---
 
-## 🖼️ Preview
+### 🖼️ Preview
 
 ![Bookmark Manager demo gif](./public/demo.gif)
 [View Live App](https://google.com)
 
 ---
 
-## 🛠️ Built With
+### 🛠️ Built With
 
 ![Next.js](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white) <br />
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) <br />
