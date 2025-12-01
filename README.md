@@ -6,8 +6,6 @@ Bookmark Manager is a streamlined link management web app built with Next.js, Re
 
 ![Browser mockup displaying the Bookmark Manager bookmarks page](./public/browser-mockup.png)
 
----
-
 ### 📋 Features
 
 - User login and signup with email confirmation
@@ -19,14 +17,10 @@ Bookmark Manager is a streamlined link management web app built with Next.js, Re
 - Bookmarks persist across devices for each user
 - Fully responsive design for desktop and mobile
 
----
-
 ### 🖼️ Preview
 
 ![Bookmark Manager demo gif](./public/demo.gif)
 [View Live App](https://google.com)
-
----
 
 ### 🛠️ Built With
 
