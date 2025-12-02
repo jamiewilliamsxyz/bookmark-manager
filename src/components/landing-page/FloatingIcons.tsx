@@ -2,7 +2,7 @@ import { Bookmark, Link2, Tag } from "lucide-react";
 
 const FloatingIcons = () => {
   return (
-    <div aria-hidden="true">
+    <div aria-hidden="true" className="hidden min-[850px]:block">
       <div className="absolute top-[45%] left-[calc(50%-420px)] rotate-12">
         <Bookmark className="w-12 h-12 text-neutral-100 opacity-65 animate-[float_5s_ease-in-out_infinite]" />
       </div>
