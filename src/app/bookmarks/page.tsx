@@ -6,7 +6,7 @@ import CardsContainer from "@/components/features/bookmarks/CardsContainer";
 
 const BookmarksPage = () => {
   return (
-    <div className="flex flex-1 flex-col justify-start items-center gap-12 py-12 w-[820px] self-center">
+    <div className="flex flex-1 flex-col justify-start items-center gap-12 py-12 w-full max-w-[820px] px-6 sm:px-0 self-center">
       <h1 className="text-6xl">Bookmarks</h1>
 
       <SearchProvider>

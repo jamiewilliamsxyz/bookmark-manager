@@ -6,7 +6,7 @@ type CardProps = Pick<Bookmark, "id" | "title" | "url" | "tags">;
 
 const Card = ({ id, title, url, tags }: CardProps) => {
   return (
-    <div className="bg-[#1a1a1a] border border-neutral-800 shadow rounded-md p-5 min-w-94 max-w-94 h-fit flex flex-col gap-5">
+    <div className="bg-[#1a1a1a] border border-neutral-800 shadow rounded-md p-5 sm:w-94 w-full h-fit flex flex-col gap-5">
       <div className="flex items-center justify-between gap-5">
         <p title={title} className="text-lg truncate">
           {title}
