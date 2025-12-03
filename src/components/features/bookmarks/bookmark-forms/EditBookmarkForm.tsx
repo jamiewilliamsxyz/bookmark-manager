@@ -76,7 +76,7 @@ const EditBookmarkForm = () => {
       onKeyDown={preventEnterSubmit}
       action={formAction}
       aria-label="Edit bookmark"
-      className="border border-neutral-800 bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-5 justify-start min-w-110 max-w-110"
+      className="border border-neutral-800 bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-5 w-full min-[444px]:w-98 sm:w-110"
     >
       <FormInputField
         id="title"
