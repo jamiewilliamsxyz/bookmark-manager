@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("http://localhost:3000"), // REPLACE FOR PRODUCTION
+  metadataBase: new URL("https://bookmark-manager-io.vercel.app"),
 
   title: "Bookmark Manager",
   description:
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Jamie Williams" }],
   openGraph: {
     type: "website",
-    url: "http://localhost:3000", // REPLACE FOR PRODUCTION
+    url: "https://bookmark-manager-io.vercel.app",
     title: "Bookmark Manager",
     description:
       "Stop losing important links. Save, tag and search them in a lightweight, streamlined interface",
@@ -37,5 +37,5 @@ export const metadata: Metadata = {
       "Stop losing important links. Save, tag and search them in a lightweight, streamlined interface",
   },
   icons: { icon: "/favicon.ico" },
-  alternates: { canonical: "http://localhost:3000" }, // REPLACE FOR PRODUCTION
+  alternates: { canonical: "https://bookmark-manager-io.vercel.app" },
 };
