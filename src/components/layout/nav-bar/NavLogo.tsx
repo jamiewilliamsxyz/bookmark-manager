@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import logoIcon from "../../../../public/logo.png";
+import logoIcon from "../../../../public/images/logo.png";
 import { useAuth } from "@/hooks/context-hooks/useAuth";
 
 const NavLogo = () => {
