@@ -15,6 +15,7 @@ Bookmark Manager is a streamlined link management web app built with Next.js, Re
 - Add or remove tags on bookmark cards
 - Search and filter bookmarks
 - Bookmarks persist across devices for each user
+- Bookmarks cached in the browser for faster loading
 - Fully responsive design for desktop and mobile
 
 ### 🖼️ Preview
