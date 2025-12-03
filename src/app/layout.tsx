@@ -1,4 +1,5 @@
 import type { Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/layout/nav-bar/NavBar";
@@ -40,7 +41,10 @@ export default function RootLayout({
               <ModalHandler>
                 <NavBar />
                 <main className="flex-1 flex flex-col">
-                  <RouteGuard>{children}</RouteGuard>
+                  <RouteGuard>
+                    {children}
+                    <Analytics />
+                  </RouteGuard>
                 </main>
                 <Footer />
               </ModalHandler>
