@@ -13,3 +13,5 @@ export const VALIDATION_RULES = {
 };
 
 export const INITIAL_ERROR = { status: false, message: "" };
+
+export const CACHE_KEY = "bookmarks_cache";

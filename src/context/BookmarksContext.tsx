@@ -3,7 +3,8 @@
 import { useState, createContext, useEffect } from "react";
 import { supabase } from "@/api/supabaseClient";
 import { useAuth } from "@/hooks/context-hooks/useAuth";
-
+import { checkBookmarksCache } from "@/lib/checkBookmarksCache";
+import { CACHE_KEY } from "@/constants/bookmarks";
 import type {
   Bookmark,
   BookmarkToModify,
@@ -36,6 +37,14 @@ export const BookmarksProvider = ({
   // Fetch bookmarks
   useEffect(() => {
     const fetchBookmarks = async (): Promise<void> => {
+      const cachedData = checkBookmarksCache();
+
+      if (cachedData) {
+        setBookmarks(cachedData);
+        setBookmarksStatus({ isLoading: false, error: null });
+        return;
+      }
+
       try {
         const { data, error } = await supabase
           .from("bookmarks")
@@ -49,6 +58,7 @@ export const BookmarksProvider = ({
           isLoading: false,
           error: null,
         });
+        localStorage.setItem(CACHE_KEY, JSON.stringify(data));
       } catch (err) {
         setBookmarksStatus({
           isLoading: false,
@@ -88,6 +98,7 @@ export const BookmarksProvider = ({
       // Handle success
       const bookmark = res as Bookmark; // Telling TS that the shape of the data is Bookmarks
       setBookmarks((prev) => [bookmark, ...prev]);
+      localStorage.removeItem(CACHE_KEY);
       return { success: true, data: bookmark };
 
       // Handle unexpected errors
@@ -120,6 +131,7 @@ export const BookmarksProvider = ({
         (prev) => prev.map((b) => (b.id === bookmarkToModify.id ? bookmark : b)) // Return all bookmarks, replacing the one that matches the updated bookmark's id
       );
       setBookmarkToModify(null);
+      localStorage.removeItem(CACHE_KEY);
       return { success: true, data: bookmark }; // Return the updated bookmark
     } catch (err) {
       const message =
@@ -148,6 +160,7 @@ export const BookmarksProvider = ({
       const bookmark = data as Bookmark;
       setBookmarks((prev) => prev.filter((b) => b.id !== bookmarkToModify.id));
       setBookmarkToModify(null);
+      localStorage.removeItem(CACHE_KEY);
       return { success: true, data: bookmark };
     } catch (err) {
       const message =
@@ -174,6 +187,7 @@ export const BookmarksProvider = ({
 
       const deleted = data as Bookmark[];
       setBookmarks([]);
+      localStorage.removeItem(CACHE_KEY);
       return { success: true, data: deleted };
     } catch (err) {
       const message =
