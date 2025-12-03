@@ -49,14 +49,13 @@ const CardsContainer = () => {
 
       <div className="cards-container-scrollbar w-full flex flex-col items-center sm:flex-row sm:flex-wrap gap-5 items-base justify-center sm:overflow-y-auto sm:overflow-x-hidden sm:max-h-[53vh]">
         {filteredBookmarks.length > 0 ? (
-          filteredBookmarks.map((b, index) => (
+          filteredBookmarks.map((b) => (
             <Card
               key={b.id}
               id={b.id}
               title={b.title}
               url={b.url}
               tags={b.tags}
-              delay={index * 0.1}
             />
           ))
         ) : (
