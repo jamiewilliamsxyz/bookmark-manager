@@ -1,9 +1,10 @@
 interface FooterLinkProps {
   text: string;
+  mobileText: string;
   href: string;
 }
 
-const ExternalLink = ({ text, href }: FooterLinkProps) => {
+const ExternalLink = ({ text, mobileText, href }: FooterLinkProps) => {
   return (
     <a
       href={href}
@@ -11,9 +12,10 @@ const ExternalLink = ({ text, href }: FooterLinkProps) => {
       rel="noopener noreferrer"
       title={href}
       aria-label={text}
-      className="cursor-pointer hover:opacity-75 duration-200 transition-opacity text-neutral-400 font-medium text-center text-xs sm:text-sm"
+      className="cursor-pointer hover:opacity-75 duration-200 transition-opacity text-neutral-400 font-medium text-center text-sm"
     >
-      {text}
+      <span className="hidden sm:block">{text}</span>
+      <span className="sm:hidden block">{mobileText}</span>
     </a>
   );
 };
