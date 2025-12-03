@@ -58,9 +58,7 @@ const ChangePasswordForm = () => {
             <br />
             been changed
           </p>
-          <Link href="/bookmarks" className="w-fit h-fit">
-            Return
-          </Link>
+          <CloseModalButton>Return</CloseModalButton>
         </div>
       ) : (
         <form

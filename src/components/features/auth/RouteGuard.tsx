@@ -21,11 +21,7 @@ const RouteGuard = ({ children }: { children: React.ReactNode }) => {
       redirect("/bookmarks");
     }
   } else {
-    if (
-      pathname === "/bookmarks" ||
-      pathname === "/account" ||
-      pathname === "/change-password"
-    ) {
+    if (pathname === "/bookmarks" || pathname === "/account") {
       redirect("/login");
     }
   }
