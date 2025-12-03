@@ -67,7 +67,7 @@ const ChangePasswordForm = () => {
           noValidate
           action={formAction}
           aria-label="Change password"
-          className="border border-neutral-800 bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-5 justify-start min-w-88 max-w-88"
+          className="border border-neutral-800 bg-[#1a1a1a] rounded-md shadow p-5 flex flex-col gap-5 justify-start w-82 sm:w-88"
         >
           <div>
             <label htmlFor="currentPassword" className="text-lg">
