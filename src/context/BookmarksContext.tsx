@@ -37,7 +37,7 @@ export const BookmarksProvider = ({
   // Fetch bookmarks
   useEffect(() => {
     const fetchBookmarks = async (): Promise<void> => {
-      const cachedData = checkBookmarksCache();
+      const cachedData = checkBookmarksCache(session?.user?.id);
 
       if (cachedData) {
         setBookmarks(cachedData);
@@ -58,7 +58,10 @@ export const BookmarksProvider = ({
           isLoading: false,
           error: null,
         });
-        localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+        localStorage.setItem(
+          `${CACHE_KEY}_${session?.user?.id}`,
+          JSON.stringify(data)
+        );
       } catch (err) {
         setBookmarksStatus({
           isLoading: false,
@@ -69,7 +72,7 @@ export const BookmarksProvider = ({
     };
 
     fetchBookmarks();
-  }, []);
+  }, [session?.user?.id]);
 
   // Create bookmark
   const createBookmark = async (
@@ -98,7 +101,7 @@ export const BookmarksProvider = ({
       // Handle success
       const bookmark = res as Bookmark; // Telling TS that the shape of the data is Bookmarks
       setBookmarks((prev) => [bookmark, ...prev]);
-      localStorage.removeItem(CACHE_KEY);
+      localStorage.removeItem(`${CACHE_KEY}_${session?.user?.id}`);
       return { success: true, data: bookmark };
 
       // Handle unexpected errors
@@ -131,7 +134,7 @@ export const BookmarksProvider = ({
         (prev) => prev.map((b) => (b.id === bookmarkToModify.id ? bookmark : b)) // Return all bookmarks, replacing the one that matches the updated bookmark's id
       );
       setBookmarkToModify(null);
-      localStorage.removeItem(CACHE_KEY);
+      localStorage.removeItem(`${CACHE_KEY}_${session?.user?.id}`);
       return { success: true, data: bookmark }; // Return the updated bookmark
     } catch (err) {
       const message =
@@ -160,7 +163,7 @@ export const BookmarksProvider = ({
       const bookmark = data as Bookmark;
       setBookmarks((prev) => prev.filter((b) => b.id !== bookmarkToModify.id));
       setBookmarkToModify(null);
-      localStorage.removeItem(CACHE_KEY);
+      localStorage.removeItem(`${CACHE_KEY}_${session?.user?.id}`);
       return { success: true, data: bookmark };
     } catch (err) {
       const message =
@@ -187,7 +190,7 @@ export const BookmarksProvider = ({
 
       const deleted = data as Bookmark[];
       setBookmarks([]);
-      localStorage.removeItem(CACHE_KEY);
+      localStorage.removeItem(`${CACHE_KEY}_${session?.user?.id}`);
       return { success: true, data: deleted };
     } catch (err) {
       const message =

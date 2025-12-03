@@ -3,6 +3,7 @@
 import { createContext, useState, useEffect } from "react";
 import { supabase } from "@/api/supabaseClient";
 import { redirect } from "next/navigation";
+import { CACHE_KEY } from "@/constants/bookmarks";
 import type {
   SessionType,
   LoadingType,
@@ -178,6 +179,8 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const logOutUser = async (): Promise<string | null> => {
     setIsLoading(true);
     try {
+      localStorage.removeItem(`${CACHE_KEY}_${session?.user?.id}`);
+
       const { error } = await supabase.auth.signOut({ scope: "local" });
 
       if (error) return error.message;
@@ -216,6 +219,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       });
 
       if (error) return { success: false, error: error.message };
+
       return { success: true };
     } catch (err: unknown) {
       if (err instanceof Error) {
