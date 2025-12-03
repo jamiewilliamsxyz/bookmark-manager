@@ -1,7 +1,6 @@
 "use client";
 
 import { useActionState, useState } from "react";
-import Link from "next/link";
 import { useAuth } from "@/hooks/context-hooks/useAuth";
 import { useAuthFormValidation } from "@/hooks/form-hooks/useAuthFormValidation";
 import FormInputField from "@/components/form/FormInputField";
