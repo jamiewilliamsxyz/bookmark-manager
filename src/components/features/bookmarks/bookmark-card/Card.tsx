@@ -2,11 +2,16 @@ import CardActions from "./CardActions";
 import Tag from "./Tag";
 import type { Bookmark } from "@/types";
 
-type CardProps = Pick<Bookmark, "id" | "title" | "url" | "tags">;
+type CardProps = Pick<Bookmark, "id" | "title" | "url" | "tags"> & {
+  delay: number;
+};
 
-const Card = ({ id, title, url, tags }: CardProps) => {
+const Card = ({ id, title, url, tags, delay }: CardProps) => {
   return (
-    <div className="bg-[#1a1a1a] border border-neutral-800 shadow rounded-md p-5 sm:w-94 w-full h-fit flex flex-col gap-5">
+    <div
+      className="bg-[#1a1a1a] border border-neutral-800 shadow rounded-md p-5 sm:w-94 w-full h-fit flex flex-col gap-5 opacity-0 animate-[fadeInUp_0.3s_ease-out_forwards]"
+      style={{ animationDelay: `${delay}s` }}
+    >
       <div className="flex items-center justify-between gap-5">
         <p title={title} className="text-lg truncate">
           {title}
