@@ -35,7 +35,7 @@ const ModalHandler = ({ children }: ModalProps) => {
           onClick={(e) => e.stopPropagation()}
           role="dialog"
           aria-modal="true"
-          className="z-50 fixed"
+          className="z-50 fixed px-6 sm:px-0"
         >
           {/* Modals */}
           {currentModal === "createBookmark" && <CreateBookmarkForm />}
