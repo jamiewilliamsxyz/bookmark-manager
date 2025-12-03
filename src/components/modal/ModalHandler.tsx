@@ -47,7 +47,7 @@ const ModalHandler = ({ children }: ModalProps) => {
 
         {/* Overlay */}
         <div
-          className="z-40 opacity-75 blur-[3px] pointer-events-none flex-1 flex flex-col"
+          className="z-40 opacity-75 blur-[3px] pointer-events-none flex-1 flex flex-col w-full"
           inert
         >
           {children}
