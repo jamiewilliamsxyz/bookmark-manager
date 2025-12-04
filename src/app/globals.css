@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  scrollbar-gutter: stable both-edges;
+}
+
 body {
   @apply bg-neutral-900 text-neutral-200;
 }
