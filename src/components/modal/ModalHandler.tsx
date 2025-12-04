@@ -24,40 +24,41 @@ const ModalHandler = ({ children }: ModalProps) => {
     };
   }, [currentModal, closeModal]);
 
-  if (currentModal) {
-    return (
+  return (
+    <>
       <div
-        onClick={() => closeModal()}
-        className="flex-1 flex flex-col justify-center items-center"
+        inert={!!currentModal}
+        className={`${
+          currentModal ? "opacity-75 blur-[3px] pointer-events-none" : ""
+        } flex-1 flex flex-col`}
       >
-        {/* Modal container */}
-        <div
-          onClick={(e) => e.stopPropagation()}
-          role="dialog"
-          aria-modal="true"
-          className="z-50 fixed px-6 sm:px-0 w-full min-[444px]:w-auto flex justify-center"
-        >
-          {/* Modals */}
-          {currentModal === "createBookmark" && <CreateBookmarkForm />}
-          {currentModal === "deleteAccount" && <DeleteAccountConfirmation />}
-          {currentModal === "deleteBookmark" && <DeleteBookmarkConfirmation />}
-          {currentModal === "editBookmark" && <EditBookmarkForm />}
-          {currentModal === "changePassword" && <ChangePasswordForm />}
-        </div>
-
-        {/* Overlay */}
-        <div
-          className="z-40 opacity-75 blur-[3px] pointer-events-none flex-1 flex flex-col w-full"
-          inert
-        >
-          {children}
-        </div>
+        {children}
       </div>
-    );
-    // If no modals are open
-  } else {
-    return children;
-  }
+
+      {currentModal && (
+        <div
+          onClick={closeModal}
+          className="z-50 fixed inset-0 flex justify-center items-center px-6 sm:px-0"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            className="w-full min-[444px]:w-auto"
+          >
+            {/* Modals */}
+            {currentModal === "createBookmark" && <CreateBookmarkForm />}
+            {currentModal === "deleteAccount" && <DeleteAccountConfirmation />}
+            {currentModal === "deleteBookmark" && (
+              <DeleteBookmarkConfirmation />
+            )}
+            {currentModal === "editBookmark" && <EditBookmarkForm />}
+            {currentModal === "changePassword" && <ChangePasswordForm />}
+          </div>
+        </div>
+      )}
+    </>
+  );
 };
 
 export default ModalHandler;

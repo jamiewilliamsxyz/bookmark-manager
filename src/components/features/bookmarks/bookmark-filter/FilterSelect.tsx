@@ -46,7 +46,7 @@ const FilterSelect = () => {
       <FilterDropdown
         isOpen={isOpen}
         selected={selectedFilter}
-        onSelect={setSelectedFilter}
+        onSelect={(option) => setSelectedFilter(option)}
       />
     </div>
   );
