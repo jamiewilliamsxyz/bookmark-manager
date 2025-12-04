@@ -37,6 +37,8 @@ export const BookmarksProvider = ({
   // Fetch bookmarks
   useEffect(() => {
     const fetchBookmarks = async (): Promise<void> => {
+      if (!session?.user?.id) return;
+
       const cachedData = checkBookmarksCache(session?.user?.id);
 
       if (cachedData) {
