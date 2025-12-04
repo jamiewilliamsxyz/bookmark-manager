@@ -6,11 +6,6 @@ export type LoadingType = boolean;
 
 export type UserType = User;
 
-export interface ConfirmationType {
-  isConfirming: boolean;
-  message: string | null;
-}
-
 export interface AuthSuccess {
   success: true;
   data: {
@@ -35,7 +30,6 @@ export type AuthResultNoData = AuthSuccessNoData | AuthFailure;
 export interface AuthContextType {
   session: SessionType;
   isLoading: LoadingType;
-  confirmation: ConfirmationType;
   signUpUser: (email: string, password: string) => Promise<AuthResult>;
   logInUser: (email: string, password: string) => Promise<AuthResult>;
   logOutUser: () => Promise<string | null>;
@@ -43,7 +37,6 @@ export interface AuthContextType {
     currentPassword: string,
     newPassword: string
   ) => Promise<AuthResultNoData>;
-  checkConfirmation: () => void;
 }
 
 export interface PasswordResetState {

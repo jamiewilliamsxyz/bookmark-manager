@@ -2,7 +2,6 @@
 
 import { createContext, useState, useEffect } from "react";
 import { supabase } from "@/api/supabaseClient";
-import { redirect } from "next/navigation";
 import { CACHE_KEY } from "@/constants/bookmarks";
 import type {
   SessionType,
@@ -10,7 +9,6 @@ import type {
   AuthContextType,
   AuthResult,
   AuthResultNoData,
-  ConfirmationType,
 } from "@/types";
 
 export const AuthContext = createContext<AuthContextType | undefined>(
@@ -20,10 +18,6 @@ export const AuthContext = createContext<AuthContextType | undefined>(
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [session, setSession] = useState<SessionType | null>(null);
   const [isLoading, setIsLoading] = useState<LoadingType>(true);
-  const [confirmation, setConfirmation] = useState<ConfirmationType>({
-    isConfirming: false,
-    message: null,
-  });
 
   useEffect(() => {
     // Check on first render for a session
@@ -85,10 +79,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         return { success: false, error: "No session returned" };
         // Email confirmation is enabled - returns data.session as null
       } else if (!data.session && data.user) {
-        setConfirmation({
-          isConfirming: true,
-          message: `A confirmation email has been sent to ${email}. Please check your inbox`,
-        });
         return { success: true, data: { user: data.user, session: null } };
       } else {
         return { success: false, error: "Signup failed. Please try again." };
@@ -99,43 +89,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       return { success: false, error: message };
     } finally {
       setIsLoading(false);
-    }
-  };
-
-  // Check email confirmation
-  const checkConfirmation = async () => {
-    try {
-      const { data, error } = await supabase.auth.getSession();
-
-      if (error) {
-        setConfirmation((prev) => ({
-          ...prev,
-          message: "Unable to check your email confirmation. Please try again.",
-        }));
-        return;
-      } else if (data.session) {
-        setSession(data.session);
-        setConfirmation({
-          isConfirming: false,
-          message: null,
-        });
-
-        redirect("/bookmarks");
-      } else {
-        setConfirmation((prev) => ({
-          ...prev,
-          message:
-            "Your email has not been confirmed yet. Please check your inbox",
-        }));
-      }
-    } catch (err) {
-      const message =
-        err instanceof Error ? err.message : "Unexpected error occurred";
-
-      setConfirmation((prev) => ({
-        ...prev,
-        message: message,
-      }));
     }
   };
 
@@ -236,11 +189,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       value={{
         session,
         isLoading,
-        confirmation,
         logInUser,
         logOutUser,
         signUpUser,
-        checkConfirmation,
         changePassword,
       }}
     >

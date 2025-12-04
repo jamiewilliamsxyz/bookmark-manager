@@ -1,24 +1,19 @@
-import type { ConfirmationType } from "@/types";
+import Link from "next/link";
 
-interface EmailConfirmationProps {
-  confirmation: ConfirmationType;
-  checkConfirmation: () => void;
-}
-
-const EmailConfirmation = ({
-  confirmation,
-  checkConfirmation,
-}: EmailConfirmationProps) => {
+const EmailConfirmation = () => {
   return (
-    <>
-      <p className="text-center">{confirmation.message}</p>
-      <button
-        onClick={checkConfirmation}
-        className="shadow mt-0.75 bg-neutral-100 py-1.25 w-full rounded-md text-neutral-800 cursor-pointer hover:opacity-75 duration-200 transition-opacity"
+    <div className="text-center flex flex-col items-center gap-2.5">
+      <p className="text-lg">A confirmation email has been sent</p>
+      <p className="text-neutral-500">
+        Please check your inbox and then log in
+      </p>
+      <Link
+        href="/login"
+        className="underline cursor-pointer hover:opacity-75 duration-200 transition-opacity w-fit h-fit"
       >
-        I&apos;ve confirmed my email
-      </button>
-    </>
+        Login
+      </Link>
+    </div>
   );
 };
 
