@@ -4,7 +4,7 @@ const FloatingIcons = () => {
   return (
     <div
       aria-hidden="true"
-      className="hidden min-[850px]:block z-50 opacity-0 animate-[fadeIn_0.6s_ease-out_0.3s_forwards]"
+      className="hidden min-[850px]:block z-50 opacity-0 animate-[fadeIn_0.8s_ease-out_0.5s_forwards]"
     >
       <div className="absolute top-[45%] left-[calc(50%-420px)] rotate-12">
         <Bookmark className="w-12 h-12 text-neutral-100 opacity-65 animate-[float_5s_ease-in-out_infinite]" />
