@@ -18,10 +18,16 @@ Bookmark Manager is a streamlined link management web app built with Next.js, Re
 - Bookmarks cached in the browser for faster loading
 - Fully responsive design for desktop and mobile
 
-### 🖼️ Preview
+### 📹 Video
 
-![Bookmark Manager demo gif](./public/images/demo.gif)
-[View Live App](https://bookmark-manager-io.vercel.app)
+https://github.com/user-attachments/assets/ac7b5d9f-af36-4102-910d-bf5c8cf0af97
+
+### 🖼️ Screenshots
+
+![Bookmarks page screenshot desktop](./public/images/bookmarks-page.png)
+![Bookmarks page screenshot mobile](./public/images/bookmarks-page-mobile.png)
+![Bookmarks form modal screenshot](./public/images/bookmarks-form.png)
+![Landing page screenshot](./public/images/landing-page.png)
 
 ### 🛠️ Built With
 
