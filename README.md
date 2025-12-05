@@ -4,7 +4,7 @@
 
 Bookmark Manager is a streamlined link management web app built with Next.js, React, Supabase, TypeScript and TailwindCSS, featuring user authentication, account management and full CRUD functionality for organising bookmarks
 
-![Browser mockup displaying the Bookmark Manager bookmarks page](./public/images/browser-mockup.png)
+https://github.com/user-attachments/assets/ac7b5d9f-af36-4102-910d-bf5c8cf0af97
 
 ### 📋 Features
 
@@ -17,17 +17,6 @@ Bookmark Manager is a streamlined link management web app built with Next.js, Re
 - Bookmarks persist across devices for each user
 - Bookmarks cached in the browser for faster loading
 - Fully responsive design for desktop and mobile
-
-### 📹 Video
-
-https://github.com/user-attachments/assets/ac7b5d9f-af36-4102-910d-bf5c8cf0af97
-
-### 🖼️ Screenshots
-
-![Bookmarks page screenshot desktop](./public/images/bookmarks-page.png)
-![Bookmarks page screenshot mobile](./public/images/bookmarks-page-mobile.png)
-![Bookmarks form modal screenshot](./public/images/bookmarks-form.png)
-![Landing page screenshot](./public/images/landing-page.png)
 
 ### 🛠️ Built With
 
